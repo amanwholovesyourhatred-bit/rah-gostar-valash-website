@@ -1,5 +1,6 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, Home } from 'lucide-react';
+import { t, type Locale } from '@/lib/i18n';
 
 type Breadcrumb = {
   label: string;
@@ -11,6 +12,7 @@ type PageHeaderProps = {
   subtitle?: string;
   image?: string;
   breadcrumbs?: Breadcrumb[];
+  locale: Locale;
 };
 
 export default function PageHeader({
@@ -18,6 +20,7 @@ export default function PageHeader({
   subtitle,
   image,
   breadcrumbs = [],
+  locale,
 }: PageHeaderProps) {
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
@@ -42,7 +45,11 @@ export default function PageHeader({
         {/* Breadcrumbs */}
         {breadcrumbs.length > 0 && (
           <nav className="flex items-center gap-2 text-sm text-white/50 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">
+            <Link
+              href="/"
+              aria-label={t(locale, 'nav.homeLink')}
+              className="hover:text-white transition-colors"
+            >
               <Home className="w-4 h-4" />
             </Link>
             <ChevronRight className="w-3 h-3" />

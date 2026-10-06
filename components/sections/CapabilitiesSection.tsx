@@ -1,27 +1,31 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight } from 'lucide-react';
 import { capabilities } from '@/lib/site-data';
+import { localizeCapability } from '@/lib/localized-site-data';
+import { t, type Locale } from '@/lib/i18n';
 
-export default function CapabilitiesSection() {
+export default function CapabilitiesSection({ locale }: { locale: Locale }) {
   return (
     <section className="section-padding bg-light-gray blueprint-bg">
       <div className="container-rgv">
         {/* Section header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-14">
           <span className="text-sm font-bold text-accent uppercase tracking-wider">
-            Areas of Expertise
+            {t(locale, 'capabilities.areasOfExpertise')}
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight text-balance">
-            Technical & Execution Capabilities
+            {t(locale, 'capabilities.technicalExecutionCapabilities')}
           </h2>
           <p className="mt-4 text-base text-steel leading-relaxed">
-            Rah Gostar Valash Co. has documented qualifications and project experience across a wide range of civil engineering and infrastructure sectors.
+            {t(locale, 'capabilities.capabilitiesDescription')}
           </p>
         </div>
 
         {/* Capabilities grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {capabilities.map((cap, i) => (
+          {capabilities.map((sourceCap, i) => {
+            const cap = localizeCapability(sourceCap, locale);
+            return (
             <Link
               key={cap.id}
               href={cap.href}
@@ -55,7 +59,8 @@ export default function CapabilitiesSection() {
                 </span>
               </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
       </div>
     </section>

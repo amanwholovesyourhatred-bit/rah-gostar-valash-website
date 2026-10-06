@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
@@ -12,7 +12,10 @@ import {
   ChevronRight,
   Wrench,
 } from 'lucide-react';
-import { projects, getProjectBySlug, getRelatedProjects, categoryLabels } from '@/lib/projects';
+import { projects, getProjectBySlug, getRelatedProjects } from '@/lib/projects';
+import { localizeProject } from '@/lib/localized-projects';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 
@@ -20,29 +23,43 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = getProjectBySlug(params.slug);
-  if (!project) return { title: 'Project not found' };
+export function generateMetadata({
+  params,
+}: {
+  params: { locale: Locale; slug: string };
+}): Metadata {
+  const sourceProject = getProjectBySlug(params.slug);
+  if (!sourceProject) return { title: t(params.locale, 'projectDetail.notFound') };
+  const project = localizeProject(sourceProject, params.locale);
 
-  return {
-    title: project.title,
-    description: project.intro || `${project.categoryLabel} — ${project.title}`,
-  };
+  return localizedMetadata(
+    params.locale,
+    `/projects/${project.slug}`,
+    project.title,
+    project.intro || `${project.categoryLabel} — ${project.title}`,
+  );
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = getProjectBySlug(params.slug);
-  if (!project) notFound();
+export default function ProjectPage({
+  params,
+}: {
+  params: { locale: Locale; slug: string };
+}) {
+  const sourceProject = getProjectBySlug(params.slug);
+  if (!sourceProject) notFound();
+  const project = localizeProject(sourceProject, params.locale);
 
-  const related = getRelatedProjects(project, 3);
+  const related = getRelatedProjects(project, 3).map((relatedProject) =>
+    localizeProject(relatedProject, params.locale)
+  );
 
   const infoItems = [
-    { icon: Building2, label: 'Employer', value: project.employer },
-    { icon: Wrench, label: 'Consultant', value: project.consultant },
-    { icon: MapPin, label: 'Location', value: project.location },
-    { icon: Calendar, label: 'Start Date', value: project.startDate },
-    { icon: Clock, label: 'Contract Duration', value: project.duration },
-    { icon: DollarSign, label: 'Contract Value', value: project.contractValue },
+    { icon: Building2, label: 'employer', value: project.employer },
+    { icon: Wrench, label: 'consultant', value: project.consultant },
+    { icon: MapPin, label: 'location', value: project.location },
+    { icon: Calendar, label: 'startDate', value: project.startDate },
+    { icon: Clock, label: 'contractDuration', value: project.duration },
+    { icon: DollarSign, label: 'contractValue', value: project.contractValue },
   ].filter((item) => item.value);
 
   return (
@@ -61,9 +78,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         <div className="relative z-10 container-rgv">
           <nav className="flex items-center gap-2 text-sm text-white/50 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t(params.locale, 'projectDetail.home')}</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
+            <Link href="/projects" className="hover:text-white transition-colors">{t(params.locale, 'projectDetail.projects')}</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-white/80">{project.categoryLabel}</span>
           </nav>
@@ -105,7 +122,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               >
                 <div className="flex items-center gap-2 text-accent mb-2">
                   <item.icon className="w-4 h-4" />
-                  <span className="text-xs font-medium text-steel">{item.label}</span>
+                  <span className="text-xs font-medium text-steel">{t(params.locale, `projectDetail.${item.label}`)}</span>
                 </div>
                 <p className="text-sm font-semibold text-navy leading-snug">{item.value}</p>
               </div>
@@ -124,7 +141,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.intro && (
                 <div className="reveal">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    Project Overview
+                    {t(params.locale, 'projectDetail.overview')}
                   </h2>
                   <p className="text-base text-steel leading-relaxed">{project.intro}</p>
                 </div>
@@ -134,7 +151,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.scope && project.scope.length > 0 && (
                 <div className="reveal reveal-delay-1">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    Scope of Work
+                    {t(params.locale, 'projectDetail.scopeOfWork')}
                   </h2>
                   <ul className="space-y-3">
                     {project.scope.map((item, i) => (
@@ -151,7 +168,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.challenges && project.challenges.length > 0 && (
                 <div className="reveal reveal-delay-2">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    Execution Challenges
+                    {t(params.locale, 'projectDetail.executionChallenges')}
                   </h2>
                   <ul className="space-y-3">
                     {project.challenges.map((item, i) => (
@@ -168,7 +185,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.solutions && project.solutions.length > 0 && (
                 <div className="reveal reveal-delay-3">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    Technical Solutions
+                    {t(params.locale, 'projectDetail.technicalSolutions')}
                   </h2>
                   <ul className="space-y-3">
                     {project.solutions.map((item, i) => (
@@ -185,7 +202,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.gallery && project.gallery.length > 0 && (
                 <div className="reveal reveal-delay-4">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    Project Gallery
+                    {t(params.locale, 'projectDetail.gallery')}
                   </h2>
                   <div className="grid grid-cols-2 gap-4">
                     {project.gallery.map((img, i) => (
@@ -195,7 +212,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                       >
                         <img
                           src={img}
-                          alt={`${project.title} - Image ${(i + 1).toLocaleString('en-US')}`}
+                          alt={t(params.locale, 'projectDetail.imageAlt')
+                            .replace('{title}', project.title)
+                            .replace('{number}', (i + 1).toLocaleString('en-US'))}
                           className="w-full h-full object-cover img-hover"
                         />
                       </div>
@@ -210,32 +229,32 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {/* Project summary card */}
               <div className="bg-light-gray rounded-lg p-6 border border-border sticky top-28">
                 <h3 className="text-sm font-bold text-navy mb-4 pb-2 border-b border-border">
-                  Project Information
+                  {t(params.locale, 'projectDetail.projectInformation')}
                 </h3>
                 <dl className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <dt className="text-steel">Category</dt>
+                    <dt className="text-steel">{t(params.locale, 'projectDetail.category')}</dt>
                     <dd className="font-semibold text-navy">{project.categoryLabel}</dd>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <dt className="text-steel">Status</dt>
+                    <dt className="text-steel">{t(params.locale, 'projectDetail.status')}</dt>
                     <dd className="font-semibold text-navy">{project.statusLabel}</dd>
                   </div>
                   {project.employer && (
                     <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">Employer</dt>
+                      <dt className="text-steel shrink-0">{t(params.locale, 'projectDetail.employer')}</dt>
                       <dd className="font-semibold text-navy text-left">{project.employer}</dd>
                     </div>
                   )}
                   {project.location && (
                     <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">Location</dt>
+                      <dt className="text-steel shrink-0">{t(params.locale, 'projectDetail.location')}</dt>
                       <dd className="font-semibold text-navy text-left">{project.location}</dd>
                     </div>
                   )}
                   {project.duration && (
                     <div className="flex justify-between text-sm">
-                      <dt className="text-steel">Contract Duration</dt>
+                      <dt className="text-steel">{t(params.locale, 'projectDetail.contractDuration')}</dt>
                       <dd className="font-semibold text-navy">{project.duration}</dd>
                     </div>
                   )}
@@ -245,7 +264,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   href="/projects"
                   className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white px-4 py-3 text-sm font-semibold rounded-md transition-colors"
                 >
-                  Back to Projects
+                  {t(params.locale, 'projectDetail.backToProjects')}
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -255,7 +274,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {/* Related projects */}
           {related.length > 0 && (
             <div className="mt-16 pt-12 border-t border-border">
-              <h2 className="text-xl font-bold text-navy mb-6">Related Projects</h2>
+              <h2 className="text-xl font-bold text-navy mb-6">{t(params.locale, 'projectDetail.relatedProjects')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {related.map((rp) => (
                   <Link
@@ -285,7 +304,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={params.locale} />
     </>
   );
 }

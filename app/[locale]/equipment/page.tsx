@@ -2,80 +2,67 @@ import type { Metadata } from 'next';
 import { Construction, Layers, Truck, HardHat, Wrench, Gauge, Route, Building2 } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Machinery & Equipment | Rah Gostar Valash',
-  description:
-    'Rah Gostar Valash specialized machinery and equipment includes WR/WM soil stabilization equipment, RCC equipment, earthmoving machinery, road construction and asphalt equipment.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/equipment',
+    t(params.locale, 'equipment.metadataTitle'),
+    t(params.locale, 'equipment.metadataDescription'),
+  );
+}
 
 const equipmentCategories = [
   {
     icon: Gauge,
-    title: 'Soil Stabilization Equipment',
-    items: [
-      'Specialized in-situ stabilization equipment (WR/WM)',
-      'Soil-Cement Mixing Machinery',
-    ],
+    title: 'soilStabilizationEquipment',
+    items: ['inSituStabilizationEquipment', 'soilCementMixing'],
     image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Layers,
-    title: 'RCC Equipment',
-    items: [
-      'Asphalt paver for RCC placement',
-      'Vibratory rollers for RCC compaction',
-    ],
+    title: 'rccEquipment',
+    items: ['asphaltPaverForRcc', 'vibratoryRollersForRcc'],
     image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Construction,
-    title: 'Earthmoving Machinery',
-    items: [
-      'Excavator',
-      'Bulldozer',
-      'Grader',
-    ],
+    title: 'earthmovingMachinery',
+    items: ['excavator', 'bulldozer', 'grader'],
     image: 'https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Route,
-    title: 'Road Construction & Asphalt Equipment',
-    items: [
-      'Subgrade Preparation & Grading Equipment',
-      'Compaction Rollers',
-      'Asphalt Equipment',
-    ],
+    title: 'roadAndAsphaltEquipment',
+    items: ['subgradePreparation', 'compactionRollers', 'asphaltEquipment'],
     image: 'https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Building2,
-    title: 'Building & Concrete Equipment',
-    items: [
-      'Concrete Placement Equipment',
-      'Construction Machinery',
-    ],
+    title: 'buildingAndConcreteEquipment',
+    items: ['concretePlacementEquipment', 'constructionMachinery'],
     image: 'https://images.pexels.com/photos/18082446/pexels-photo-18082446.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: HardHat,
-    title: 'Auxiliary & Support Equipment',
-    items: [
-      'Light Construction Equipment',
-      'Project Support Equipment',
-    ],
+    title: 'auxiliaryEquipment',
+    items: ['lightConstructionEquipment', 'projectSupportEquipment'],
     image: 'https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
-export default function EquipmentPage() {
+export default function EquipmentPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="Machinery & Equipment"
-        subtitle="Access to specialized machinery for soil stabilization, RCC, earthworks, compaction, road construction and concrete works"
+        locale={locale}
+        title={t(locale, 'equipment.pageTitle')}
+        subtitle={t(locale, 'equipment.pageSubtitle')}
         image="https://images.pexels.com/photos/34338597/pexels-photo-34338597.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'Machinery & Equipment' }]}
+        breadcrumbs={[{ label: t(locale, 'equipment.breadcrumb') }]}
       />
 
       {/* Equipment categories */}
@@ -83,13 +70,13 @@ export default function EquipmentPage() {
         <div className="container-rgv">
           <div className="reveal max-w-2xl mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Machinery
+              {t(locale, 'equipment.machinery')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Machinery & Equipment Categories
+              {t(locale, 'equipment.categoriesHeading')}
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              Rah Gostar Valash has access to a range of specialized machinery for civil engineering projects. Specific equipment models are listed only when documented in the company profile.
+              {t(locale, 'equipment.description')}
             </p>
           </div>
 
@@ -102,7 +89,7 @@ export default function EquipmentPage() {
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={cat.image}
-                    alt={cat.title}
+                    alt={t(locale, `equipment.${cat.title}`)}
                     className="w-full h-full object-cover img-hover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
@@ -111,12 +98,12 @@ export default function EquipmentPage() {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-base font-bold text-navy">{cat.title}</h3>
+                  <h3 className="text-base font-bold text-navy">{t(locale, `equipment.${cat.title}`)}</h3>
                   <ul className="mt-3 space-y-2">
                     {cat.items.map((item, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-steel">
                         <span className="mt-1.5 w-1 h-1 bg-accent rounded-full shrink-0" />
-                        {item}
+                        {t(locale, `equipment.${item}`)}
                       </li>
                     ))}
                   </ul>
@@ -130,14 +117,14 @@ export default function EquipmentPage() {
             <div className="flex items-start gap-4">
               <Wrench className="w-6 h-6 text-accent shrink-0 mt-0.5" />
               <p className="text-sm text-steel leading-relaxed">
-                A complete equipment list with verified models and specifications can be provided after final confirmation. Unverified model information is intentionally omitted.
+                {t(locale, 'equipment.equipmentNote')}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

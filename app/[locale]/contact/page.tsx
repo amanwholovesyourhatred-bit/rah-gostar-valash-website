@@ -3,21 +3,28 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import ContactForm from '@/components/ContactForm';
 import { siteConfig } from '@/lib/site-data';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | Rah Gostar Valash',
-  description:
-    'Contact Rah Gostar Valash Co. for head-office details, phone, email, collaboration and civil engineering project inquiries.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/contact',
+    t(params.locale, 'contact.metadataTitle'),
+    t(params.locale, 'contact.metadataDescription'),
+  );
+}
 
-export default function ContactPage() {
+export default function ContactPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="Contact Us"
-        subtitle="Contact Rah Gostar Valash for collaboration, project inquiries or technical consultation"
+        locale={locale}
+        title={t(locale, 'contact.pageTitle')}
+        subtitle={t(locale, 'contact.pageSubtitle')}
         image="https://images.pexels.com/photos/8913514/pexels-photo-8913514.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'Contact Us' }]}
+        breadcrumbs={[{ label: t(locale, 'contact.breadcrumb') }]}
       />
 
       <section className="section-padding bg-white">
@@ -26,9 +33,9 @@ export default function ContactPage() {
             {/* Contact info */}
             <div className="lg:col-span-1 space-y-6">
               <div className="reveal">
-                <h2 className="text-2xl font-bold text-navy mb-4">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-navy mb-4">{t(locale, 'contact.contactInformation')}</h2>
                 <p className="text-sm text-steel leading-relaxed">
-                  The contact details below will be added after final verification. For immediate inquiries, please complete the contact form.
+                  {t(locale, 'contact.contactDetailsNote')}
                 </p>
               </div>
 
@@ -38,8 +45,8 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">Head Office Address</h3>
-                    <p className="text-sm text-steel mt-1">{siteConfig.contact.address}</p>
+                    <h3 className="text-sm font-bold text-navy">{t(locale, 'contact.headOfficeAddress')}</h3>
+                    <p className="text-sm text-steel mt-1">{t(locale, 'contact.addressPendingVerification')}</p>
                   </div>
                 </div>
 
@@ -48,7 +55,7 @@ export default function ContactPage() {
                     <Phone className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">Phone</h3>
+                    <h3 className="text-sm font-bold text-navy">{t(locale, 'contact.phone')}</h3>
                     <p className="text-sm text-steel mt-1" dir="ltr">{siteConfig.contact.phone}</p>
                   </div>
                 </div>
@@ -58,7 +65,7 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">Email</h3>
+                    <h3 className="text-sm font-bold text-navy">{t(locale, 'contact.email')}</h3>
                     <p className="text-sm text-steel mt-1" dir="ltr">{siteConfig.contact.email}</p>
                   </div>
                 </div>
@@ -68,8 +75,8 @@ export default function ContactPage() {
                     <Clock className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">Working Hours</h3>
-                    <p className="text-sm text-steel mt-1">{siteConfig.contact.workingHours}</p>
+                    <h3 className="text-sm font-bold text-navy">{t(locale, 'contact.workingHours')}</h3>
+                    <p className="text-sm text-steel mt-1">{t(locale, 'contact.workingHoursValue')}</p>
                   </div>
                 </div>
               </div>
@@ -77,8 +84,8 @@ export default function ContactPage() {
 
             {/* Contact form */}
             <div className="lg:col-span-2 reveal reveal-delay-2">
-              <h2 className="text-2xl font-bold text-navy mb-6">Contact Form</h2>
-              <ContactForm />
+              <h2 className="text-2xl font-bold text-navy mb-6">{t(locale, 'contact.contactForm')}</h2>
+              <ContactForm locale={locale} />
             </div>
           </div>
         </div>

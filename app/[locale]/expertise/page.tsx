@@ -1,30 +1,40 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { capabilities } from '@/lib/site-data';
+import { localizeCapability } from '@/lib/localized-site-data';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Expertise | Areas of Expertise Rah Gostar Valash',
-  description:
-    'Rah Gostar Valash areas of expertise: road construction, bridges and interchanges, RCC pavement, soil stabilization, building construction, residential projects, precast walls, water and wastewater, and urban infrastructure.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/expertise',
+    t(params.locale, 'expertise.metadataTitle'),
+    t(params.locale, 'expertise.metadataDescription'),
+  );
+}
 
-export default function ExpertisePage() {
+export default function ExpertisePage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="Expertise"
-        subtitle="Rah Gostar Valash areas of expertise in civil engineering and infrastructure projects"
+        locale={locale}
+        title={t(locale, 'expertise.pageTitle')}
+        subtitle={t(locale, 'expertise.pageSubtitle')}
         image="https://images.pexels.com/photos/33125632/pexels-photo-33125632.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'Expertise' }]}
+        breadcrumbs={[{ label: t(locale, 'expertise.breadcrumb') }]}
       />
 
       <section className="section-padding bg-white">
         <div className="container-rgv">
           <div className="space-y-8">
-            {capabilities.map((cap, i) => (
+            {capabilities.map((sourceCap, i) => {
+              const cap = localizeCapability(sourceCap, locale);
+              return (
               <div
                 key={cap.id}
                 id={cap.id}
@@ -56,7 +66,7 @@ export default function ExpertisePage() {
                       href={`/projects?category=${cap.id === 'road-infra' ? 'road' : cap.id === 'bridges' ? 'bridge' : cap.id === 'rcc' ? 'rcc' : cap.id === 'soil-stab' ? 'soil-stab' : cap.id === 'building' ? 'building' : cap.id === 'residential' ? 'residential' : cap.id === 'precast' ? 'precast' : cap.id === 'water' ? 'water' : 'urban-infra'}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-accent transition-colors group"
                     >
-                      Related Projects
+                      {t(locale, 'expertise.relatedProjects')}
                       <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                     {(cap.id === 'rcc' || cap.id === 'soil-stab') && (
@@ -64,19 +74,20 @@ export default function ExpertisePage() {
                         href={cap.id === 'rcc' ? '/capabilities/rcc' : '/capabilities/soil-stabilization'}
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-navy transition-colors"
                       >
-                        Specialist Page
+                        {t(locale, 'expertise.specialistPage')}
                         <ChevronRight className="w-4 h-4" />
                       </Link>
                     )}
                   </div>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

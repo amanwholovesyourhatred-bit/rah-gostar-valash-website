@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { t, type Locale } from '@/lib/i18n';
 
-export default function ContactForm() {
+export default function ContactForm({ locale }: { locale: Locale }) {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [loading, setLoading] = useState(false);
 
@@ -24,9 +25,9 @@ export default function ContactForm() {
         <div className="mb-6 p-4 bg-green-50 rounded-lg border border-green-200 flex items-start gap-3">
           <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm font-semibold text-green-800">Your message has been sent</p>
+            <p className="text-sm font-semibold text-green-800">{t(locale, 'form.successTitle')}</p>
             <p className="text-xs text-green-700 mt-1">
-              We will contact you as soon as possible.
+              {t(locale, 'form.successDescription')}
             </p>
           </div>
         </div>
@@ -35,7 +36,7 @@ export default function ContactForm() {
       {status === 'error' && (
         <div className="mb-6 p-4 bg-red-50 rounded-lg border border-red-200 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-          <p className="text-sm text-red-700">There was an error sending your message. Please try again.</p>
+          <p className="text-sm text-red-700">{t(locale, 'form.error')}</p>
         </div>
       )}
 
@@ -43,7 +44,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-navy mb-2">
-              Full Name <span className="text-accent">*</span>
+              {t(locale, 'form.fullName')} <span className="text-accent">*</span>
             </label>
             <input
               id="name"
@@ -51,20 +52,20 @@ export default function ContactForm() {
               type="text"
               required
               className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
-              placeholder="Full Name"
+              placeholder={t(locale, 'form.fullNamePlaceholder')}
             />
           </div>
 
           <div>
             <label htmlFor="company" className="block text-sm font-semibold text-navy mb-2">
-              Company / Organization
+              {t(locale, 'form.companyOrganization')}
             </label>
             <input
               id="company"
               name="company"
               type="text"
               className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
-              placeholder="Company / Organization"
+              placeholder={t(locale, 'form.companyOrganizationPlaceholder')}
             />
           </div>
         </div>
@@ -72,7 +73,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <label htmlFor="phone" className="block text-sm font-semibold text-navy mb-2">
-              Phone Number <span className="text-accent">*</span>
+              {t(locale, 'form.phoneNumber')} <span className="text-accent">*</span>
             </label>
             <input
               id="phone"
@@ -81,13 +82,13 @@ export default function ContactForm() {
               required
               dir="ltr"
               className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white text-left focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
-              placeholder="09123456789"
+              placeholder={t(locale, 'form.phonePlaceholder')}
             />
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-navy mb-2">
-              Email
+              {t(locale, 'form.email')}
             </label>
             <input
               id="email"
@@ -95,14 +96,14 @@ export default function ContactForm() {
               type="email"
               dir="ltr"
               className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white text-left focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
-              placeholder="email@example.com"
+              placeholder={t(locale, 'form.emailPlaceholder')}
             />
           </div>
         </div>
 
         <div>
           <label htmlFor="subject" className="block text-sm font-semibold text-navy mb-2">
-            Subject <span className="text-accent">*</span>
+          {t(locale, 'form.subject')} <span className="text-accent">*</span>
           </label>
             <select
             id="subject"
@@ -110,17 +111,17 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
           >
-            <option value="">Select a subject</option>
-            <option value="cooperation">Collaboration Proposal</option>
-            <option value="projects">Project Inquiry</option>
-            <option value="technical">Technical Consultation</option>
-            <option value="other">Other</option>
+            <option value="">{t(locale, 'form.selectSubject')}</option>
+            <option value="cooperation">{t(locale, 'form.collaborationProposal')}</option>
+            <option value="projects">{t(locale, 'form.projectInquiry')}</option>
+            <option value="technical">{t(locale, 'form.technicalConsultation')}</option>
+            <option value="other">{t(locale, 'form.other')}</option>
           </select>
         </div>
 
         <div>
           <label htmlFor="message" className="block text-sm font-semibold text-navy mb-2">
-            Message <span className="text-accent">*</span>
+            {t(locale, 'form.message')} <span className="text-accent">*</span>
           </label>
           <textarea
             id="message"
@@ -128,7 +129,7 @@ export default function ContactForm() {
             rows={5}
             required
             className="w-full px-4 py-2.5 text-sm border border-border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors resize-y"
-            placeholder="Enter your message"
+            placeholder={t(locale, 'form.messagePlaceholder')}
           />
         </div>
 
@@ -137,7 +138,7 @@ export default function ContactForm() {
           disabled={loading}
           className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-cyan-600 disabled:opacity-60 text-white px-7 py-3 text-sm font-semibold rounded-md transition-colors w-full md:w-auto"
         >
-          {loading ? 'Sending...' : 'Send Message'}
+          {loading ? t(locale, 'form.sending') : t(locale, 'form.sendMessage')}
           {!loading && <Send className="w-4 h-4" />}
         </button>
       </form>

@@ -13,12 +13,18 @@ const config: Config = {
         fa: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
         sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
       },
+      fontSize: {
+        display: [
+          'clamp(2.65rem, 7vw, 6.75rem)',
+          { lineHeight: '0.98', letterSpacing: '-0.045em', fontWeight: '600' },
+        ],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'hero-overlay':
-          'linear-gradient(135deg, rgba(10, 30, 60, 0.85) 0%, rgba(10, 30, 60, 0.5) 50%, rgba(10, 30, 60, 0.3) 100%)',
+          'linear-gradient(90deg, rgba(5, 19, 32, 0.94) 0%, rgba(5, 19, 32, 0.78) 42%, rgba(5, 19, 32, 0.2) 100%)',
         'navy-gradient':
           'linear-gradient(180deg, hsl(215 70% 12%) 0%, hsl(212 68% 20%) 100%)',
       },

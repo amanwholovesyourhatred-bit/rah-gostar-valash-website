@@ -1,98 +1,120 @@
-import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { siteConfig, mainNav, capabilities } from '@/lib/site-data';
+import { t, type Locale } from '@/lib/i18n';
+import LocalizedLink from '@/components/LocalizedLink';
 import Logo from './Logo';
 
-export default function Footer() {
+const navTranslationKeys: Record<string, string> = {
+  '/': 'nav.home',
+  '/about': 'nav.about',
+  '/expertise': 'nav.expertise',
+  '/projects': 'nav.projects',
+  '/capabilities': 'nav.capabilities',
+  '/equipment': 'nav.equipment',
+  '/qualifications': 'nav.qualifications',
+  '/contact': 'nav.contact',
+};
+
+const capabilityTranslationKeys: Record<string, string> = {
+  'road-infra': 'roadInfrastructure',
+  bridges: 'bridges',
+  rcc: 'rcc',
+  'soil-stab': 'soilStabilization',
+  building: 'building',
+  residential: 'residential',
+  precast: 'precast',
+  water: 'water',
+  'urban-infra': 'urbanInfrastructure',
+};
+
+export default function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="bg-navy text-white">
-      {/* Main footer */}
       <div className="container-rgv py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Company info */}
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
             <Logo variant="light" />
-            <p className="mt-5 text-sm text-white/60 leading-relaxed">
-              {siteConfig.shortDescription}
+            <p className="mt-5 text-sm leading-relaxed text-white/60">
+              {t(locale, 'footer.shortDescription')}
             </p>
             <p className="mt-4 text-xs text-white/40">
-              Continuous operations since 2000
+              {t(locale, 'footer.continuousOperations')}
             </p>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              Quick Links
+            <h3 className="mb-4 border-b border-white/10 pb-2 text-sm font-bold text-white/90">
+              {t(locale, 'footer.quickLinks')}
             </h3>
             <ul className="space-y-2.5">
               {mainNav.slice(0, 6).map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <LocalizedLink
                     href={item.href}
-                    className="text-sm text-white/60 hover:text-accent transition-colors"
+                    className="text-sm text-white/60 transition-colors hover:text-accent"
                   >
-                    {item.title}
-                  </Link>
+                    {t(locale, navTranslationKeys[item.href])}
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Expertise */}
           <div>
-            <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              Expertise
+            <h3 className="mb-4 border-b border-white/10 pb-2 text-sm font-bold text-white/90">
+              {t(locale, 'footer.expertise')}
             </h3>
             <ul className="space-y-2.5">
               {capabilities.slice(0, 7).map((cap) => (
                 <li key={cap.id}>
-                  <Link
+                  <LocalizedLink
                     href={cap.href}
-                    className="text-sm text-white/60 hover:text-accent transition-colors"
+                    className="text-sm text-white/60 transition-colors hover:text-accent"
                   >
-                    {cap.title}
-                  </Link>
+                    {t(locale, `expertise.${capabilityTranslationKeys[cap.id]}.title`)}
+                  </LocalizedLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              Contact Us
+            <h3 className="mb-4 border-b border-white/10 pb-2 text-sm font-bold text-white/90">
+              {t(locale, 'footer.contactUs')}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-white/60">
-                <MapPin className="w-4 h-4 mt-0.5 text-accent shrink-0" />
-                <span>Head office address will be added after final verification</span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <span>{t(locale, 'footer.headOfficeAddressPending')}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/60">
-                <Phone className="w-4 h-4 text-accent shrink-0" />
-                <span>Phone: {siteConfig.contact.phone}</span>
+                <Phone className="h-4 w-4 shrink-0 text-accent" />
+                <span>
+                  {t(locale, 'footer.phonePrefix')} {siteConfig.contact.phone}
+                </span>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/60">
-                <Mail className="w-4 h-4 text-accent shrink-0" />
-                <span>Email: {siteConfig.contact.email}</span>
+                <Mail className="h-4 w-4 shrink-0 text-accent" />
+                <span>
+                  {t(locale, 'footer.emailPrefix')} {siteConfig.contact.email}
+                </span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
-                <Clock className="w-4 h-4 mt-0.5 text-accent shrink-0" />
-                <span>{siteConfig.contact.workingHours}</span>
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <span>{t(locale, 'contact.workingHoursValue')}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Copyright bar */}
       <div className="border-t border-white/10">
-        <div className="container-rgv py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="container-rgv flex flex-col items-center justify-between gap-3 py-5 md:flex-row">
           <p className="text-xs text-white/50">
-            © Rah Gostar Valash Co. — All rights reserved.
+            {t(locale, 'footer.copyright')}
           </p>
           <p className="text-xs text-white/40">
-            Designed and developed with a focus on technical quality and user experience
+            {t(locale, 'footer.designCredit')}
           </p>
         </div>
       </div>

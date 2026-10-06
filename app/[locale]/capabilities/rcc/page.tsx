@@ -1,40 +1,57 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, Zap, DollarSign, ThermometerSnowflake, ThermometerSun, Layers, Truck, Gauge, Shield, Wrench, TrendingDown } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { projects } from '@/lib/projects';
+import { localizeProject } from '@/lib/localized-projects';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Roller Compacted Concrete (RCC) Pavement | RCC Technology',
-  description:
-    'RCC pavement construction by Rah Gostar Valash Co. using zero-slump concrete, asphalt-paver placement and vibratory rollers for high strength and long service life.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/capabilities/rcc',
+    t(params.locale, 'rcc.metadataTitle'),
+    t(params.locale, 'rcc.metadataDescription'),
+  );
+}
 
 const advantages = [
-  { icon: Zap, title: 'High Execution Speed', desc: 'Rapid pavement construction at large scale' },
-  { icon: DollarSign, title: 'Relatively Low Execution Cost', desc: 'Cost-effective compared with conventional concrete pavement' },
-  { icon: TrendingDown, title: 'Lower Cement Consumption', desc: 'Lower cement consumption than conventional concrete' },
-  { icon: ThermometerSun, title: 'Hot-Climate Performance', desc: 'Suitable performance in high-temperature conditions' },
-  { icon: ThermometerSnowflake, title: 'Cold-Climate Performance', desc: 'Suitable performance in low-temperature conditions' },
-  { icon: Wrench, title: 'No Conventional Formwork', desc: 'No need for conventional concrete formwork' },
-  { icon: Truck, title: 'Placement with an asphalt paver', desc: 'Use of an asphalt paver for concrete placement' },
-  { icon: Gauge, title: 'Vibratory Roller Compaction', desc: 'Compaction with vibratory rollers' },
-  { icon: Shield, title: 'Long Service Life', desc: 'Reduced maintenance requirements' },
+  { icon: Zap, title: 'highExecutionSpeed', desc: 'rapidLargeScaleConstruction' },
+  { icon: DollarSign, title: 'relativelyLowCost', desc: 'costEffectiveComparedToConcrete' },
+  { icon: TrendingDown, title: 'lowerCementConsumption', desc: 'lowerCementComparedToConventional' },
+  { icon: ThermometerSun, title: 'hotClimate', desc: 'hotClimateDescription' },
+  { icon: ThermometerSnowflake, title: 'coldClimate', desc: 'coldClimateDescription' },
+  { icon: Wrench, title: 'noConventionalFormwork', desc: 'noConventionalFormworkDescription' },
+  { icon: Truck, title: 'asphaltPaverPlacement', desc: 'asphaltPaverPlacementDescription' },
+  { icon: Gauge, title: 'vibratoryCompaction', desc: 'vibratoryCompactionDescription' },
+  { icon: Shield, title: 'longServiceLife', desc: 'longServiceLifeDescription' },
 ];
 
-export default function RCCPage() {
-  const rccProjects = projects.filter((p) => p.category === 'rcc');
+const processSteps = [
+  { num: '01', title: 'zeroSlumpProduction', desc: 'zeroSlumpProductionDescription' },
+  { num: '02', title: 'asphaltPaverStep', desc: 'asphaltPaverStepDescription' },
+  { num: '03', title: 'rollerCompactionStep', desc: 'rollerCompactionStepDescription' },
+  { num: '04', title: 'finishingAndCuring', desc: 'finishingAndCuringDescription' },
+];
+
+export default function RCCPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
+  const rccProjects = projects
+    .filter((project) => project.category === 'rcc')
+    .map((project) => localizeProject(project, locale));
 
   return (
     <>
       <PageHeader
-        title="Roller Compacted Concrete (RCC) Pavement"
-        subtitle="Pavement technology using zero-slump concrete, asphalt-paver placement and vibratory compaction"
+        locale={locale}
+        title={t(locale, 'rcc.pageTitle')}
+        subtitle={t(locale, 'rcc.pageSubtitle')}
         image="https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=1920"
         breadcrumbs={[
-          { label: 'Technical Capabilities', href: '/capabilities' },
-          { label: 'Roller Compacted Concrete (RCC) Pavement' },
+          { label: t(locale, 'capabilities.breadcrumb'), href: '/capabilities' },
+          { label: t(locale, 'rcc.breadcrumb') },
         ]}
       />
 
@@ -44,16 +61,16 @@ export default function RCCPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <span className="text-sm font-bold text-accent uppercase tracking-wider">
-                RCC Technology
+                {t(locale, 'rcc.technology')}
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-                Roller Compacted Concrete: Durable and Economical Pavement
+                {t(locale, 'rcc.technologyHeading')}
               </h2>
               <p className="mt-5 text-base text-steel leading-relaxed">
-                Roller Compacted Concrete (RCC) is a concrete pavement constructed with very dry, zero-slump concrete. It is placed using an asphalt paver and compacted with vibratory rollers.
+                {t(locale, 'rcc.technologyDescription1')}
               </p>
               <p className="mt-4 text-base text-steel leading-relaxed">
-                RCC offers several advantages, including rapid execution, relatively low cost, lower cement consumption than conventional concrete and strong performance in hot and cold climates. Because it does not require conventional formwork and can use road-construction machinery, it is well suited to large infrastructure projects.
+                {t(locale, 'rcc.technologyDescription2')}
               </p>
             </div>
 
@@ -61,13 +78,13 @@ export default function RCCPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="RCC pavement construction"
+                  alt={t(locale, 'rcc.pavementAlt')}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -top-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">
-                <p className="text-2xl font-bold">Zero Slump</p>
-                <p className="text-xs text-white/80 mt-1">Very Dry Concrete</p>
+                <p className="text-2xl font-bold">{t(locale, 'rcc.zeroSlump')}</p>
+                <p className="text-xs text-white/80 mt-1">{t(locale, 'rcc.veryDryConcrete')}</p>
               </div>
             </div>
           </div>
@@ -79,10 +96,10 @@ export default function RCCPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Advantages
+              {t(locale, 'rcc.advantages')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Advantages of RCC Technology
+              {t(locale, 'rcc.advantagesHeading')}
             </h2>
           </div>
 
@@ -95,8 +112,8 @@ export default function RCCPage() {
                 <div className="w-12 h-12 bg-navy/10 rounded-lg flex items-center justify-center mb-4">
                   <adv.icon className="w-6 h-6 text-navy" />
                 </div>
-                <h3 className="text-base font-bold text-navy">{adv.title}</h3>
-                <p className="mt-2 text-sm text-steel leading-relaxed">{adv.desc}</p>
+                <h3 className="text-base font-bold text-navy">{t(locale, `rcc.${adv.title}`)}</h3>
+                <p className="mt-2 text-sm text-steel leading-relaxed">{t(locale, `rcc.${adv.desc}`)}</p>
               </div>
             ))}
           </div>
@@ -108,21 +125,16 @@ export default function RCCPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-navy leading-tight text-balance">
-              RCC Construction Process
+              {t(locale, 'rcc.constructionProcess')}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { num: '01', title: 'Production of Zero-Slump Concrete', desc: 'Mixing very dry concrete with a low water-cement ratio' },
-              { num: '02', title: 'Placement with Asphalt Paver', desc: 'Transport and placement of concrete using road construction machinery' },
-              { num: '03', title: 'Vibratory Roller Compaction', desc: 'Concrete compaction with vibratory rollers' },
-              { num: '04', title: 'Finishing & Curing', desc: 'Final surface finishing and concrete curing' },
-            ].map((step, i) => (
+            {processSteps.map((step, i) => (
               <div key={i} className={`reveal reveal-delay-${i + 1} relative`}>
                 <div className="text-4xl font-bold text-accent/20 tabular-nums">{step.num}</div>
-                <h3 className="mt-2 text-base font-bold text-navy">{step.title}</h3>
-                <p className="mt-2 text-sm text-steel leading-relaxed">{step.desc}</p>
+                <h3 className="mt-2 text-base font-bold text-navy">{t(locale, `rcc.${step.title}`)}</h3>
+                <p className="mt-2 text-sm text-steel leading-relaxed">{t(locale, `rcc.${step.desc}`)}</p>
                 {i < 3 && (
                   <div className="hidden md:block absolute top-6 -left-3 w-6 h-px bg-border" />
                 )}
@@ -148,10 +160,10 @@ export default function RCCPage() {
         <div className="container-rgv relative z-10">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Project Experience
+              {t(locale, 'rcc.projectExperience')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-white leading-tight text-balance">
-              Rah Gostar Valash RCC Experience
+              {t(locale, 'rcc.companyExperienceHeading')}
             </h2>
           </div>
 
@@ -170,7 +182,7 @@ export default function RCCPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">
-                  <span className="text-xs text-accent font-semibold mb-1">RCC Project</span>
+                  <span className="text-xs text-accent font-semibold mb-1">{t(locale, 'rcc.rccProject')}</span>
                   <h3 className="text-sm font-bold text-white leading-snug group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
@@ -186,13 +198,13 @@ export default function RCCPage() {
             href="/projects"
             className="reveal mt-8 inline-flex items-center gap-2 text-accent hover:text-white font-semibold transition-colors group"
           >
-            View All Projects
+            {t(locale, 'rcc.viewAllProjects')}
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

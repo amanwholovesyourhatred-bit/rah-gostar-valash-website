@@ -1,41 +1,48 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, ArrowRight, Layers, Gauge, Truck, ShieldCheck, HardHat } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CapabilitiesSection from '@/components/sections/CapabilitiesSection';
 import CTASection from '@/components/sections/CTASection';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Technical Capabilities | Rah Gostar Valash',
-  description:
-    'Rah Gostar Valash technical and execution capabilities include RCC technology, cement soil stabilization, specialized machinery and contractor qualifications.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/capabilities',
+    t(params.locale, 'capabilities.metadataTitle'),
+    t(params.locale, 'capabilities.metadataDescription'),
+  );
+}
 
 const technicalPages = [
   {
-    title: 'Roller Compacted Concrete (RCC) Pavement',
-    desc: 'Pavement construction using zero-slump concrete, asphalt pavers and vibratory rollers, offering rapid execution and long service life.',
+    title: 'capabilities.rollerCompactedConcrete',
+    desc: 'capabilities.rollerCompactedConcreteDescription',
     href: '/capabilities/rcc',
     image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: Layers,
   },
   {
-    title: 'Cement Soil Stabilization',
-    desc: 'In-situ soil stabilization with WR/WM equipment to increase strength, reduce swelling and achieve a documented minimum execution rate of about 500 m per day.',
+    title: 'capabilities.cementSoilStabilization',
+    desc: 'capabilities.cementSoilStabilizationDescription',
     href: '/capabilities/soil-stabilization',
     image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: Gauge,
   },
 ];
 
-export default function CapabilitiesPage() {
+export default function CapabilitiesPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="Technical Capabilities"
-        subtitle="Rah Gostar Valash specialized technologies and construction machinery"
+        locale={locale}
+        title={t(locale, 'capabilities.pageTitle')}
+        subtitle={t(locale, 'capabilities.pageSubtitle')}
         image="https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'Technical Capabilities' }]}
+        breadcrumbs={[{ label: t(locale, 'capabilities.breadcrumb') }]}
       />
 
       {/* Technical pages highlight */}
@@ -43,10 +50,10 @@ export default function CapabilitiesPage() {
         <div className="container-rgv">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Specialized Technologies
+              {t(locale, 'capabilities.specializedTechnologies')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Technical Capability Pages
+              {t(locale, 'capabilities.technicalPagesHeading')}
             </h2>
           </div>
 
@@ -60,7 +67,7 @@ export default function CapabilitiesPage() {
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={page.image}
-                    alt={page.title}
+                    alt={t(locale, page.title)}
                     className="w-full h-full object-cover img-hover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
@@ -68,13 +75,13 @@ export default function CapabilitiesPage() {
                     <div className="w-10 h-10 bg-accent rounded-md flex items-center justify-center mb-3">
                       <page.icon className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">{page.title}</h3>
+                    <h3 className="text-xl font-bold text-white">{t(locale, page.title)}</h3>
                   </div>
                 </div>
                 <div className="p-5">
-                  <p className="text-sm text-steel leading-relaxed">{page.desc}</p>
+                  <p className="text-sm text-steel leading-relaxed">{t(locale, page.desc)}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy group-hover:text-accent transition-colors">
-                    View Technical Page
+                    {t(locale, 'capabilities.viewTechnicalPage')}
                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
@@ -85,9 +92,9 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* Capabilities grid from homepage */}
-      <CapabilitiesSection />
+      <CapabilitiesSection locale={locale} />
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

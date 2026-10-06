@@ -4,55 +4,50 @@
 
 @layer base {
   :root {
-    /* Engineering Blue Palette */
     --background: 0 0% 100%;
-    --foreground: 215 28% 14%;
+    --foreground: 215 24% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 14%;
+    --card-foreground: 215 24% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 14%;
+    --popover-foreground: 215 24% 13%;
 
-    /* Deep navy / engineering blue */
-    --primary: 212 68% 20%;
+    --primary: 213 68% 19%;
     --primary-foreground: 0 0% 100%;
 
-    /* Medium corporate blue */
-    --secondary: 210 50% 96%;
-    --secondary-foreground: 212 68% 20%;
+    --secondary: 210 24% 95%;
+    --secondary-foreground: 213 68% 19%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 12% 45%;
+    --muted: 210 18% 95%;
+    --muted-foreground: 215 12% 42%;
 
-    /* Cyan/teal accent */
-    --accent: 190 88% 38%;
+    --accent: 195 72% 38%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 88%;
-    --ring: 212 68% 20%;
+    --border: 210 16% 87%;
+    --input: 210 16% 84%;
+    --ring: 213 68% 19%;
 
-    --radius: 0.25rem;
+    --radius: 0.1875rem;
 
-    /* Custom engineering palette */
-    --navy: 215 70% 12%;
-    --navy-light: 212 68% 20%;
-    --blue: 210 65% 33%;
-    --blue-light: 200 80% 45%;
-    --cyan: 190 88% 38%;
+    --navy: 215 68% 11%;
+    --navy-light: 213 68% 19%;
+    --blue: 210 52% 31%;
+    --blue-light: 200 64% 42%;
+    --cyan: 195 72% 38%;
     --steel: 210 14% 28%;
-    --charcoal: 215 28% 12%;
-    --light-gray: 210 20% 96%;
+    --charcoal: 215 24% 12%;
+    --light-gray: 210 18% 96%;
 
-    --chart-1: 212 68% 20%;
-    --chart-2: 190 88% 38%;
-    --chart-3: 200 80% 45%;
-    --chart-4: 210 50% 60%;
-    --chart-5: 215 28% 40%;
+    --chart-1: 213 68% 19%;
+    --chart-2: 195 72% 38%;
+    --chart-3: 200 64% 42%;
+    --chart-4: 210 40% 56%;
+    --chart-5: 215 22% 40%;
   }
 }
 
@@ -67,9 +62,20 @@
 
   body {
     @apply bg-background text-foreground;
+    line-height: 1.6;
     font-feature-settings: "ss01", "cv01";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 3px;
   }
 
   /* English typography */
@@ -119,7 +125,7 @@
   .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
   }
   .reveal.is-visible {
     opacity: 1;
@@ -133,7 +139,7 @@
 
   /* Image hover effects */
   .img-hover {
-    transition: transform 0.5s ease-out;
+      transition: transform 0.4s ease-out;
   }
   .img-hover:hover {
     transform: scale(1.05);
@@ -163,4 +169,15 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(212 68% 20%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

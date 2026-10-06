@@ -1,39 +1,49 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, TrendingUp, Gauge, Layers, Clock, DollarSign, Wrench, Mountain, ShieldCheck } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { projects } from '@/lib/projects';
+import { localizeProject } from '@/lib/localized-projects';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Cement Soil Stabilization | In-Situ Stabilization with WR/WM Equipment',
-  description:
-    'Cement soil stabilization by Rah Gostar Valash using WR/WM equipment to increase soil strength, reduce swelling and improve plasticity, with a documented minimum execution rate of about 500 m per day.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/capabilities/soil-stabilization',
+    t(params.locale, 'soilStabilization.metadataTitle'),
+    t(params.locale, 'soilStabilization.metadataDescription'),
+  );
+}
 
 const benefits = [
-  { icon: TrendingUp, title: 'Increased Soil Strength', desc: 'Significant increase in subgrade strength' },
-  { icon: Mountain, title: 'Reduced Swelling Potential', desc: 'Improved behavior of expansive soils' },
-  { icon: ShieldCheck, title: 'Improved Shear Strength', desc: 'Increased soil shear strength' },
-  { icon: Layers, title: 'Improved Plasticity', desc: 'Improved soil plasticity characteristics' },
-  { icon: Clock, title: 'Faster Execution', desc: 'Capacity for at least 500 m of execution per day' },
-  { icon: DollarSign, title: 'Reduced Material Consumption', desc: 'Optimized construction material consumption' },
-  { icon: Gauge, title: 'Reduced Project Duration', desc: 'Accelerated project delivery' },
-  { icon: Wrench, title: 'Economic Advantage', desc: 'Estimated 30–45% savings compared with flexible asphalt pavement (based on the company technical study)' },
+  { icon: TrendingUp, title: 'increasedSoilStrength', desc: 'increasedSoilStrengthDescription' },
+  { icon: Mountain, title: 'reducedSwelling', desc: 'reducedSwellingDescription' },
+  { icon: ShieldCheck, title: 'improvedShearStrength', desc: 'improvedShearStrengthDescription' },
+  { icon: Layers, title: 'improvedPlasticity', desc: 'improvedPlasticityDescription' },
+  { icon: Clock, title: 'fasterExecution', desc: 'fasterExecutionDescription' },
+  { icon: DollarSign, title: 'reducedMaterialConsumption', desc: 'reducedMaterialConsumptionDescription' },
+  { icon: Gauge, title: 'reducedProjectDuration', desc: 'reducedProjectDurationDescription' },
+  { icon: Wrench, title: 'economicAdvantage', desc: 'economicAdvantageDescription' },
 ];
 
-export default function SoilStabilizationPage() {
-  const stabProjects = projects.filter((p) => p.category === 'soil-stab');
+export default function SoilStabilizationPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
+  const stabProjects = projects
+    .filter((project) => project.category === 'soil-stab')
+    .map((project) => localizeProject(project, locale));
 
   return (
     <>
       <PageHeader
-        title="Cement Soil Stabilization"
-        subtitle="In-situ stabilization using specialized WR/WM equipment to improve road subgrade geotechnical properties"
+        locale={locale}
+        title={t(locale, 'soilStabilization.pageTitle')}
+        subtitle={t(locale, 'soilStabilization.pageSubtitle')}
         image="https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=1920"
         breadcrumbs={[
-          { label: 'Technical Capabilities', href: '/capabilities' },
-          { label: 'Cement Soil Stabilization' },
+          { label: t(locale, 'capabilities.breadcrumb'), href: '/capabilities' },
+          { label: t(locale, 'soilStabilization.breadcrumb') },
         ]}
       />
 
@@ -45,39 +55,39 @@ export default function SoilStabilizationPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Cement Soil Stabilization"
+                  alt={t(locale, 'soilStabilization.soilStabilizationAlt')}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -top-5 -right-5 bg-navy text-white p-5 rounded-lg shadow-xl hidden md:block">
                 <p className="text-2xl font-bold text-accent">500+ m</p>
-                <p className="text-xs text-white/80 mt-1">stabilized per day (minimum)</p>
+                <p className="text-xs text-white/80 mt-1">{t(locale, 'soilStabilization.stabilizedPerDay')}</p>
               </div>
             </div>
 
             <div className="reveal reveal-delay-1 order-1 lg:order-2">
               <span className="text-sm font-bold text-accent uppercase tracking-wider">
-                Stabilization Technology
+                {t(locale, 'soilStabilization.stabilizationTechnology')}
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-                In-Situ Soil Stabilization with WR/WM Equipment
+                {t(locale, 'soilStabilization.stabilizationHeading')}
               </h2>
               <p className="mt-5 text-base text-steel leading-relaxed">
-                Cement soil stabilization is an in-situ process in which cement is mixed directly with subgrade soil using specialized stabilization equipment such as WR (Wirtgen Recycler) and WM machines.
+                {t(locale, 'soilStabilization.technologyDescription1')}
               </p>
               <p className="mt-4 text-base text-steel leading-relaxed">
-                Cement stabilization increases soil strength, reduces swelling potential, improves shear strength and plasticity characteristics, while faster execution and reduced material consumption can shorten project duration.
+                {t(locale, 'soilStabilization.technologyDescription2')}
               </p>
 
               <div className="mt-6 p-4 bg-light-gray rounded-lg border-l-4 border-accent">
                 <p className="text-sm text-steel leading-relaxed">
-                  <strong className="text-navy">Execution capacity:</strong> With the company’s stabilization machinery, at least approximately 500 linear metres per day can be executed at a width of 2.7 m.
+                  <strong className="text-navy">{t(locale, 'soilStabilization.executionCapacityLabel')}</strong> {t(locale, 'soilStabilization.executionCapacity')}
                 </p>
               </div>
 
               <div className="mt-4 p-4 bg-amber-50 rounded-lg border-l-4 border-amber-400">
                 <p className="text-sm text-steel leading-relaxed">
-                  <strong className="text-navy">Company technical study:</strong> The company’s technical study estimates that cement-stabilized pavement may provide approximately 30–45% savings compared with flexible asphalt pavement under the analyzed conditions. This figure comes from the company’s internal study and is not presented as a universal guarantee.
+                  <strong className="text-navy">{t(locale, 'soilStabilization.companyTechnicalStudyLabel')}</strong> {t(locale, 'soilStabilization.companyTechnicalStudy')}
                 </p>
               </div>
             </div>
@@ -90,10 +100,10 @@ export default function SoilStabilizationPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Advantages
+              {t(locale, 'soilStabilization.advantages')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Advantages of Cement Soil Stabilization
+              {t(locale, 'soilStabilization.advantagesHeading')}
             </h2>
           </div>
 
@@ -106,8 +116,8 @@ export default function SoilStabilizationPage() {
                 <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-3">
                   <benefit.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-sm font-bold text-navy">{benefit.title}</h3>
-                <p className="mt-1.5 text-xs text-steel leading-relaxed">{benefit.desc}</p>
+                <h3 className="text-sm font-bold text-navy">{t(locale, `soilStabilization.${benefit.title}`)}</h3>
+                <p className="mt-1.5 text-xs text-steel leading-relaxed">{t(locale, `soilStabilization.${benefit.desc}`)}</p>
               </div>
             ))}
           </div>
@@ -130,10 +140,10 @@ export default function SoilStabilizationPage() {
         <div className="container-rgv relative z-10">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Project Experience
+              {t(locale, 'soilStabilization.projectExperience')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-white leading-tight text-balance">
-              Rah Gostar Valash Soil Stabilization Projects
+              {t(locale, 'soilStabilization.companyProjectsHeading')}
             </h2>
           </div>
 
@@ -152,7 +162,7 @@ export default function SoilStabilizationPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">
-                  <span className="text-xs text-accent font-semibold mb-1">Soil Stabilization</span>
+                  <span className="text-xs text-accent font-semibold mb-1">{t(locale, 'soilStabilization.soilStabilizationProject')}</span>
                   <h3 className="text-sm font-bold text-white leading-snug group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
@@ -168,13 +178,13 @@ export default function SoilStabilizationPage() {
             href="/projects"
             className="reveal mt-8 inline-flex items-center gap-2 text-accent hover:text-white font-semibold transition-colors group"
           >
-            View All Projects
+            {t(locale, 'soilStabilization.viewAllProjects')}
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

@@ -1,10 +1,27 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import { companyStats, type Stat } from '@/lib/site-data';
+import { t, type Locale } from '@/lib/i18n';
 
-function StatCounter({ stat, index }: { stat: Stat; index: number }) {
+function StatCounter({
+  stat,
+  index,
+  locale,
+}: {
+  stat: Stat;
+  index: number;
+  locale: Locale;
+}) {
+  const statKeys = [
+    ['home.yearsOfExperience', 'home.yearsOfExperienceSince2000'],
+    ['home.roadGrade', 'home.roadGradeDetail'],
+    ['home.buildingGrade', 'home.buildingGradeDetail'],
+    ['home.waterGrade', 'home.waterGradeDetail'],
+  ];
+  const [labelKey, sublabelKey] = statKeys[index];
+
   return (
     <div
       className={`reveal reveal-delay-${index + 1} text-center px-6 py-8 border-l border-white/10 last:border-l-0 md:px-8 md:py-10`}
@@ -21,60 +38,61 @@ function StatCounter({ stat, index }: { stat: Stat; index: number }) {
         )}
       </div>
       <p className="mt-2 text-sm md:text-base font-semibold text-white">
-        {stat.label}
+        {t(locale, labelKey)}
       </p>
-      {stat.sublabel && (
-        <p className="mt-1 text-xs text-white/50">{stat.sublabel}</p>
-      )}
+      {stat.sublabel && <p className="mt-1 text-xs text-white/50">{t(locale, sublabelKey)}</p>}
     </div>
   );
 }
 
-export default function Hero() {
+export default function Hero({ locale }: { locale: Locale }) {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative isolate flex min-h-[820px] items-center overflow-hidden bg-navy text-white lg:min-h-[90vh]">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
           src="https://images.pexels.com/photos/8860492/pexels-photo-8860492.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Road Infrastructure Project"
-          className="w-full h-full object-cover"
+          alt={t(locale, 'home.heroAlt')}
+          className="h-full w-full object-cover object-[62%_center]"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/35 via-transparent to-navy/80" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-rgv pt-32 pb-20">
-        <div className="max-w-3xl">
-          <div className="reveal">
-            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-2 rounded-md">
-              <span className="w-2 h-2 bg-accent rounded-full" />
-              Rah Gostar Valash Co.
+      <div className="container-rgv relative z-10 w-full pb-48 pt-32 sm:pb-44 lg:pb-40">
+        <div className="max-w-4xl">
+          <div className="mb-7 border-l-2 border-accent pl-4">
+            <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-white">
+              {t(locale, 'home.identifier')}
+            </span>
+            <span className="mt-1 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70 sm:text-xs">
+              {t(locale, 'home.industry')}
             </span>
           </div>
 
-          <h1 className="reveal reveal-delay-1 mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-shadow-lg text-balance">
-            More Than Two Decades of Civil Engineering & Infrastructure Experience
+          <h1 className="max-w-4xl text-display text-white text-balance">
+            <span className="block">{t(locale, 'home.headlineLine1')}</span>
+            <span className="mt-1 block text-white/90">{t(locale, 'home.headlineLine2')}</span>
           </h1>
 
-          <p className="reveal reveal-delay-2 mt-6 text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl text-shadow">
-            Rah Gostar Valash — contractor for road construction, buildings, urban infrastructure, water and wastewater, and specialized civil engineering projects
+          <p className="mt-7 max-w-2xl text-[clamp(1rem,1.45vw,1.25rem)] leading-relaxed text-white/85">
+            {t(locale, 'home.introduction')}
           </p>
 
-          <div className="reveal reveal-delay-3 mt-8 flex flex-col sm:flex-row gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-cyan-600 text-white px-7 py-3.5 text-base font-semibold rounded-md transition-all hover:shadow-lg hover:shadow-accent/30"
+              className="inline-flex min-h-12 items-center justify-center gap-2 bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-cyan-700 sm:min-w-52"
             >
-              View Projects
+              {t(locale, 'home.exploreProjects')}
               <ChevronRight className="w-5 h-5" />
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-7 py-3.5 text-base font-semibold rounded-md transition-colors"
+              className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/45 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:min-w-52"
             >
-              About the Company
+              {t(locale, 'home.aboutCompany')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -82,11 +100,11 @@ export default function Hero() {
       </div>
 
       {/* Stats bar */}
-      <div className="absolute bottom-0 inset-x-0 bg-navy/80 backdrop-blur-md border-t border-white/10">
+      <div className="absolute inset-x-0 bottom-0 border-t border-white/20 bg-navy/95">
         <div className="container-rgv">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {companyStats.map((stat, i) => (
-              <StatCounter key={i} stat={stat} index={i} />
+              <StatCounter key={i} stat={stat} index={i} locale={locale} />
             ))}
           </div>
         </div>

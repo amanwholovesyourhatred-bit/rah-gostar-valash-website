@@ -1,7 +1,8 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight } from 'lucide-react';
+import { t, type Locale } from '@/lib/i18n';
 
-export default function AboutSection() {
+export default function AboutSection({ locale }: { locale: Locale }) {
   return (
     <section className="section-padding bg-white">
       <div className="container-rgv">
@@ -11,14 +12,14 @@ export default function AboutSection() {
             <div className="relative overflow-hidden rounded-lg shadow-2xl">
               <img
                 src="https://images.pexels.com/photos/8961133/pexels-photo-8961133.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Rah Gostar Valash engineers on site"
+                alt={t(locale, 'about.engineersAlt')}
                 className="w-full h-[480px] object-cover img-hover"
               />
             </div>
             {/* Accent badge */}
             <div className="absolute -bottom-6 -left-6 bg-navy text-white p-6 rounded-lg shadow-xl hidden md:block">
               <p className="text-3xl font-bold text-accent">+24</p>
-              <p className="text-sm text-white/80 mt-1">Years of Experience</p>
+              <p className="text-sm text-white/80 mt-1">{t(locale, 'home.experienceBadge')}</p>
             </div>
             {/* Decorative element */}
             <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-accent/30 rounded-lg -z-10" />
@@ -27,29 +28,29 @@ export default function AboutSection() {
           {/* Content */}
           <div className="reveal reveal-delay-1">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              About Us
+              {t(locale, 'home.aboutEyebrow')}
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight text-balance">
-              Rah Gostar Valash — Civil Engineering Delivery Built on Experience and Technical Capability
+              {t(locale, 'home.aboutHeading')}
             </h2>
             <p className="mt-6 text-base text-steel leading-relaxed">
-              With more than 24 years of continuous activity in civil engineering and construction, Rah Gostar Valash Co. is supported by experienced management, specialist technical personnel, specialized construction machinery and professional contractor qualifications.
+              {t(locale, 'home.aboutParagraph1')}
             </p>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              The company manages projects from site mobilization through final completion, including earthworks, structural works, framing, rough construction, mechanical and electrical installations, finishing and handover.
+              {t(locale, 'home.aboutParagraph2')}
             </p>
 
             {/* Mini features */}
             <div className="mt-8 grid grid-cols-2 gap-4">
               {[
-                'Full Project Lifecycle Management',
-                'Specialist Technical Personnel',
-                'Specialized Machinery',
-                'Valid Contractor Qualifications',
+                ['home.fullProjectLifecycle'],
+                ['home.specialistPersonnel'],
+                ['home.specializedMachinery'],
+                ['home.validQualifications'],
               ].map((item) => (
-                <div key={item} className="flex items-center gap-2.5">
+                <div key={item[0]} className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full shrink-0" />
-                  <span className="text-sm text-steel font-medium">{item}</span>
+                  <span className="text-sm text-steel font-medium">{t(locale, item[0])}</span>
                 </div>
               ))}
             </div>
@@ -58,7 +59,7 @@ export default function AboutSection() {
               href="/about"
               className="mt-8 inline-flex items-center gap-2 text-navy hover:text-accent font-semibold text-base transition-colors group"
             >
-              About Rah Gostar Valash
+              {t(locale, 'home.learnAboutCompany')}
               <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

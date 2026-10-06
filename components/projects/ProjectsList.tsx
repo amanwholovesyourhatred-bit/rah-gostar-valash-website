@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { MapPin, Building2, ChevronRight } from 'lucide-react';
-import { projects, categoryLabels, type ProjectCategory } from '@/lib/projects';
+import { projects, type ProjectCategory } from '@/lib/projects';
+import { localizeProject, localizedCategoryLabel } from '@/lib/localized-projects';
+import { t, type Locale } from '@/lib/i18n';
 
 const allCategories: (ProjectCategory | 'all')[] = [
   'all',
@@ -18,7 +20,7 @@ const allCategories: (ProjectCategory | 'all')[] = [
   'water',
 ];
 
-export default function ProjectsList() {
+export default function ProjectsList({ locale }: { locale: Locale }) {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>('all');
 
   const filtered = useMemo(() => {
@@ -40,7 +42,9 @@ export default function ProjectsList() {
                 : 'bg-light-gray text-steel hover:bg-secondary hover:text-navy'
             }`}
           >
-            {cat === 'all' ? 'All' : categoryLabels[cat]}
+            {cat === 'all'
+              ? t(locale, 'projects.all')
+              : localizedCategoryLabel(locale, cat)}
             {cat !== 'all' && (
               <span className="mr-1.5 text-xs opacity-60">
                 ({projects.filter((p) => p.category === cat).length.toLocaleString('en-US')})
@@ -53,11 +57,13 @@ export default function ProjectsList() {
       {/* Projects grid */}
       {filtered.length === 0 ? (
         <div className="text-center py-20 text-steel">
-          <p>No projects are available in this category.</p>
+          <p>{t(locale, 'projects.noProjectsAvailable')}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
+          {filtered.map((sourceProject, i) => {
+            const project = localizeProject(sourceProject, locale);
+            return (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
@@ -106,13 +112,14 @@ export default function ProjectsList() {
 
                 <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
                   <span className="text-sm font-semibold text-navy group-hover:text-accent transition-colors">
-                    View Project
+                    {t(locale, 'projects.viewProject')}
                   </span>
                   <ChevronRight className="w-4 h-4 text-navy group-hover:text-accent transition-all group-hover:translate-x-1" />
                 </div>
               </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
       )}
     </div>

@@ -1,9 +1,13 @@
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, MapPin, Calendar, Building2 } from 'lucide-react';
 import { getFeaturedProjects } from '@/lib/projects';
+import { localizeProject } from '@/lib/localized-projects';
+import { t, type Locale } from '@/lib/i18n';
 
-export default function FeaturedProjects() {
-  const featured = getFeaturedProjects();
+export default function FeaturedProjects({ locale }: { locale: Locale }) {
+  const featured = getFeaturedProjects().map((project) =>
+    localizeProject(project, locale)
+  );
 
   return (
     <section className="section-padding bg-white">
@@ -12,20 +16,20 @@ export default function FeaturedProjects() {
         <div className="reveal flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-12">
           <div className="max-w-2xl">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Featured Projects
+              {t(locale, 'home.featuredProjectsEyebrow')}
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight text-balance">
-              A selection of completed and ongoing projects
+              {t(locale, 'home.featuredProjectsHeading')}
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              A selection of road construction, RCC, soil stabilization, precast wall and residential projects delivered by Rah Gostar Valash.
+              {t(locale, 'home.featuredProjectsDescription')}
             </p>
           </div>
           <Link
             href="/projects"
             className="shrink-0 inline-flex items-center gap-2 text-navy hover:text-accent font-semibold text-base transition-colors group"
           >
-            View All Projects
+            {t(locale, 'home.viewAllProjects')}
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

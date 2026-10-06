@@ -1,36 +1,51 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/LocalizedLink';
 import { ChevronRight, Target, History, Award, Users, Settings, ShieldCheck, Layers } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { companyStats, capabilities } from '@/lib/site-data';
+import { localizeCapability } from '@/lib/localized-site-data';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'About Us | Rah Gostar Valash Co.',
-  description:
-    'Rah Gostar Valash Co. has more than 24 years of experience in civil engineering and infrastructure projects. Learn about the company, its history, expertise, technical capabilities and contractor qualifications.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/about',
+    t(params.locale, 'about.metadataTitle'),
+    t(params.locale, 'about.metadataDescription'),
+  );
+}
 
 const projectPhases = [
-  { title: 'Site Mobilization', desc: 'Project mobilization and site preparation' },
-  { title: 'Earthworks', desc: 'Excavation, filling and grading' },
-  { title: 'Structural Works', desc: 'Foundation and primary structural works' },
-  { title: 'Structural Frame', desc: 'Construction of concrete or steel structural frames' },
-  { title: 'Rough Construction', desc: 'Masonry and rough building works' },
-  { title: 'Mechanical Systems', desc: 'Installation of mechanical and heating systems' },
-  { title: 'Electrical Systems', desc: 'Installation of electrical and lighting systems' },
-  { title: 'Finishing', desc: 'Finishing and completion works' },
-  { title: 'Project Completion', desc: 'Final project handover to the employer' },
+  { title: 'siteMobilization', desc: 'siteMobilizationDescription' },
+  { title: 'earthworks', desc: 'earthworksDescription' },
+  { title: 'structuralWorks', desc: 'structuralWorksDescription' },
+  { title: 'structuralFrame', desc: 'structuralFrameDescription' },
+  { title: 'roughConstruction', desc: 'roughConstructionDescription' },
+  { title: 'mechanicalSystems', desc: 'mechanicalSystemsDescription' },
+  { title: 'electricalSystems', desc: 'electricalSystemsDescription' },
+  { title: 'finishing', desc: 'finishingDescription' },
+  { title: 'projectCompletion', desc: 'projectCompletionDescription' },
 ];
 
-export default function AboutPage() {
+const statisticKeys = [
+  ['home.yearsOfExperience', 'home.yearsOfExperienceSince2000'],
+  ['home.roadGrade', 'home.roadGradeDetail'],
+  ['home.buildingGrade', 'home.buildingGradeDetail'],
+  ['home.waterGrade', 'home.waterGradeDetail'],
+];
+
+export default function AboutPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="About Rah Gostar Valash"
-        subtitle="More than 24 years of continuous activity in civil engineering and infrastructure projects, supported by experienced management and specialist technical personnel"
+        locale={locale}
+        title={t(locale, 'about.pageTitle')}
+        subtitle={t(locale, 'about.pageSubtitle')}
         image="https://images.pexels.com/photos/8961133/pexels-photo-8961133.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'About Us' }]}
+        breadcrumbs={[{ label: t(locale, 'about.breadcrumb') }]}
       />
 
       {/* Stats */}
@@ -45,8 +60,8 @@ export default function AboutPage() {
                     {stat.value.toLocaleString('en-US')}
                   </span>
                 </div>
-                <p className="mt-1 text-sm font-semibold text-white/80">{stat.label}</p>
-                {stat.sublabel && <p className="text-xs text-white/40 mt-0.5">{stat.sublabel}</p>}
+                <p className="mt-1 text-sm font-semibold text-white/80">{t(locale, statisticKeys[i][0])}</p>
+                {stat.sublabel && <p className="text-xs text-white/40 mt-0.5">{t(locale, statisticKeys[i][1])}</p>}
               </div>
             ))}
           </div>
@@ -61,28 +76,28 @@ export default function AboutPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/8961146/pexels-photo-8961146.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Rah Gostar Valash Engineers"
+                  alt={t(locale, 'about.engineersAlt')}
                   className="w-full h-[440px] object-cover img-hover"
                 />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">
                 <p className="text-xl font-bold">1379</p>
-                <p className="text-xs text-white/80 mt-0.5">Year Established</p>
+                <p className="text-xs text-white/80 mt-0.5">{t(locale, 'about.establishedYear')}</p>
               </div>
             </div>
 
             <div className="reveal reveal-delay-1">
               <span className="text-sm font-bold text-accent uppercase tracking-wider">
-                Company Overview
+                {t(locale, 'about.companyOverview')}
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-                Civil Engineering Delivery Backed by Experience and Technical Capability
+                {t(locale, 'about.overviewHeading')}
               </h2>
               <p className="mt-5 text-base text-steel leading-relaxed">
-                With more than 24 years of continuous activity in civil engineering and construction, Rah Gostar Valash Co. combines experienced management, specialist technical personnel, specialized construction machinery and professional contractor qualifications.
+                {t(locale, 'about.overviewParagraph1')}
               </p>
               <p className="mt-4 text-base text-steel leading-relaxed">
-                The company has a documented track record in road construction, building construction, urban infrastructure, water and wastewater, and specialized civil engineering works. Rah Gostar Valash manages projects from site mobilization through final completion.
+                {t(locale, 'about.overviewParagraph2')}
               </p>
             </div>
           </div>
@@ -95,10 +110,10 @@ export default function AboutPage() {
           <div className="reveal max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <History className="w-6 h-6 text-accent" />
-              <h2 className="text-2xl font-bold text-navy">History & Experience</h2>
+              <h2 className="text-2xl font-bold text-navy">{t(locale, 'about.historyHeading')}</h2>
             </div>
             <p className="text-base text-steel leading-relaxed">
-              The company began operations in 2000 and, over more than two decades of continuous activity, has delivered numerous projects in road and transportation, building construction, residential development, urban infrastructure and specialized civil works across Iran, including Qom, Tehran, Gilan, Kurdistan, Sistan and Baluchestan, and border regions.
+              {t(locale, 'about.historyParagraph')}
             </p>
           </div>
         </div>
@@ -109,13 +124,13 @@ export default function AboutPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Project Delivery Cycle
+              {t(locale, 'about.deliveryCycle')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Full management from site mobilization to handover
+              {t(locale, 'about.lifecycleHeading')}
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              Rah Gostar Valash has experience managing projects through every stage of execution
+              {t(locale, 'about.lifecycleDescription')}
             </p>
           </div>
 
@@ -129,8 +144,8 @@ export default function AboutPage() {
                   {(i + 1).toLocaleString('en-US')}
                 </span>
                 <div>
-                  <h3 className="text-sm font-bold text-navy">{phase.title}</h3>
-                  <p className="mt-1 text-xs text-steel">{phase.desc}</p>
+                  <h3 className="text-sm font-bold text-navy">{t(locale, `about.${phase.title}`)}</h3>
+                  <p className="mt-1 text-xs text-steel">{t(locale, `about.${phase.desc}`)}</p>
                 </div>
               </div>
             ))}
@@ -144,12 +159,14 @@ export default function AboutPage() {
           <div className="reveal mb-10">
             <div className="flex items-center gap-3 mb-4">
               <Layers className="w-6 h-6 text-accent" />
-              <h2 className="text-2xl font-bold text-navy">Areas of Expertise</h2>
+              <h2 className="text-2xl font-bold text-navy">{t(locale, 'about.areasHeading')}</h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {capabilities.map((cap, i) => (
+            {capabilities.map((sourceCap, i) => {
+              const cap = localizeCapability(sourceCap, locale);
+              return (
               <Link
                 key={cap.id}
                 href={cap.href}
@@ -164,7 +181,8 @@ export default function AboutPage() {
                 </div>
                 <ChevronRight className="w-4 h-4 text-steel group-hover:text-accent transition-all group-hover:translate-x-1" />
               </Link>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -176,18 +194,18 @@ export default function AboutPage() {
             {[
               {
                 icon: Target,
-                title: 'Management Approach',
-                desc: 'Project management focused on quality, schedule and cost control, with oversight from site mobilization through final handover.',
+                title: 'about.managementApproach',
+                desc: 'about.managementApproachDescription',
               },
               {
                 icon: Users,
-                title: 'Technical & Execution Capability',
-                desc: 'Specialist technical personnel and construction machinery for road, RCC, soil stabilization and building projects.',
+                title: 'about.technicalExecution',
+                desc: 'about.technicalExecutionDescription',
               },
               {
                 icon: Award,
-                title: 'Contractor Qualifications',
-                desc: 'Holder of Grade 1 Road & Transportation, Grade 3 Building Construction and Grade 4 Water contractor qualifications under the national grading system.',
+                title: 'about.contractorQualifications',
+                desc: 'about.contractorQualificationsDescription',
               },
             ].map((item, i) => (
               <div
@@ -197,8 +215,8 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-lg font-bold text-navy">{item.title}</h3>
-                <p className="mt-3 text-sm text-steel leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-bold text-navy">{t(locale, item.title)}</h3>
+                <p className="mt-3 text-sm text-steel leading-relaxed">{t(locale, item.desc)}</p>
               </div>
             ))}
           </div>
@@ -214,20 +232,20 @@ export default function AboutPage() {
               className="inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white px-6 py-3 text-sm font-semibold rounded-md transition-colors"
             >
               <ShieldCheck className="w-4 h-4" />
-              Qualifications & Certificates
+              {t(locale, 'about.qualificationsLink')}
             </Link>
             <Link
               href="/equipment"
               className="inline-flex items-center justify-center gap-2 bg-white hover:bg-secondary text-navy border border-border px-6 py-3 text-sm font-semibold rounded-md transition-colors"
             >
               <Settings className="w-4 h-4" />
-              Machinery & Equipment
+              {t(locale, 'about.equipmentLink')}
             </Link>
           </div>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

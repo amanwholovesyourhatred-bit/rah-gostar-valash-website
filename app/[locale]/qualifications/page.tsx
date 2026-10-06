@@ -2,45 +2,52 @@ import type { Metadata } from 'next';
 import { Award, ShieldCheck, FileText, BadgeCheck } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Qualifications & Certificates | Rah Gostar Valash',
-  description:
-    'Rah Gostar Valash contractor qualifications: Grade 1 Road & Transportation, Grade 3 Building Construction, and Grade 4 Water, supported by official certificates and qualifications.',
-};
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/qualifications',
+    t(params.locale, 'qualifications.metadataTitle'),
+    t(params.locale, 'qualifications.metadataDescription'),
+  );
+}
 
 const qualifications = [
   {
     grade: '1',
-    field: 'Road & Transportation',
-    fieldEn: 'Road & Transportation',
-    desc: 'Grade 1 — Highest Road & Transportation Contractor Grade',
+    field: 'roadAndTransportation',
+    fieldEn: 'roadAndTransportationEn',
+    desc: 'grade1Road',
     color: 'from-navy to-navy-light',
   },
   {
     grade: '3',
-    field: 'Building Construction',
-    fieldEn: 'Building Construction',
-    desc: 'Grade 3 — Building Construction Contractor',
+    field: 'buildingConstruction',
+    fieldEn: 'buildingConstructionEn',
+    desc: 'grade3Building',
     color: 'from-blue to-blue-light',
   },
   {
     grade: '4',
-    field: 'Water',
-    fieldEn: 'Water',
-    desc: 'Grade 4 — Water Contractor',
+    field: 'water',
+    fieldEn: 'waterEn',
+    desc: 'grade4Water',
     color: 'from-cyan to-blue-light',
   },
 ];
 
-export default function QualificationsPage() {
+export default function QualificationsPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
   return (
     <>
       <PageHeader
-        title="Qualifications & Certificates"
-        subtitle="Official Rah Gostar Valash contractor qualifications under the national contractor grading system"
+        locale={locale}
+        title={t(locale, 'qualifications.pageTitle')}
+        subtitle={t(locale, 'qualifications.pageSubtitle')}
         image="https://images.pexels.com/photos/8961298/pexels-photo-8961298.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'Qualifications & Certificates' }]}
+        breadcrumbs={[{ label: t(locale, 'qualifications.breadcrumb') }]}
       />
 
       {/* Qualification cards */}
@@ -48,13 +55,13 @@ export default function QualificationsPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              Contractor Grades
+              {t(locale, 'qualifications.contractorGrades')}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              Official Contractor Qualifications
+              {t(locale, 'qualifications.officialQualifications')}
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              The following contractor grades have been issued to Rah Gostar Valash Co. under the national contractor grading system.
+              {t(locale, 'qualifications.qualificationsDescription')}
             </p>
           </div>
 
@@ -71,9 +78,9 @@ export default function QualificationsPage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-navy rounded-full mb-4">
                     <span className="text-3xl font-bold text-accent tabular-nums">{qual.grade}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-navy">{qual.field}</h3>
-                  <p className="text-xs text-accent font-medium mt-1">{qual.fieldEn}</p>
-                  <p className="mt-3 text-sm text-steel leading-relaxed">{qual.desc}</p>
+                  <h3 className="text-lg font-bold text-navy">{t(locale, `qualifications.${qual.field}`)}</h3>
+                  <p className="text-xs text-accent font-medium mt-1">{t(locale, `qualifications.${qual.fieldEn}`)}</p>
+                  <p className="mt-3 text-sm text-steel leading-relaxed">{t(locale, `qualifications.${qual.desc}`)}</p>
                 </div>
               </div>
             ))}
@@ -87,10 +94,10 @@ export default function QualificationsPage() {
           <div className="reveal mb-10">
             <div className="flex items-center gap-3 mb-3">
               <FileText className="w-6 h-6 text-accent" />
-              <h2 className="text-2xl font-bold text-navy">Certificate Gallery</h2>
+              <h2 className="text-2xl font-bold text-navy">{t(locale, 'qualifications.certificateGallery')}</h2>
             </div>
             <p className="text-sm text-steel leading-relaxed max-w-2xl">
-              Certificate and qualification document images will be displayed here after final verification and removal of sensitive information.
+              {t(locale, 'qualifications.certificateGalleryNote')}
             </p>
           </div>
 
@@ -102,10 +109,10 @@ export default function QualificationsPage() {
               >
                 <FileText className="w-10 h-10 text-border mb-3" />
                 <p className="text-xs text-muted-foreground">
-                  Certificate Image {(n).toLocaleString('en-US')}
+                  {t(locale, 'qualifications.certificateImage').replace('{number}', n.toLocaleString('en-US'))}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  To be added after final verification
+                  {t(locale, 'qualifications.certificateToBeAdded')}
                 </p>
               </div>
             ))}
@@ -115,7 +122,7 @@ export default function QualificationsPage() {
             <div className="flex items-start gap-3">
               <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
               <p className="text-sm text-steel leading-relaxed">
-                Published legal documents and certificates will omit personal identification numbers, signatures and other sensitive registration information.
+                {t(locale, 'qualifications.legalDocumentsPrivacy')}
               </p>
             </div>
           </div>
@@ -131,9 +138,9 @@ export default function QualificationsPage() {
                 <BadgeCheck className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-navy">Valid Qualifications</h3>
+                <h3 className="text-base font-bold text-navy">{t(locale, 'qualifications.validQualifications')}</h3>
                 <p className="mt-2 text-sm text-steel leading-relaxed">
-                  The company’s contractor grades are issued under the national grading system and demonstrate formal qualification for government and public-sector projects.
+                  {t(locale, 'qualifications.validQualificationsDescription')}
                 </p>
               </div>
             </div>
@@ -143,9 +150,9 @@ export default function QualificationsPage() {
                 <Award className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-navy">Documented Experience</h3>
+                <h3 className="text-base font-bold text-navy">{t(locale, 'qualifications.documentedExperience')}</h3>
                 <p className="mt-2 text-sm text-steel leading-relaxed">
-                  More than 24 years of documented experience in road construction, buildings, residential development and infrastructure supports the company’s qualifications.
+                  {t(locale, 'qualifications.documentedExperienceDescription')}
                 </p>
               </div>
             </div>
@@ -153,7 +160,7 @@ export default function QualificationsPage() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

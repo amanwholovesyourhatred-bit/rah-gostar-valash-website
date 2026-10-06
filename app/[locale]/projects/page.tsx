@@ -1,0 +1,38 @@
+import type { Metadata } from 'next';
+import PageHeader from '@/components/layout/PageHeader';
+import ProjectsList from '@/components/projects/ProjectsList';
+import CTASection from '@/components/sections/CTASection';
+import { t, type Locale } from '@/lib/i18n';
+import { localizedMetadata } from '@/lib/metadata';
+
+export function generateMetadata({ params }: { params: { locale: Locale } }): Metadata {
+  return localizedMetadata(
+    params.locale,
+    '/projects',
+    t(params.locale, 'projects.metadataTitle'),
+    t(params.locale, 'projects.metadataDescription'),
+  );
+}
+
+export default function ProjectsPage({ params }: { params: { locale: Locale } }) {
+  const { locale } = params;
+  return (
+    <>
+      <PageHeader
+        locale={locale}
+        title={t(locale, 'projects.pageTitle')}
+        subtitle={t(locale, 'projects.pageSubtitle')}
+        image="https://images.pexels.com/photos/11701517/pexels-photo-11701517.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        breadcrumbs={[{ label: t(locale, 'projects.breadcrumb') }]}
+      />
+
+      <section className="section-padding bg-white">
+        <div className="container-rgv">
+          <ProjectsList locale={locale} />
+        </div>
+      </section>
+
+      <CTASection locale={locale} />
+    </>
+  );
+}
