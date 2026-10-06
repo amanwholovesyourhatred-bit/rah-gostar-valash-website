@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Engineering Blue Palette */
+    --background: 0 0% 100%;
+    --foreground: 215 28% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 14%;
+
+    /* Deep navy / engineering blue */
+    --primary: 212 68% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Medium corporate blue */
+    --secondary: 210 50% 96%;
+    --secondary-foreground: 212 68% 20%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 12% 45%;
+
+    /* Cyan/teal accent */
+    --accent: 190 88% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 88%;
+    --ring: 212 68% 20%;
+
+    --radius: 0.25rem;
+
+    /* Custom engineering palette */
+    --navy: 215 70% 12%;
+    --navy-light: 212 68% 20%;
+    --blue: 210 65% 33%;
+    --blue-light: 200 80% 45%;
+    --cyan: 190 88% 38%;
+    --steel: 210 14% 28%;
+    --charcoal: 215 28% 12%;
+    --light-gray: 210 20% 96%;
+
+    --chart-1: 212 68% 20%;
+    --chart-2: 190 88% 38%;
+    --chart-3: 200 80% 45%;
+    --chart-4: 210 50% 60%;
+    --chart-5: 215 28% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Persian typography */
+  .font-fa {
+    font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  /* Number formatting for Persian context */
+  .persian-nums {
+    font-feature-settings: "ss01";
+  }
+}
+
+@layer components {
+  .container-rgv {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Blueprint grid background */
+  .blueprint-bg {
+    background-image:
+      linear-gradient(rgba(26, 58, 94, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 58, 94, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Engineering accent line */
+  .accent-line {
+    @apply relative inline-block;
+  }
+  .accent-line::after {
+    content: '';
+    @apply absolute -bottom-2 right-0 h-0.5 w-12 bg-accent;
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Image hover effects */
+  .img-hover {
+    transition: transform 0.5s ease-out;
+  }
+  .img-hover:hover {
+    transform: scale(1.05);
+  }
+
+  /* Text shadow for hero overlays */
+  .text-shadow-lg {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 1px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(210 20% 96%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(212 68% 30%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(212 68% 20%);
+}
