@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 export default function CTASection() {
   return (
@@ -17,26 +17,25 @@ export default function CTASection() {
       <div className="relative z-10 container-rgv text-center">
         <div className="reveal max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight text-balance">
-            آماده همکاری در پروژه‌های عمرانی و زیرساختی شما
+            Ready to Support Your Civil Engineering & Infrastructure Projects
           </h2>
           <p className="mt-5 text-lg text-white/70 leading-relaxed">
-            راه گستر ولاش با تجربه بیش از دو دهه، ماشین‌آلات تخصصی و صلاحیت‌های
-            پیمانکاری معتبر، آماده بررسی پروژه‌های شماست.
+            With more than two decades of experience, specialized machinery and valid contractor qualifications, Rah Gostar Valash is ready to review your project requirements.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-cyan-600 text-white px-7 py-3.5 text-base font-semibold rounded-md transition-all hover:shadow-lg hover:shadow-accent/30"
             >
-              تماس با ما
-              <ChevronLeft className="w-5 h-5" />
+              Contact Us
+              <ChevronRight className="w-5 h-5" />
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-7 py-3.5 text-base font-semibold rounded-md transition-colors"
             >
-              مشاهده پروژه‌ها
-              <ChevronLeft className="w-5 h-5" />
+              View Projects
+              <ChevronRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

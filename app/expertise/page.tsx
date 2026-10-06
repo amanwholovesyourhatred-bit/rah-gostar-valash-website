@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { capabilities } from '@/lib/site-data';
 
 export const metadata: Metadata = {
-  title: 'حوزه‌های فعالیت | حوزه‌های تخصصی راه گستر ولاش',
+  title: 'Expertise | Areas of Expertise Rah Gostar Valash',
   description:
-    'حوزه‌های تخصصی راه گستر ولاش: راه‌سازی، پل و تقاطع، بتن غلتکی RCC، تثبیت خاک، ابنیه و ساختمان، پروژه‌های مسکونی، دیوار پیش‌ساخته، آب و فاضلاب و زیرساخت شهری.',
+    'Rah Gostar Valash areas of expertise: road construction, bridges and interchanges, RCC pavement, soil stabilization, building construction, residential projects, precast walls, water and wastewater, and urban infrastructure.',
 };
 
 export default function ExpertisePage() {
   return (
     <>
       <PageHeader
-        title="حوزه‌های فعالیت"
-        subtitle="حوزه‌های تخصصی راه گستر ولاش در پروژه‌های عمرانی و زیرساختی"
+        title="Expertise"
+        subtitle="Rah Gostar Valash areas of expertise in civil engineering and infrastructure projects"
         image="https://images.pexels.com/photos/33125632/pexels-photo-33125632.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'حوزه‌های فعالیت' }]}
+        breadcrumbs={[{ label: 'Expertise' }]}
       />
 
       <section className="section-padding bg-white">
@@ -56,16 +56,16 @@ export default function ExpertisePage() {
                       href={`/projects?category=${cap.id === 'road-infra' ? 'road' : cap.id === 'bridges' ? 'bridge' : cap.id === 'rcc' ? 'rcc' : cap.id === 'soil-stab' ? 'soil-stab' : cap.id === 'building' ? 'building' : cap.id === 'residential' ? 'residential' : cap.id === 'precast' ? 'precast' : cap.id === 'water' ? 'water' : 'urban-infra'}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-accent transition-colors group"
                     >
-                      پروژه‌های مرتبط
-                      <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                      Related Projects
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                     {(cap.id === 'rcc' || cap.id === 'soil-stab') && (
                       <Link
                         href={cap.id === 'rcc' ? '/capabilities/rcc' : '/capabilities/soil-stabilization'}
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-navy transition-colors"
                       >
-                        صفحه تخصصی
-                        <ChevronLeft className="w-4 h-4" />
+                        Specialist Page
+                        <ChevronRight className="w-4 h-4" />
                       </Link>
                     )}
                   </div>

@@ -1,43 +1,43 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Vazirmatn } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollReveal from '@/components/layout/ScrollReveal';
 
-const vazirmatn = Vazirmatn({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-vazirmatn',
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: {
-    default: 'شرکت راه گستر ولاش | پیمانکار راه و ترابری و پروژه‌های عمرانی',
-    template: '%s | راه گستر ولاش',
+    default: 'Rah Gostar Valash Co. | Road & Transportation Contractor and Civil Engineering Projects',
+    template: '%s | Rah Gostar Valash',
   },
   description:
-    'شرکت راه گستر ولاش با بیش از ۲۴ سال تجربه در اجرای پروژه‌های راه‌سازی، ابنیه، زیرساخت‌های شهری، آب و فاضلاب و پروژه‌های تخصصی عمرانی. رتبه ۱ راه و ترابری، رتبه ۳ ابنیه و ساختمان، رتبه ۴ آب.',
+    'Rah Gostar Valash Co. has more than 24 years of experience in road construction, buildings, urban infrastructure, water and wastewater, and specialized civil engineering projects. Grade 1 Road & Transportation, Grade 3 Building Construction, Grade 4 Water.',
   keywords: [
-    'شرکت راه سازی',
-    'پیمانکار راه و ترابری',
-    'شرکت عمرانی',
-    'اجرای بتن غلتکی RCC',
-    'تثبیت خاک با سیمان',
-    'پیمانکار ابنیه',
-    'ساخت پل',
-    'پروژه‌های عمرانی',
-    'راه گستر ولاش',
+    'Road Construction Company',
+    'Road & Transportation Contractor',
+    'Civil Engineering Company',
+    'RCC pavement construction',
+    'Cement Soil Stabilization',
+    'Building Contractor',
+    'Bridge Construction',
+    'Civil Engineering Projects',
+    'Rah Gostar Valash',
     'RCC',
-    'زیرساخت',
-    'پروژه‌های مسکونی',
+    'Infrastructure',
+    'Residential Projects',
   ],
   openGraph: {
     type: 'website',
-    locale: 'fa_IR',
-    title: 'شرکت راه گستر ولاش | پیمانکار راه و ترابری و پروژه‌های عمرانی',
+    locale: 'en_US',
+    title: 'Rah Gostar Valash Co. | Road & Transportation Contractor and Civil Engineering Projects',
     description:
-      'بیش از دو دهه تجربه در اجرای پروژه‌های عمرانی و زیرساختی. راه‌سازی، پل، RCC، تثبیت خاک، ابنیه و پروژه‌های مسکونی.',
+      'More than two decades of experience delivering civil engineering and infrastructure projects across roads, bridges, RCC, soil stabilization, buildings and residential construction.',
   },
   robots: {
     index: true,
@@ -51,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
-      <body className="font-fa bg-background text-foreground antialiased">
+    <html lang="en" dir="ltr" className={inter.variable}>
+      <body className="font-sans bg-background text-foreground antialiased">
         <ScrollReveal />
         <Header />
         <main>{children}</main>

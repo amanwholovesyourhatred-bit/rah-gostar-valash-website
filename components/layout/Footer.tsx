@@ -16,14 +16,14 @@ export default function Footer() {
               {siteConfig.shortDescription}
             </p>
             <p className="mt-4 text-xs text-white/40">
-              فعالیت مستمر از سال ۱۳۷۹
+              Continuous operations since 2000
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              دسترسی سریع
+              Quick Links
             </h3>
             <ul className="space-y-2.5">
               {mainNav.slice(0, 6).map((item) => (
@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Expertise */}
           <div>
             <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              حوزه‌های فعالیت
+              Expertise
             </h3>
             <ul className="space-y-2.5">
               {capabilities.slice(0, 7).map((cap) => (
@@ -61,20 +61,20 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-bold text-white/90 mb-4 pb-2 border-b border-white/10">
-              تماس با ما
+              Contact Us
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <MapPin className="w-4 h-4 mt-0.5 text-accent shrink-0" />
-                <span>آدرس دفتر مرکزی پس از تأیید نهایی درج خواهد شد</span>
+                <span>Head office address will be added after final verification</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/60">
                 <Phone className="w-4 h-4 text-accent shrink-0" />
-                <span>تلفن: {siteConfig.contact.phone}</span>
+                <span>Phone: {siteConfig.contact.phone}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/60">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
-                <span>ایمیل: {siteConfig.contact.email}</span>
+                <span>Email: {siteConfig.contact.email}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <Clock className="w-4 h-4 mt-0.5 text-accent shrink-0" />
@@ -89,10 +89,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-rgv py-5 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/50">
-            © شرکت راه گستر ولاش — کلیه حقوق محفوظ است.
+            © Rah Gostar Valash Co. — All rights reserved.
           </p>
           <p className="text-xs text-white/40">
-            طراحی و توسعه با تمرکز بر کیفیت فنی و تجربه کاربری
+            Designed and developed with a focus on technical quality and user experience
           </p>
         </div>
       </div>

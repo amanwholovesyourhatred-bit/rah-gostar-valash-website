@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { capabilities } from '@/lib/site-data';
 
 export default function CapabilitiesSection() {
@@ -9,14 +9,13 @@ export default function CapabilitiesSection() {
         {/* Section header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-14">
           <span className="text-sm font-bold text-accent uppercase tracking-wider">
-            حوزه‌های تخصصی
+            Areas of Expertise
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight text-balance">
-            توانمندی‌های فنی و اجرایی
+            Technical & Execution Capabilities
           </h2>
           <p className="mt-4 text-base text-steel leading-relaxed">
-            شرکت راه گستر ولاش در حوزه‌های متنوع عمرانی و زیرساختی دارای صلاحیت و
-            تجربه اجرایی مستند است.
+            Rah Gostar Valash Co. has documented qualifications and project experience across a wide range of civil engineering and infrastructure sectors.
           </p>
         </div>
 
@@ -51,8 +50,8 @@ export default function CapabilitiesSection() {
                   {cap.description}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-navy group-hover:text-accent transition-colors">
-                  مشاهده جزئیات
-                  <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                  View Details
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>

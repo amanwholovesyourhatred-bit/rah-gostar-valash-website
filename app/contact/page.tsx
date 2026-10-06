@@ -5,19 +5,19 @@ import ContactForm from '@/components/ContactForm';
 import { siteConfig } from '@/lib/site-data';
 
 export const metadata: Metadata = {
-  title: 'تماس با ما | راه گستر ولاش',
+  title: 'Contact Us | Rah Gostar Valash',
   description:
-    'تماس با شرکت راه گستر ولاش. آدرس دفتر مرکزی، تلفن، ایمیل و فرم تماس برای همکاری و استعلام پروژه‌های عمرانی.',
+    'Contact Rah Gostar Valash Co. for head-office details, phone, email, collaboration and civil engineering project inquiries.',
 };
 
 export default function ContactPage() {
   return (
     <>
       <PageHeader
-        title="تماس با ما"
-        subtitle="برای همکاری، استعلام پروژه یا مشاوره فنی با راه گستر ولاش در ارتباط باشید"
+        title="Contact Us"
+        subtitle="Contact Rah Gostar Valash for collaboration, project inquiries or technical consultation"
         image="https://images.pexels.com/photos/8913514/pexels-photo-8913514.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'تماس با ما' }]}
+        breadcrumbs={[{ label: 'Contact Us' }]}
       />
 
       <section className="section-padding bg-white">
@@ -26,10 +26,9 @@ export default function ContactPage() {
             {/* Contact info */}
             <div className="lg:col-span-1 space-y-6">
               <div className="reveal">
-                <h2 className="text-2xl font-bold text-navy mb-4">اطلاعات تماس</h2>
+                <h2 className="text-2xl font-bold text-navy mb-4">Contact Information</h2>
                 <p className="text-sm text-steel leading-relaxed">
-                  اطلاعات تماس زیر پس از تأیید نهایی درج خواهد شد. برای ارتباط فوری،
-                  فرم تماس را تکمیل کنید.
+                  The contact details below will be added after final verification. For immediate inquiries, please complete the contact form.
                 </p>
               </div>
 
@@ -39,7 +38,7 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">آدرس دفتر مرکزی</h3>
+                    <h3 className="text-sm font-bold text-navy">Head Office Address</h3>
                     <p className="text-sm text-steel mt-1">{siteConfig.contact.address}</p>
                   </div>
                 </div>
@@ -49,7 +48,7 @@ export default function ContactPage() {
                     <Phone className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">تلفن</h3>
+                    <h3 className="text-sm font-bold text-navy">Phone</h3>
                     <p className="text-sm text-steel mt-1" dir="ltr">{siteConfig.contact.phone}</p>
                   </div>
                 </div>
@@ -59,7 +58,7 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">ایمیل</h3>
+                    <h3 className="text-sm font-bold text-navy">Email</h3>
                     <p className="text-sm text-steel mt-1" dir="ltr">{siteConfig.contact.email}</p>
                   </div>
                 </div>
@@ -69,7 +68,7 @@ export default function ContactPage() {
                     <Clock className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-navy">ساعات کاری</h3>
+                    <h3 className="text-sm font-bold text-navy">Working Hours</h3>
                     <p className="text-sm text-steel mt-1">{siteConfig.contact.workingHours}</p>
                   </div>
                 </div>
@@ -78,7 +77,7 @@ export default function ContactPage() {
 
             {/* Contact form */}
             <div className="lg:col-span-2 reveal reveal-delay-2">
-              <h2 className="text-2xl font-bold text-navy mb-6">فرم تماس</h2>
+              <h2 className="text-2xl font-bold text-navy mb-6">Contact Form</h2>
               <ContactForm />
             </div>
           </div>

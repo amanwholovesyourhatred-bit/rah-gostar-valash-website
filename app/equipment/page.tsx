@@ -4,65 +4,65 @@ import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
-  title: 'ماشین‌آلات و تجهیزات | راه گستر ولاش',
+  title: 'Machinery & Equipment | Rah Gostar Valash',
   description:
-    'ماشین‌آلات و تجهیزات تخصصی راه گستر ولاش شامل دستگاه‌های تثبیت خاک WR/WM، تجهیزات اجرای RCC، ماشین‌آلات خاکی، راه‌سازی و آسفالت.',
+    'Rah Gostar Valash specialized machinery and equipment includes WR/WM soil stabilization equipment, RCC equipment, earthmoving machinery, road construction and asphalt equipment.',
 };
 
 const equipmentCategories = [
   {
     icon: Gauge,
-    title: 'دستگاه‌های تثبیت خاک',
+    title: 'Soil Stabilization Equipment',
     items: [
-      'دستگاه‌های تخصصی تثبیت درجا (WR/WM)',
-      'ماشین‌آلات اختلاط سیمان با خاک',
+      'Specialized in-situ stabilization equipment (WR/WM)',
+      'Soil-Cement Mixing Machinery',
     ],
     image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Layers,
-    title: 'تجهیزات اجرای RCC',
+    title: 'RCC Equipment',
     items: [
-      'فینیشر آسفالت برای پخش بتن غلتکی',
-      'غلتک‌های لرزه‌ای برای تراکم RCC',
+      'Asphalt paver for RCC placement',
+      'Vibratory rollers for RCC compaction',
     ],
     image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Construction,
-    title: 'ماشین‌آلات خاکی',
+    title: 'Earthmoving Machinery',
     items: [
-      'بیل مکانیکی',
-      'بلدوزر',
-      'گریدر',
+      'Excavator',
+      'Bulldozer',
+      'Grader',
     ],
     image: 'https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Route,
-    title: 'تجهیزات راه‌سازی و آسفالت',
+    title: 'Road Construction & Asphalt Equipment',
     items: [
-      'تجهیزات بسترسازی و تسطیح',
-      'غلتک‌های تراکم',
-      'تجهیزات آسفالت‌کاری',
+      'Subgrade Preparation & Grading Equipment',
+      'Compaction Rollers',
+      'Asphalt Equipment',
     ],
     image: 'https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Building2,
-    title: 'تجهیزات ساختمانی و بتنی',
+    title: 'Building & Concrete Equipment',
     items: [
-      'تجهیزات بتن‌ریزی',
-      'ماشین‌آلات ساختمانی',
+      'Concrete Placement Equipment',
+      'Construction Machinery',
     ],
     image: 'https://images.pexels.com/photos/18082446/pexels-photo-18082446.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: HardHat,
-    title: 'تجهیزات کمکی و پشتیبانی',
+    title: 'Auxiliary & Support Equipment',
     items: [
-      'ماشین‌آلات سبک اجرایی',
-      'تجهیزات پشتیبانی پروژه',
+      'Light Construction Equipment',
+      'Project Support Equipment',
     ],
     image: 'https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
@@ -72,10 +72,10 @@ export default function EquipmentPage() {
   return (
     <>
       <PageHeader
-        title="ماشین‌آلات و تجهیزات"
-        subtitle="دسترسی به ماشین‌آلات تخصصی مرتبط با تثبیت خاک، اجرای RCC، عملیات خاکی، تراکم، راه‌سازی و بتن‌ریزی"
+        title="Machinery & Equipment"
+        subtitle="Access to specialized machinery for soil stabilization, RCC, earthworks, compaction, road construction and concrete works"
         image="https://images.pexels.com/photos/34338597/pexels-photo-34338597.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'ماشین‌آلات و تجهیزات' }]}
+        breadcrumbs={[{ label: 'Machinery & Equipment' }]}
       />
 
       {/* Equipment categories */}
@@ -83,14 +83,13 @@ export default function EquipmentPage() {
         <div className="container-rgv">
           <div className="reveal max-w-2xl mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              ماشین‌آلات
+              Machinery
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              دسته‌بندی ماشین‌آلات و تجهیزات
+              Machinery & Equipment Categories
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              راه گستر ولاش به ماشین‌آلات تخصصی متنوع برای اجرای پروژه‌های عمرانی دسترسی
-              دارد. مدل‌های مشخص فقط در صورت مستندسازی در پروفایل شرکت درج می‌شوند.
+              Rah Gostar Valash has access to a range of specialized machinery for civil engineering projects. Specific equipment models are listed only when documented in the company profile.
             </p>
           </div>
 
@@ -127,12 +126,11 @@ export default function EquipmentPage() {
           </div>
 
           {/* Note */}
-          <div className="reveal mt-10 p-6 bg-light-gray rounded-lg border-r-4 border-accent">
+          <div className="reveal mt-10 p-6 bg-light-gray rounded-lg border-l-4 border-accent">
             <div className="flex items-start gap-4">
               <Wrench className="w-6 h-6 text-accent shrink-0 mt-0.5" />
               <p className="text-sm text-steel leading-relaxed">
-                فهرست کامل ماشین‌آلات با مدل و مشخصات دقیق، در صورت نیاز، پس از تأیید
-                نهایی در دسترس قرار خواهد گرفت. از ذکر مدل‌های تأییدنشده خودداری می‌شود.
+                A complete equipment list with verified models and specifications can be provided after final confirmation. Unverified model information is intentionally omitted.
               </p>
             </div>
           </div>

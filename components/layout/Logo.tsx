@@ -43,7 +43,7 @@ export default function Logo({ className = '', variant = 'dark' }: LogoProps) {
           className="text-lg font-bold tracking-tight"
           style={{ color: primary }}
         >
-          راه گستر ولاش
+          Rah Gostar Valash
         </span>
         <span
           className="text-[10px] font-medium tracking-wider"

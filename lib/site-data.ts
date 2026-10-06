@@ -1,29 +1,29 @@
 export const siteConfig = {
-  name: 'راه گستر ولاش',
-  fullName: 'شرکت راه گستر ولاش',
+  name: 'Rah Gostar Valash',
+  fullName: 'Rah Gostar Valash Co.',
   legalName: 'Rah Gostar Valash Co.',
   shortDescription:
-    'مجری پروژه‌های راه‌سازی، ابنیه، زیرساخت‌های شهری، آب و فاضلاب و پروژه‌های تخصصی عمرانی',
+    'Contractor for road construction, buildings, urban infrastructure, water and wastewater, and specialized civil engineering projects',
   established: 1379,
   experienceYears: 24,
   url: 'https://rahgostarvalash.ir',
   contact: {
-    address: 'اطلاعات تماس پس از تأیید نهایی درج خواهد شد',
+    address: 'Contact information will be added after final verification',
     phone: '—',
     email: '—',
-    workingHours: 'شنبه تا چهارشنبه، ۸:۰۰ تا ۱۷:۰۰',
+    workingHours: 'Saturday to Wednesday, 8:00 AM–5:00 PM',
   },
 };
 
 export const mainNav = [
-  { title: 'صفحه اصلی', href: '/' },
-  { title: 'درباره ما', href: '/about' },
-  { title: 'حوزه‌های فعالیت', href: '/expertise' },
-  { title: 'پروژه‌ها', href: '/projects' },
-  { title: 'توانمندی‌های فنی', href: '/capabilities' },
-  { title: 'ماشین‌آلات و تجهیزات', href: '/equipment' },
-  { title: 'گواهینامه‌ها و صلاحیت‌ها', href: '/qualifications' },
-  { title: 'تماس با ما', href: '/contact' },
+  { title: 'Home', href: '/' },
+  { title: 'About Us', href: '/about' },
+  { title: 'Expertise', href: '/expertise' },
+  { title: 'Projects', href: '/projects' },
+  { title: 'Technical Capabilities', href: '/capabilities' },
+  { title: 'Machinery & Equipment', href: '/equipment' },
+  { title: 'Qualifications & Certificates', href: '/qualifications' },
+  { title: 'Contact Us', href: '/contact' },
 ];
 
 export type Capability = {
@@ -39,99 +39,99 @@ export type Capability = {
 export const capabilities: Capability[] = [
   {
     id: 'road-infra',
-    number: '۰۱',
-    title: 'راه‌سازی و زیرساخت حمل‌ونقل',
+    number: '01',
+    title: 'Road & Transportation Infrastructure',
     titleEn: 'Road & Transportation Infrastructure',
     description:
-      'احداث راه‌های برون‌شهری، محورهای ارتباطی و جاده‌های دسترسی با عملیات خاکی، بسترسازی، روسازی و آسفالت‌کاری.',
+      'Construction of intercity roads, transportation corridors and access roads, including earthworks, subgrade preparation, pavement and asphalt works.',
     image:
       'https://images.pexels.com/photos/5504658/pexels-photo-5504658.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#road-infra',
   },
   {
     id: 'bridges',
-    number: '۰۲',
-    title: 'پل‌ها و تقاطع‌های غیرهمسطح',
+    number: '02',
+    title: 'Bridges & Interchanges',
     titleEn: 'Bridges & Interchanges',
     description:
-      'احداث پل‌ها و تقاطع‌های غیرهمسطح شهری و برون‌شهری، بهسازی لرزه‌ای و مقاوم‌سازی پل‌های موجود.',
+      'Construction of urban and intercity bridges and grade-separated interchanges, including seismic rehabilitation and strengthening of existing bridges.',
     image:
       'https://images.pexels.com/photos/7107980/pexels-photo-7107980.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#bridges',
   },
   {
     id: 'rcc',
-    number: '۰۳',
-    title: 'روسازی بتن غلتکی (RCC)',
+    number: '03',
+    title: 'Roller Compacted Concrete (RCC) Pavement',
     titleEn: 'Roller Compacted Concrete Pavement',
     description:
-      'اجرای روسازی بتن غلتکی با بتنی با اسلمپ صفر، اجرا با فینیشر آسفالت و متراکم‌کننده‌های لرزه‌ای.',
+      'Execution of RCC pavement using zero-slump concrete, asphalt pavers and vibratory rollers.',
     image:
       'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/capabilities/rcc',
   },
   {
     id: 'soil-stab',
-    number: '۰۴',
-    title: 'تثبیت خاک با سیمان',
+    number: '04',
+    title: 'Cement Soil Stabilization',
     titleEn: 'Cement Soil Stabilization',
     description:
-      'تثبیت درجای خاک با دستگاه‌های WR/WM برای افزایش مقاومت، کاهش تورم و بهبود مشخصات پلاستیسیته.',
+      'In-situ soil stabilization using WR/WM equipment to increase strength, reduce swelling and improve plasticity characteristics.',
     image:
       'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/capabilities/soil-stabilization',
   },
   {
     id: 'building',
-    number: '۰۵',
-    title: 'ابنیه و ساختمان',
+    number: '05',
+    title: 'Building Construction',
     titleEn: 'Building Construction',
     description:
-      'اجرای ساختمان‌های اداری، آموزشی و عمومی از مرحله خاکی تا پایان کار، تأسیسات مکانیکی و برقی و نازک‌کاری.',
+      'Construction of administrative, educational and public buildings from earthworks through completion, including MEP systems and finishing.',
     image:
       'https://images.pexels.com/photos/8961071/pexels-photo-8961071.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#building',
   },
   {
     id: 'residential',
-    number: '۰۶',
-    title: 'پروژه‌های مسکونی',
+    number: '06',
+    title: 'Residential Projects',
     titleEn: 'Residential Construction',
     description:
-      'احداث مجتمع‌های مسکونی شامل حدود ۱۰۰۰ واحد مسکونی و بیش از ۱٫۵ میلیون متر مربع ساخت در تهران و قم.',
+      'Development of residential complexes comprising approximately 1,000 housing units and more than 1.5 million m² of construction in Tehran and Qom.',
     image:
       'https://images.pexels.com/photos/34360408/pexels-photo-34360408.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#residential',
   },
   {
     id: 'precast',
-    number: '۰۷',
-    title: 'دیوارهای بتنی پیش‌ساخته',
+    number: '07',
+    title: 'Precast Concrete Walls',
     titleEn: 'Precast Concrete Walls',
     description:
-      'تولید و نصب دیوارهای بتنی پیش‌ساخته برای مرزها، محوطه‌ها و پروژه‌های امنیتی و صنعتی.',
+      'Production and installation of precast concrete walls for borders, sites, security and industrial projects.',
     image:
       'https://images.pexels.com/photos/39962550/pexels-photo-39962550.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#precast',
   },
   {
     id: 'water',
-    number: '۰۸',
-    title: 'آب و فاضلاب',
+    number: '08',
+    title: 'Water & Wastewater',
     titleEn: 'Water & Wastewater',
     description:
-      'اجرای شبکه‌های آب و فاضلاب، خطوط انتقال و پروژه‌های مرتبط با زیرساخت‌های آبی.',
+      'Execution of water and wastewater networks, transmission lines and related water infrastructure projects.',
     image:
       'https://images.pexels.com/photos/32502650/pexels-photo-32502650.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#water',
   },
   {
     id: 'urban-infra',
-    number: '۰۹',
-    title: 'محوطه‌سازی و زیرساخت‌های شهری',
+    number: '09',
+    title: 'Site development and urban infrastructure',
     titleEn: 'Urban Infrastructure & Site Development',
     description:
-      'احداث معابر، زیرساخت‌های شهری، محوطه‌سازی و عملیات بهسازی محیطی در مقیاس پروژه‌های بزرگ.',
+      'Construction of roads, urban infrastructure, site development and environmental improvement works for large-scale projects.',
     image:
       'https://images.pexels.com/photos/8860492/pexels-photo-8860492.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     href: '/expertise#urban-infra',
@@ -150,23 +150,23 @@ export const companyStats: Stat[] = [
   {
     value: 24,
     prefix: '+',
-    label: 'سال تجربه اجرایی',
-    sublabel: 'فعالیت مستمر از سال ۱۳۷۹',
+    label: 'Years of Experience',
+    sublabel: 'Continuous operations since 2000',
   },
   {
     value: 1,
-    label: 'رتبه راه و ترابری',
-    sublabel: 'پایه ۱ — پیمانکار',
+    label: 'Road & Transportation Grade',
+    sublabel: 'Grade 1 — Contractor',
   },
   {
     value: 3,
-    label: 'رتبه ابنیه و ساختمان',
-    sublabel: 'پایه ۳ — پیمانکار',
+    label: 'Building Construction Grade',
+    sublabel: 'Grade 3 — Contractor',
   },
   {
     value: 4,
-    label: 'رتبه آب',
-    sublabel: 'پایه ۴ — پیمانکار',
+    label: 'Water Grade',
+    sublabel: 'Grade 4 — Contractor',
   },
 ];
 
@@ -176,12 +176,12 @@ export type Employer = {
 };
 
 export const employers: Employer[] = [
-  { name: 'سازمان راهداری و مدیریت راه‌های کشور', type: 'دولتی' },
-  { name: 'شرکت عمران شهرهای جدید', type: 'دولتی' },
-  { name: 'وزارت راه و شهرسازی', type: 'دولتی' },
-  { name: 'شهرداری‌ها و فرمانداری‌ها', type: 'عمومی' },
-  { name: 'سازمان صنایع معدنی و معادن', type: 'صنعتی' },
-  { name: 'شرکت‌های سیمان منطقه‌ای', type: 'صنعتی' },
-  { name: 'سازمان مدیریت و برنامه‌ریزی کشور', type: 'دولتی' },
-  { name: 'بانک مسکن — شرکت پشتیبانی امور عمرانی', type: 'دولتی' },
+  { name: 'Road Maintenance & Transportation Organization', type: 'Government' },
+  { name: 'New Towns Development Company', type: 'Government' },
+  { name: 'Ministry of Roads and Urban Development', type: 'Government' },
+  { name: 'Municipalities and Governorates', type: 'Public' },
+  { name: 'Mining and Mineral Industries Organization', type: 'Industrial' },
+  { name: 'Regional Cement Companies', type: 'Industrial' },
+  { name: 'Plan and Budget Organization', type: 'Government' },
+  { name: 'Bank Maskan — Civil Works Support Company', type: 'Government' },
 ];

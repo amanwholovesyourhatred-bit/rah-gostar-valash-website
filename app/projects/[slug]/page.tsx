@@ -9,7 +9,7 @@ import {
   DollarSign,
   CheckCircle2,
   AlertCircle,
-  ChevronLeft,
+  ChevronRight,
   Wrench,
 } from 'lucide-react';
 import { projects, getProjectBySlug, getRelatedProjects, categoryLabels } from '@/lib/projects';
@@ -22,7 +22,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const project = getProjectBySlug(params.slug);
-  if (!project) return { title: 'پروژه یافت نشد' };
+  if (!project) return { title: 'Project not found' };
 
   return {
     title: project.title,
@@ -37,12 +37,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const related = getRelatedProjects(project, 3);
 
   const infoItems = [
-    { icon: Building2, label: 'کارفرما', value: project.employer },
-    { icon: Wrench, label: 'مشاور', value: project.consultant },
-    { icon: MapPin, label: 'محل اجرا', value: project.location },
-    { icon: Calendar, label: 'تاریخ شروع', value: project.startDate },
-    { icon: Clock, label: 'مدت پیمان', value: project.duration },
-    { icon: DollarSign, label: 'مبلغ پیمان', value: project.contractValue },
+    { icon: Building2, label: 'Employer', value: project.employer },
+    { icon: Wrench, label: 'Consultant', value: project.consultant },
+    { icon: MapPin, label: 'Location', value: project.location },
+    { icon: Calendar, label: 'Start Date', value: project.startDate },
+    { icon: Clock, label: 'Contract Duration', value: project.duration },
+    { icon: DollarSign, label: 'Contract Value', value: project.contractValue },
   ].filter((item) => item.value);
 
   return (
@@ -61,10 +61,10 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
         <div className="relative z-10 container-rgv">
           <nav className="flex items-center gap-2 text-sm text-white/50 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">صفحه اصلی</Link>
-            <ChevronLeft className="w-3 h-3" />
-            <Link href="/projects" className="hover:text-white transition-colors">پروژه‌ها</Link>
-            <ChevronLeft className="w-3 h-3" />
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
+            <ChevronRight className="w-3 h-3" />
             <span className="text-white/80">{project.categoryLabel}</span>
           </nav>
 
@@ -124,7 +124,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.intro && (
                 <div className="reveal">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    معرفی پروژه
+                    Project Overview
                   </h2>
                   <p className="text-base text-steel leading-relaxed">{project.intro}</p>
                 </div>
@@ -134,7 +134,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.scope && project.scope.length > 0 && (
                 <div className="reveal reveal-delay-1">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    دامنه عملیات
+                    Scope of Work
                   </h2>
                   <ul className="space-y-3">
                     {project.scope.map((item, i) => (
@@ -151,7 +151,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.challenges && project.challenges.length > 0 && (
                 <div className="reveal reveal-delay-2">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    چالش‌های اجرایی
+                    Execution Challenges
                   </h2>
                   <ul className="space-y-3">
                     {project.challenges.map((item, i) => (
@@ -168,7 +168,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.solutions && project.solutions.length > 0 && (
                 <div className="reveal reveal-delay-3">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    راهکارهای فنی
+                    Technical Solutions
                   </h2>
                   <ul className="space-y-3">
                     {project.solutions.map((item, i) => (
@@ -185,7 +185,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.gallery && project.gallery.length > 0 && (
                 <div className="reveal reveal-delay-4">
                   <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    گالری پروژه
+                    Project Gallery
                   </h2>
                   <div className="grid grid-cols-2 gap-4">
                     {project.gallery.map((img, i) => (
@@ -195,7 +195,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                       >
                         <img
                           src={img}
-                          alt={`${project.title} - تصویر ${(i + 1).toLocaleString('fa-IR')}`}
+                          alt={`${project.title} - Image ${(i + 1).toLocaleString('en-US')}`}
                           className="w-full h-full object-cover img-hover"
                         />
                       </div>
@@ -210,32 +210,32 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {/* Project summary card */}
               <div className="bg-light-gray rounded-lg p-6 border border-border sticky top-28">
                 <h3 className="text-sm font-bold text-navy mb-4 pb-2 border-b border-border">
-                  اطلاعات پروژه
+                  Project Information
                 </h3>
                 <dl className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <dt className="text-steel">دسته‌بندی</dt>
+                    <dt className="text-steel">Category</dt>
                     <dd className="font-semibold text-navy">{project.categoryLabel}</dd>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <dt className="text-steel">وضعیت</dt>
+                    <dt className="text-steel">Status</dt>
                     <dd className="font-semibold text-navy">{project.statusLabel}</dd>
                   </div>
                   {project.employer && (
                     <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">کارفرما</dt>
+                      <dt className="text-steel shrink-0">Employer</dt>
                       <dd className="font-semibold text-navy text-left">{project.employer}</dd>
                     </div>
                   )}
                   {project.location && (
                     <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">محل اجرا</dt>
+                      <dt className="text-steel shrink-0">Location</dt>
                       <dd className="font-semibold text-navy text-left">{project.location}</dd>
                     </div>
                   )}
                   {project.duration && (
                     <div className="flex justify-between text-sm">
-                      <dt className="text-steel">مدت پیمان</dt>
+                      <dt className="text-steel">Contract Duration</dt>
                       <dd className="font-semibold text-navy">{project.duration}</dd>
                     </div>
                   )}
@@ -245,8 +245,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   href="/projects"
                   className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white px-4 py-3 text-sm font-semibold rounded-md transition-colors"
                 >
-                  بازگشت به پروژه‌ها
-                  <ChevronLeft className="w-4 h-4" />
+                  Back to Projects
+                  <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -255,7 +255,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {/* Related projects */}
           {related.length > 0 && (
             <div className="mt-16 pt-12 border-t border-border">
-              <h2 className="text-xl font-bold text-navy mb-6">پروژه‌های مرتبط</h2>
+              <h2 className="text-xl font-bold text-navy mb-6">Related Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {related.map((rp) => (
                   <Link

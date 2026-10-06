@@ -4,31 +4,31 @@ import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
-  title: 'صلاحیت‌ها و گواهینامه‌ها | راه گستر ولاش',
+  title: 'Qualifications & Certificates | Rah Gostar Valash',
   description:
-    'صلاحیت‌های پیمانکاری راه گستر ولاش: رتبه ۱ راه و ترابری، رتبه ۳ ابنیه و ساختمان، رتبه ۴ آب. گواهینامه‌ها و صلاحیت‌های رسمی.',
+    'Rah Gostar Valash contractor qualifications: Grade 1 Road & Transportation, Grade 3 Building Construction, and Grade 4 Water, supported by official certificates and qualifications.',
 };
 
 const qualifications = [
   {
-    grade: '۱',
-    field: 'راه و ترابری',
+    grade: '1',
+    field: 'Road & Transportation',
     fieldEn: 'Road & Transportation',
-    desc: 'پایه ۱ — بالاترین رتبه پیمانکاری راه و ترابری',
+    desc: 'Grade 1 — Highest Road & Transportation Contractor Grade',
     color: 'from-navy to-navy-light',
   },
   {
-    grade: '۳',
-    field: 'ابنیه و ساختمان',
+    grade: '3',
+    field: 'Building Construction',
     fieldEn: 'Building Construction',
-    desc: 'پایه ۳ — پیمانکاری ابنیه و ساختمان',
+    desc: 'Grade 3 — Building Construction Contractor',
     color: 'from-blue to-blue-light',
   },
   {
-    grade: '۴',
-    field: 'آب',
+    grade: '4',
+    field: 'Water',
     fieldEn: 'Water',
-    desc: 'پایه ۴ — پیمانکاری آب',
+    desc: 'Grade 4 — Water Contractor',
     color: 'from-cyan to-blue-light',
   },
 ];
@@ -37,10 +37,10 @@ export default function QualificationsPage() {
   return (
     <>
       <PageHeader
-        title="صلاحیت‌ها و گواهینامه‌ها"
-        subtitle="صلاحیت‌های پیمانکاری رسمی راه گستر ولاش از نظام پیش‌بندی کشور"
+        title="Qualifications & Certificates"
+        subtitle="Official Rah Gostar Valash contractor qualifications under the national contractor grading system"
         image="https://images.pexels.com/photos/8961298/pexels-photo-8961298.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'صلاحیت‌ها و گواهینامه‌ها' }]}
+        breadcrumbs={[{ label: 'Qualifications & Certificates' }]}
       />
 
       {/* Qualification cards */}
@@ -48,13 +48,13 @@ export default function QualificationsPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              رتبه‌های پیمانکاری
+              Contractor Grades
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              صلاحیت‌های پیمانکاری رسمی
+              Official Contractor Qualifications
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              رتبه‌های زیر از نظام پیش‌بندی کشور برای شرکت راه گستر ولاش صادر شده است.
+              The following contractor grades have been issued to Rah Gostar Valash Co. under the national contractor grading system.
             </p>
           </div>
 
@@ -87,11 +87,10 @@ export default function QualificationsPage() {
           <div className="reveal mb-10">
             <div className="flex items-center gap-3 mb-3">
               <FileText className="w-6 h-6 text-accent" />
-              <h2 className="text-2xl font-bold text-navy">گالری گواهینامه‌ها</h2>
+              <h2 className="text-2xl font-bold text-navy">Certificate Gallery</h2>
             </div>
             <p className="text-sm text-steel leading-relaxed max-w-2xl">
-              تصاویر گواهینامه‌ها و مدارک صلاحیت پس از تأیید نهایی و حذف اطلاعات حساس
-              در این بخش قرار خواهند گرفت.
+              Certificate and qualification document images will be displayed here after final verification and removal of sensitive information.
             </p>
           </div>
 
@@ -103,21 +102,20 @@ export default function QualificationsPage() {
               >
                 <FileText className="w-10 h-10 text-border mb-3" />
                 <p className="text-xs text-muted-foreground">
-                  تصویر گواهینامه {(n).toLocaleString('fa-IR')}
+                  Certificate Image {(n).toLocaleString('en-US')}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  پس از تأیید نهایی درج می‌شود
+                  To be added after final verification
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="reveal reveal-delay-2 mt-8 p-5 bg-amber-50 rounded-lg border-r-4 border-amber-400">
+          <div className="reveal reveal-delay-2 mt-8 p-5 bg-amber-50 rounded-lg border-l-4 border-amber-400">
             <div className="flex items-start gap-3">
               <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
               <p className="text-sm text-steel leading-relaxed">
-                در انتشار اسناد حقوقی و گواهینامه‌ها، از درج شماره‌های شناسایی شخصی،
-                امضاها و اطلاعات حساس ثبت خودداری می‌شود.
+                Published legal documents and certificates will omit personal identification numbers, signatures and other sensitive registration information.
               </p>
             </div>
           </div>
@@ -133,10 +131,9 @@ export default function QualificationsPage() {
                 <BadgeCheck className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-navy">صلاحیت معتبر</h3>
+                <h3 className="text-base font-bold text-navy">Valid Qualifications</h3>
                 <p className="mt-2 text-sm text-steel leading-relaxed">
-                  رتبه‌های پیمانکاری شرکت از نظام پیش‌بندی کشور صادر شده و نشان‌دهنده
-                  صلاحیت رسمی برای اجرای پروژه‌های دولتی و عمومی است.
+                  The company’s contractor grades are issued under the national grading system and demonstrate formal qualification for government and public-sector projects.
                 </p>
               </div>
             </div>
@@ -146,10 +143,9 @@ export default function QualificationsPage() {
                 <Award className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-navy">تجربه مستند</h3>
+                <h3 className="text-base font-bold text-navy">Documented Experience</h3>
                 <p className="mt-2 text-sm text-steel leading-relaxed">
-                  سابقه اجرایی بیش از ۲۴ سال در پروژه‌های راه‌سازی، ابنیه، مسکونی و
-                  زیرساختی، پشتوانه صلاحیت‌های شرکت است.
+                  More than 24 years of documented experience in road construction, buildings, residential development and infrastructure supports the company’s qualifications.
                 </p>
               </div>
             </div>

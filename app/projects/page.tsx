@@ -4,19 +4,19 @@ import ProjectsList from '@/components/projects/ProjectsList';
 import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
-  title: 'پروژه‌ها | پروژه‌های عمرانی راه گستر ولاش',
+  title: 'Projects | Civil Engineering Projects Rah Gostar Valash',
   description:
-    'پروژه‌های راه‌سازی، پل، بتن غلتکی RCC، تثبیت خاک، ابنیه، مسکونی، دیوار پیش‌ساخته و زیرساخت شهری اجرا شده توسط شرکت راه گستر ولاش.',
+    'Road, bridge, RCC, soil stabilization, building, residential, precast wall and urban infrastructure projects delivered by Rah Gostar Valash Co.',
 };
 
 export default function ProjectsPage() {
   return (
     <>
       <PageHeader
-        title="پروژه‌ها"
-        subtitle="پروژه‌های عمرانی و زیرساختی اجرا شده توسط راه گستر ولاش در حوزه‌های راه‌سازی، پل، RCC، تثبیت خاک، ابنیه، مسکونی و زیرساخت شهری"
+        title="Projects"
+        subtitle="Civil engineering and infrastructure projects delivered by Rah Gostar Valash across road construction, bridges, RCC, soil stabilization, building construction, residential development and urban infrastructure"
         image="https://images.pexels.com/photos/11701517/pexels-photo-11701517.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'پروژه‌ها' }]}
+        breadcrumbs={[{ label: 'Projects' }]}
       />
 
       <section className="section-padding bg-white">

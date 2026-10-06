@@ -1,25 +1,25 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronLeft, TrendingUp, Gauge, Layers, Clock, DollarSign, Wrench, Mountain, ShieldCheck } from 'lucide-react';
+import { ChevronRight, TrendingUp, Gauge, Layers, Clock, DollarSign, Wrench, Mountain, ShieldCheck } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { projects } from '@/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'تثبیت خاک با سیمان | تثبیت درجای خاک با دستگاه WR/WM',
+  title: 'Cement Soil Stabilization | In-Situ Stabilization with WR/WM Equipment',
   description:
-    'تثبیت خاک با سیمان توسط دستگاه‌های WR/WM در شرکت راه گستر ولاش. افزایش مقاومت خاک، کاهش تورم و بهبود مشخصات پلاستیسیته با سرعت اجرای حداقل ۵۰۰ متر در روز.',
+    'Cement soil stabilization by Rah Gostar Valash using WR/WM equipment to increase soil strength, reduce swelling and improve plasticity, with a documented minimum execution rate of about 500 m per day.',
 };
 
 const benefits = [
-  { icon: TrendingUp, title: 'افزایش مقاومت خاک', desc: 'افزایش چشمگیر مقاومت بستر' },
-  { icon: Mountain, title: 'کاهش پتانسیل تورم', desc: 'بهبود رفتار خاک‌های متورم‌شونده' },
-  { icon: ShieldCheck, title: 'بهبود مقاومت برشی', desc: 'افزایش مقاومت برشی خاک' },
-  { icon: Layers, title: 'بهبود پلاستیسیته', desc: 'بهبود مشخصات پلاستیسیته خاک' },
-  { icon: Clock, title: 'سرعت اجرای بیشتر', desc: 'امکان اجرای حداقل ۵۰۰ متر در روز' },
-  { icon: DollarSign, title: 'کاهش مصرف مصالح', desc: 'بهینه‌سازی مصرف مصالح ساخت' },
-  { icon: Gauge, title: 'کاهش زمان پروژه', desc: 'تسریع روند اجرای پروژه' },
-  { icon: Wrench, title: 'مزیت اقتصادی', desc: 'صرفه‌جویی حدودی ۳۰–۴۵٪ در مقایسه با روسازی آسفالتی منعطف (بر اساس مطالعه فنی شرکت)' },
+  { icon: TrendingUp, title: 'Increased Soil Strength', desc: 'Significant increase in subgrade strength' },
+  { icon: Mountain, title: 'Reduced Swelling Potential', desc: 'Improved behavior of expansive soils' },
+  { icon: ShieldCheck, title: 'Improved Shear Strength', desc: 'Increased soil shear strength' },
+  { icon: Layers, title: 'Improved Plasticity', desc: 'Improved soil plasticity characteristics' },
+  { icon: Clock, title: 'Faster Execution', desc: 'Capacity for at least 500 m of execution per day' },
+  { icon: DollarSign, title: 'Reduced Material Consumption', desc: 'Optimized construction material consumption' },
+  { icon: Gauge, title: 'Reduced Project Duration', desc: 'Accelerated project delivery' },
+  { icon: Wrench, title: 'Economic Advantage', desc: 'Estimated 30–45% savings compared with flexible asphalt pavement (based on the company technical study)' },
 ];
 
 export default function SoilStabilizationPage() {
@@ -28,12 +28,12 @@ export default function SoilStabilizationPage() {
   return (
     <>
       <PageHeader
-        title="تثبیت خاک با سیمان"
-        subtitle="تثبیت درجای خاک با دستگاه‌های تخصصی WR/WM برای بهبود مشخصات ژوتکنیکی بستر راه"
+        title="Cement Soil Stabilization"
+        subtitle="In-situ stabilization using specialized WR/WM equipment to improve road subgrade geotechnical properties"
         image="https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=1920"
         breadcrumbs={[
-          { label: 'توانمندی‌های فنی', href: '/capabilities' },
-          { label: 'تثبیت خاک با سیمان' },
+          { label: 'Technical Capabilities', href: '/capabilities' },
+          { label: 'Cement Soil Stabilization' },
         ]}
       />
 
@@ -45,48 +45,39 @@ export default function SoilStabilizationPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="تثبیت خاک با سیمان"
+                  alt="Cement Soil Stabilization"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -top-5 -right-5 bg-navy text-white p-5 rounded-lg shadow-xl hidden md:block">
-                <p className="text-2xl font-bold text-accent">۵۰۰+ متر</p>
-                <p className="text-xs text-white/80 mt-1">تثبیت در روز (حداقل)</p>
+                <p className="text-2xl font-bold text-accent">500+ m</p>
+                <p className="text-xs text-white/80 mt-1">stabilized per day (minimum)</p>
               </div>
             </div>
 
             <div className="reveal reveal-delay-1 order-1 lg:order-2">
               <span className="text-sm font-bold text-accent uppercase tracking-wider">
-                تکنولوژی تثبیت
+                Stabilization Technology
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-                تثبیت درجای خاک با دستگاه‌های WR/WM
+                In-Situ Soil Stabilization with WR/WM Equipment
               </h2>
               <p className="mt-5 text-base text-steel leading-relaxed">
-                تثبیت خاک با سیمان روشی است که در آن سیمان مستقیماً با خاک بستر به‌صورت
-                درجا مخلوط می‌شود. این عملیات با استفاده از دستگاه‌های تخصصی تثبیت
-                نظیر WR (Wirtgen Recycler) و WM انجام می‌گیرد.
+                Cement soil stabilization is an in-situ process in which cement is mixed directly with subgrade soil using specialized stabilization equipment such as WR (Wirtgen Recycler) and WM machines.
               </p>
               <p className="mt-4 text-base text-steel leading-relaxed">
-                تثبیت با سیمان باعث افزایش مقاومت خاک، کاهش پتانسیل تورم، بهبود مقاومت
-                برشی و بهبود مشخصات پلاستیسیته می‌شود. این روش با سرعت اجرای بالا و
-                کاهش مصرف مصالح، زمان پروژه را کاهش می‌دهد.
+                Cement stabilization increases soil strength, reduces swelling potential, improves shear strength and plasticity characteristics, while faster execution and reduced material consumption can shorten project duration.
               </p>
 
-              <div className="mt-6 p-4 bg-light-gray rounded-lg border-r-4 border-accent">
+              <div className="mt-6 p-4 bg-light-gray rounded-lg border-l-4 border-accent">
                 <p className="text-sm text-steel leading-relaxed">
-                  <strong className="text-navy">ظرفیت اجرایی:</strong> با ماشین‌آلات تثبیت
-                  شرکت، امکان اجرای حداقل حدود ۵۰۰ متر طول در روز با عرض ۲٫۷ متر وجود دارد.
+                  <strong className="text-navy">Execution capacity:</strong> With the company’s stabilization machinery, at least approximately 500 linear metres per day can be executed at a width of 2.7 m.
                 </p>
               </div>
 
-              <div className="mt-4 p-4 bg-amber-50 rounded-lg border-r-4 border-amber-400">
+              <div className="mt-4 p-4 bg-amber-50 rounded-lg border-l-4 border-amber-400">
                 <p className="text-sm text-steel leading-relaxed">
-                  <strong className="text-navy">یافته مطالعه فنی شرکت:</strong> مطالعه فنی
-                  شرکت تخمین می‌زند که روسازی تثبیت‌شده با سیمان می‌تواند در شرایط مورد
-                  تحلیل، حدود ۳۰–۴۵٪ صرفه‌جویی در مقایسه با روسازی آسفالتی منعطف داشته
-                  باشد. این رقم نتیجه مطالعه داخلی شرکت است و به‌عنوان ضمانت جهانی ارائه
-                  نمی‌شود.
+                  <strong className="text-navy">Company technical study:</strong> The company’s technical study estimates that cement-stabilized pavement may provide approximately 30–45% savings compared with flexible asphalt pavement under the analyzed conditions. This figure comes from the company’s internal study and is not presented as a universal guarantee.
                 </p>
               </div>
             </div>
@@ -99,10 +90,10 @@ export default function SoilStabilizationPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              مزایا
+              Advantages
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              مزایای تثبیت خاک با سیمان
+              Advantages of Cement Soil Stabilization
             </h2>
           </div>
 
@@ -139,10 +130,10 @@ export default function SoilStabilizationPage() {
         <div className="container-rgv relative z-10">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              تجربه اجرایی
+              Project Experience
             </span>
             <h2 className="mt-3 text-3xl font-bold text-white leading-tight text-balance">
-              پروژه‌های تثبیت خاک راه گستر ولاش
+              Rah Gostar Valash Soil Stabilization Projects
             </h2>
           </div>
 
@@ -161,7 +152,7 @@ export default function SoilStabilizationPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">
-                  <span className="text-xs text-accent font-semibold mb-1">تثبیت خاک</span>
+                  <span className="text-xs text-accent font-semibold mb-1">Soil Stabilization</span>
                   <h3 className="text-sm font-bold text-white leading-snug group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
@@ -177,8 +168,8 @@ export default function SoilStabilizationPage() {
             href="/projects"
             className="reveal mt-8 inline-flex items-center gap-2 text-accent hover:text-white font-semibold transition-colors group"
           >
-            مشاهده همه پروژه‌ها
-            <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            View All Projects
+            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>

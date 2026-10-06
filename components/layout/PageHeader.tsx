@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft, Home } from 'lucide-react';
+import { ChevronRight, Home } from 'lucide-react';
 
 type Breadcrumb = {
   label: string;
@@ -45,7 +45,7 @@ export default function PageHeader({
             <Link href="/" className="hover:text-white transition-colors">
               <Home className="w-4 h-4" />
             </Link>
-            <ChevronLeft className="w-3 h-3" />
+            <ChevronRight className="w-3 h-3" />
             {breadcrumbs.map((bc, i) => (
               <span key={i} className="flex items-center gap-2">
                 {bc.href ? (
@@ -55,7 +55,7 @@ export default function PageHeader({
                 ) : (
                   <span className="text-white/80">{bc.label}</span>
                 )}
-                {i < breadcrumbs.length - 1 && <ChevronLeft className="w-3 h-3" />}
+                {i < breadcrumbs.length - 1 && <ChevronRight className="w-3 h-3" />}
               </span>
             ))}
           </nav>

@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        fa: ['Vazirmatn', 'Segoe UI', 'Tahoma', 'sans-serif'],
-        sans: ['Vazirmatn', 'Segoe UI', 'Tahoma', 'sans-serif'],
+        fa: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+        sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

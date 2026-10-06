@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft, MapPin, Calendar, Building2 } from 'lucide-react';
+import { ChevronRight, MapPin, Calendar, Building2 } from 'lucide-react';
 import { getFeaturedProjects } from '@/lib/projects';
 
 export default function FeaturedProjects() {
@@ -12,22 +12,21 @@ export default function FeaturedProjects() {
         <div className="reveal flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-12">
           <div className="max-w-2xl">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              پروژه‌های شاخص
+              Featured Projects
             </span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold text-navy leading-tight text-balance">
-              نمونه‌ای از پروژه‌های اجرا شده
+              A selection of completed and ongoing projects
             </h2>
             <p className="mt-4 text-base text-steel leading-relaxed">
-              انتخابی از پروژه‌های راه‌سازی، RCC، تثبیت خاک، دیوار پیش‌ساخته و مسکونی که
-              توسط راه گستر ولاش اجرا شده است.
+              A selection of road construction, RCC, soil stabilization, precast wall and residential projects delivered by Rah Gostar Valash.
             </p>
           </div>
           <Link
             href="/projects"
             className="shrink-0 inline-flex items-center gap-2 text-navy hover:text-accent font-semibold text-base transition-colors group"
           >
-            مشاهده همه پروژه‌ها
-            <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            View All Projects
+            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronLeft } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import { mainNav } from '@/lib/site-data';
 import Logo from './Logo';
 
@@ -62,15 +62,15 @@ export default function Header() {
                 href="/projects"
                 className="inline-flex items-center gap-1.5 bg-accent hover:bg-cyan-600 text-white px-4 py-2 text-sm font-semibold rounded-md transition-colors"
               >
-                مشاهده پروژه‌ها
-                <ChevronLeft className="w-4 h-4" />
+                View Projects
+                <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden text-white p-2"
-              aria-label="منو"
+              aria-label="Menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -102,7 +102,7 @@ export default function Header() {
                   }`}
                 >
                   {item.title}
-                  <ChevronLeft className="w-5 h-5 opacity-50" />
+                  <ChevronRight className="w-5 h-5 opacity-50" />
                 </Link>
               );
             })}
@@ -110,8 +110,8 @@ export default function Header() {
               href="/projects"
               className="mt-4 flex items-center justify-center gap-2 bg-accent hover:bg-cyan-600 text-white px-4 py-3 text-base font-semibold rounded-lg transition-colors"
             >
-              مشاهده پروژه‌ها
-              <ChevronLeft className="w-5 h-5" />
+              View Projects
+              <ChevronRight className="w-5 h-5" />
             </Link>
           </nav>
         </div>

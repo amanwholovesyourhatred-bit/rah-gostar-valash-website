@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { MapPin, Building2, ChevronLeft } from 'lucide-react';
+import { MapPin, Building2, ChevronRight } from 'lucide-react';
 import { projects, categoryLabels, type ProjectCategory } from '@/lib/projects';
 
 const allCategories: (ProjectCategory | 'all')[] = [
@@ -40,10 +40,10 @@ export default function ProjectsList() {
                 : 'bg-light-gray text-steel hover:bg-secondary hover:text-navy'
             }`}
           >
-            {cat === 'all' ? 'همه' : categoryLabels[cat]}
+            {cat === 'all' ? 'All' : categoryLabels[cat]}
             {cat !== 'all' && (
               <span className="mr-1.5 text-xs opacity-60">
-                ({projects.filter((p) => p.category === cat).length.toLocaleString('fa-IR')})
+                ({projects.filter((p) => p.category === cat).length.toLocaleString('en-US')})
               </span>
             )}
           </button>
@@ -53,7 +53,7 @@ export default function ProjectsList() {
       {/* Projects grid */}
       {filtered.length === 0 ? (
         <div className="text-center py-20 text-steel">
-          <p>پروژه‌ای در این دسته‌بندی وجود ندارد.</p>
+          <p>No projects are available in this category.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -106,9 +106,9 @@ export default function ProjectsList() {
 
                 <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
                   <span className="text-sm font-semibold text-navy group-hover:text-accent transition-colors">
-                    مشاهده پروژه
+                    View Project
                   </span>
-                  <ChevronLeft className="w-4 h-4 text-navy group-hover:text-accent transition-all group-hover:-translate-x-1" />
+                  <ChevronRight className="w-4 h-4 text-navy group-hover:text-accent transition-all group-hover:translate-x-1" />
                 </div>
               </div>
             </Link>

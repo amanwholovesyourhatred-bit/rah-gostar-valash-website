@@ -1,27 +1,27 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronLeft, ArrowRight, Layers, Gauge, Truck, ShieldCheck, HardHat } from 'lucide-react';
+import { ChevronRight, ArrowRight, Layers, Gauge, Truck, ShieldCheck, HardHat } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CapabilitiesSection from '@/components/sections/CapabilitiesSection';
 import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
-  title: 'توانمندی‌های فنی | راه گستر ولاش',
+  title: 'Technical Capabilities | Rah Gostar Valash',
   description:
-    'توانمندی‌های فنی و اجرایی راه گستر ولاش شامل تکنولوژی RCC، تثبیت خاک با سیمان، ماشین‌آلات تخصصی و صلاحیت‌های پیمانکاری.',
+    'Rah Gostar Valash technical and execution capabilities include RCC technology, cement soil stabilization, specialized machinery and contractor qualifications.',
 };
 
 const technicalPages = [
   {
-    title: 'روسازی بتن غلتکی (RCC)',
-    desc: 'اجرای روسازی با بتن با اسلمپ صفر، فینیشر آسفالت و غلتک‌های لرزه‌ای. تکنولوژی با سرعت اجرای بالا و عمر مفید طولانی.',
+    title: 'Roller Compacted Concrete (RCC) Pavement',
+    desc: 'Pavement construction using zero-slump concrete, asphalt pavers and vibratory rollers, offering rapid execution and long service life.',
     href: '/capabilities/rcc',
     image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: Layers,
   },
   {
-    title: 'تثبیت خاک با سیمان',
-    desc: 'تثبیت درجای خاک با دستگاه‌های WR/WM. افزایش مقاومت، کاهش تورم و سرعت اجرای حداقل ۵۰۰ متر در روز.',
+    title: 'Cement Soil Stabilization',
+    desc: 'In-situ soil stabilization with WR/WM equipment to increase strength, reduce swelling and achieve a documented minimum execution rate of about 500 m per day.',
     href: '/capabilities/soil-stabilization',
     image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: Gauge,
@@ -32,10 +32,10 @@ export default function CapabilitiesPage() {
   return (
     <>
       <PageHeader
-        title="توانمندی‌های فنی"
-        subtitle="تکنولوژی‌های تخصصی و ماشین‌آلات اجرایی راه گستر ولاش"
+        title="Technical Capabilities"
+        subtitle="Rah Gostar Valash specialized technologies and construction machinery"
         image="https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        breadcrumbs={[{ label: 'توانمندی‌های فنی' }]}
+        breadcrumbs={[{ label: 'Technical Capabilities' }]}
       />
 
       {/* Technical pages highlight */}
@@ -43,10 +43,10 @@ export default function CapabilitiesPage() {
         <div className="container-rgv">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              تکنولوژی‌های تخصصی
+              Specialized Technologies
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              صفحه‌های تخصصی فنی
+              Technical Capability Pages
             </h2>
           </div>
 
@@ -74,8 +74,8 @@ export default function CapabilitiesPage() {
                 <div className="p-5">
                   <p className="text-sm text-steel leading-relaxed">{page.desc}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy group-hover:text-accent transition-colors">
-                    مشاهده صفحه تخصصی
-                    <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                    View Technical Page
+                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
               </Link>

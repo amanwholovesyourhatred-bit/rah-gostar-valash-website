@@ -6,13 +6,13 @@ export default function EmployersSection() {
       <div className="container-rgv">
         <div className="reveal text-center max-w-2xl mx-auto mb-12">
           <span className="text-sm font-bold text-accent uppercase tracking-wider">
-            کارفرمایان و سازمان‌ها
+            Employers & Organizations
           </span>
           <h2 className="mt-3 text-2xl md:text-3xl font-bold text-navy leading-tight text-balance">
-            سازمان‌های کارفرمای پروژه‌ها
+            Project Employers & Organizations
           </h2>
           <p className="mt-3 text-sm text-steel leading-relaxed">
-            نمونه‌ای از سازمان‌ها و نهادهایی که در سابقه پروژه‌های راه گستر ولاش حضور دارند
+            A selection of organizations and institutions represented in Rah Gostar Valash’s project history
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function EmployersSection() {
         </div>
 
         <p className="reveal reveal-delay-2 mt-8 text-center text-xs text-muted-foreground">
-          نام سازمان‌ها بر اساس سابقه پروژه‌های شرکت درج شده و به معنای تأیید رسمی نیست.
+          Organization names are shown based on the company’s project history and do not imply endorsement.
         </p>
       </div>
     </section>

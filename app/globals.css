@@ -72,12 +72,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Persian typography */
+  /* English typography */
   .font-fa {
-    font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   }
 
-  /* Number formatting for Persian context */
+  /* Number formatting */
   .persian-nums {
     font-feature-settings: "ss01";
   }

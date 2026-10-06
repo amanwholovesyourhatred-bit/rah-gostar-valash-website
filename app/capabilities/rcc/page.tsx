@@ -1,26 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronLeft, Zap, DollarSign, ThermometerSnowflake, ThermometerSun, Layers, Truck, Gauge, Shield, Wrench, TrendingDown } from 'lucide-react';
+import { ChevronRight, Zap, DollarSign, ThermometerSnowflake, ThermometerSun, Layers, Truck, Gauge, Shield, Wrench, TrendingDown } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 import { projects } from '@/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'روسازی بتن غلتکی (RCC) | تکنولوژی اجرای بتن غلتکی',
+  title: 'Roller Compacted Concrete (RCC) Pavement | RCC Technology',
   description:
-    'اجرای روسازی بتن غلتکی RCC توسط شرکت راه گستر ولاش. بتن با اسلمپ صفر، اجرا با فینیشر آسفالت و غلتک‌های لرزه‌ای با مقاومت بالا و عمر مفید طولانی.',
+    'RCC pavement construction by Rah Gostar Valash Co. using zero-slump concrete, asphalt-paver placement and vibratory rollers for high strength and long service life.',
 };
 
 const advantages = [
-  { icon: Zap, title: 'سرعت اجرای بالا', desc: 'امکان اجرای سریع روسازی در حجم زیاد' },
-  { icon: DollarSign, title: 'هزینه اجرای نسبتاً پایین', desc: 'مقرون‌به‌صرفه در مقایسه با روسازی بتنی معمول' },
-  { icon: TrendingDown, title: 'مصرف کمتر سیمان', desc: 'کاهش مصرف سیمان نسبت به بتن معمولی' },
-  { icon: ThermometerSun, title: 'مقاومت در اقلیم گرم', desc: 'عملکرد مناسب در شرایط دمای بالا' },
-  { icon: ThermometerSnowflake, title: 'مقاومت در اقلیم سرد', desc: 'عملکرد مناسب در شرایط دمای پایین' },
-  { icon: Wrench, title: 'بدون قالب‌بندی معمول', desc: 'عدم نیاز به قالب‌های مرسوم بتن‌ریزی' },
-  { icon: Truck, title: 'اجرای با فینیشر آسفالت', desc: 'استفاده از فینیشر برای پخش بتن' },
-  { icon: Gauge, title: 'تراکم با غلتک لرزه‌ای', desc: 'متراکم‌سازی با غلتک‌های ویبره‌ای' },
-  { icon: Shield, title: 'عمر مفید طولانی', desc: 'کاهش نیاز به تعمیر و نگهداری' },
+  { icon: Zap, title: 'High Execution Speed', desc: 'Rapid pavement construction at large scale' },
+  { icon: DollarSign, title: 'Relatively Low Execution Cost', desc: 'Cost-effective compared with conventional concrete pavement' },
+  { icon: TrendingDown, title: 'Lower Cement Consumption', desc: 'Lower cement consumption than conventional concrete' },
+  { icon: ThermometerSun, title: 'Hot-Climate Performance', desc: 'Suitable performance in high-temperature conditions' },
+  { icon: ThermometerSnowflake, title: 'Cold-Climate Performance', desc: 'Suitable performance in low-temperature conditions' },
+  { icon: Wrench, title: 'No Conventional Formwork', desc: 'No need for conventional concrete formwork' },
+  { icon: Truck, title: 'Placement with an asphalt paver', desc: 'Use of an asphalt paver for concrete placement' },
+  { icon: Gauge, title: 'Vibratory Roller Compaction', desc: 'Compaction with vibratory rollers' },
+  { icon: Shield, title: 'Long Service Life', desc: 'Reduced maintenance requirements' },
 ];
 
 export default function RCCPage() {
@@ -29,12 +29,12 @@ export default function RCCPage() {
   return (
     <>
       <PageHeader
-        title="روسازی بتن غلتکی (RCC)"
-        subtitle="تکنولوژی روسازی با بتن با اسلمپ صفر، اجرا با فینیشر آسفالت و متراکم‌کننده‌های لرزه‌ای"
+        title="Roller Compacted Concrete (RCC) Pavement"
+        subtitle="Pavement technology using zero-slump concrete, asphalt-paver placement and vibratory compaction"
         image="https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=1920"
         breadcrumbs={[
-          { label: 'توانمندی‌های فنی', href: '/capabilities' },
-          { label: 'روسازی بتن غلتکی (RCC)' },
+          { label: 'Technical Capabilities', href: '/capabilities' },
+          { label: 'Roller Compacted Concrete (RCC) Pavement' },
         ]}
       />
 
@@ -44,22 +44,16 @@ export default function RCCPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <span className="text-sm font-bold text-accent uppercase tracking-wider">
-                تکنولوژی RCC
+                RCC Technology
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-                بتن غلتکی؛ روسازی مقاوم و اقتصادی
+                Roller Compacted Concrete: Durable and Economical Pavement
               </h2>
               <p className="mt-5 text-base text-steel leading-relaxed">
-                روسازی بتن غلتکی (Roller Compacted Concrete) نوعی روسازی بتنی است که
-                با بتن بسیار خشک (با اسلمپ صفر) اجرا می‌شود. این بتن توسط فینیشر آسفالت
-                پخش شده و با غلتک‌های لرزه‌ای متراکم می‌گردد.
+                Roller Compacted Concrete (RCC) is a concrete pavement constructed with very dry, zero-slump concrete. It is placed using an asphalt paver and compacted with vibratory rollers.
               </p>
               <p className="mt-4 text-base text-steel leading-relaxed">
-                روش اجرای RCC مزایای متعددی از جمله سرعت اجرای بالا، هزینه نسبتاً پایین،
-                مصرف کمتر سیمان نسبت به بتن معمولی و مقاومت بالا در اقلیم‌های گرم و سرد
-                را به همراه دارد. این تکنولوژی به دلیل عدم نیاز به قالب‌بندی معمول و
-                امکان استفاده از ماشین‌آلات راه‌سازی، برای پروژه‌های بزرگ زیرساختی
-                مناسب است.
+                RCC offers several advantages, including rapid execution, relatively low cost, lower cement consumption than conventional concrete and strong performance in hot and cold climates. Because it does not require conventional formwork and can use road-construction machinery, it is well suited to large infrastructure projects.
               </p>
             </div>
 
@@ -67,13 +61,13 @@ export default function RCCPage() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="اجرای بتن غلتکی RCC"
+                  alt="RCC pavement construction"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -top-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">
-                <p className="text-2xl font-bold">اسلمپ صفر</p>
-                <p className="text-xs text-white/80 mt-1">بتن بسیار خشک</p>
+                <p className="text-2xl font-bold">Zero Slump</p>
+                <p className="text-xs text-white/80 mt-1">Very Dry Concrete</p>
               </div>
             </div>
           </div>
@@ -85,10 +79,10 @@ export default function RCCPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              مزایا
+              Advantages
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy leading-tight text-balance">
-              مزایای تکنولوژی RCC
+              Advantages of RCC Technology
             </h2>
           </div>
 
@@ -114,16 +108,16 @@ export default function RCCPage() {
         <div className="container-rgv">
           <div className="reveal text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-navy leading-tight text-balance">
-              مراحل اجرای RCC
+              RCC Construction Process
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { num: '۰۱', title: 'تهیه بتن با اسلمپ صفر', desc: 'اختلاط بتن بسیار خشک با نسبت آب به سیمان پایین' },
-              { num: '۰۲', title: 'پخش با فینیشر آسفالت', desc: 'انتقال و پخش بتن با ماشین‌آلات راه‌سازی' },
-              { num: '۰۳', title: 'تراکم با غلتک لرزه‌ای', desc: 'متراکم‌سازی بتن با غلتک‌های ویبره‌ای' },
-              { num: '۰۴', title: 'پرداخت و عمل‌آوری', desc: 'پرداخت سطح نهایی و عمل‌آوری بتن' },
+              { num: '01', title: 'Production of Zero-Slump Concrete', desc: 'Mixing very dry concrete with a low water-cement ratio' },
+              { num: '02', title: 'Placement with Asphalt Paver', desc: 'Transport and placement of concrete using road construction machinery' },
+              { num: '03', title: 'Vibratory Roller Compaction', desc: 'Concrete compaction with vibratory rollers' },
+              { num: '04', title: 'Finishing & Curing', desc: 'Final surface finishing and concrete curing' },
             ].map((step, i) => (
               <div key={i} className={`reveal reveal-delay-${i + 1} relative`}>
                 <div className="text-4xl font-bold text-accent/20 tabular-nums">{step.num}</div>
@@ -154,10 +148,10 @@ export default function RCCPage() {
         <div className="container-rgv relative z-10">
           <div className="reveal mb-10">
             <span className="text-sm font-bold text-accent uppercase tracking-wider">
-              تجربه اجرایی
+              Project Experience
             </span>
             <h2 className="mt-3 text-3xl font-bold text-white leading-tight text-balance">
-              تجربه راه گستر ولاش در اجرای RCC
+              Rah Gostar Valash RCC Experience
             </h2>
           </div>
 
@@ -176,7 +170,7 @@ export default function RCCPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">
-                  <span className="text-xs text-accent font-semibold mb-1">پروژه RCC</span>
+                  <span className="text-xs text-accent font-semibold mb-1">RCC Project</span>
                   <h3 className="text-sm font-bold text-white leading-snug group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
@@ -192,8 +186,8 @@ export default function RCCPage() {
             href="/projects"
             className="reveal mt-8 inline-flex items-center gap-2 text-accent hover:text-white font-semibold transition-colors group"
           >
-            مشاهده همه پروژه‌ها
-            <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            View All Projects
+            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
