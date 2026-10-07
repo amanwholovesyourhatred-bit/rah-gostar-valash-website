@@ -15,7 +15,7 @@ export default function CTASection({ locale }: { locale: Locale }) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-navy/85" />
+        <div className="absolute inset-0 z-[1] bg-[#07192d]/75" />
       </div>
 
       <div className="relative z-10 container-rgv text-center">
@@ -23,7 +23,7 @@ export default function CTASection({ locale }: { locale: Locale }) {
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight text-balance">
             {t(locale, 'cta.heading')}
           </h2>
-          <p className="mt-5 text-lg text-white/70 leading-relaxed">
+          <p className="mt-5 text-lg text-white/90 leading-relaxed">
             {t(locale, 'cta.description')}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

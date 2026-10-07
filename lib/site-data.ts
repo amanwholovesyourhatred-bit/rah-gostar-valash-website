@@ -4,7 +4,7 @@ export const siteConfig = {
   legalName: 'Rah Gostar Valash Co.',
   shortDescription:
     'Contractor for road construction, buildings, urban infrastructure, water and wastewater, and specialized civil engineering projects',
-  established: 1379,
+  established: 2000,
   experienceYears: 24,
   url: 'https://rahgostarvalash.ir',
   contact: {

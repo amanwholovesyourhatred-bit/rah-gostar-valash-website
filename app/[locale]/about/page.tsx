@@ -4,7 +4,7 @@ import Link from '@/components/LocalizedLink';
 import { ChevronRight, Target, History, Award, Users, Settings, ShieldCheck, Layers } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
-import { companyStats, capabilities } from '@/lib/site-data';
+import { companyStats, capabilities, siteConfig } from '@/lib/site-data';
 import { localizeCapability } from '@/lib/localized-site-data';
 import { t, type Locale } from '@/lib/i18n';
 import { localizedMetadata } from '@/lib/metadata';
@@ -74,17 +74,17 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
         <div className="container-rgv">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="reveal relative">
-              <div className="relative overflow-hidden rounded-lg shadow-2xl">
+              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg bg-white shadow-2xl">
                 <Image
-                  src="/images/projects/roads/iran-hormuz-ferdow-kahak-02.webp"
-                  alt="Road infrastructure project by Rah Gostar Valash"
+                  src="/images/company/velash-holding-logo.webp"
+                  alt="Velash Holding"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover img-hover"
+                  className="object-contain p-8 sm:p-12"
                 />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">
-                <p className="text-xl font-bold">1379</p>
+                <p className="text-xl font-bold">{siteConfig.established}</p>
                 <p className="text-xs text-white/80 mt-0.5">{t(locale, 'about.establishedYear')}</p>
               </div>
             </div>

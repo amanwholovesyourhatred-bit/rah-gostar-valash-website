@@ -56,10 +56,10 @@ export default function EquipmentSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div className="reveal relative order-2 lg:order-1">
-            <div className="relative overflow-hidden rounded-lg shadow-2xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
               <Image
-                src="/images/projects/precast-walls/precast-installation-02.webp"
-                alt="Precast wall installation equipment by Rah Gostar Valash"
+                src="/images/projects/soil-stabilization/northeast-border-stabilization-01.webp"
+                alt="Soil-stabilization machinery used by Rah Gostar Valash"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover img-hover"

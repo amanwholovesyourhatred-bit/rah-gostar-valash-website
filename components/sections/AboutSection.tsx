@@ -10,13 +10,13 @@ export default function AboutSection({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div className="reveal relative">
-            <div className="relative overflow-hidden rounded-lg shadow-2xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
               <Image
-                src="/images/projects/roads/malard-industrial-town-01.webp"
-                alt="Road infrastructure project by Rah Gostar Valash"
+                src="/images/projects/residential/qom-national-housing-03.webp"
+                alt="Qom National Housing residential buildings by Rah Gostar Valash"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover img-hover"
+                className="object-cover object-[center_45%] img-hover"
               />
             </div>
             {/* Accent badge */}
