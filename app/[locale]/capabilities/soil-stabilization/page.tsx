@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ChevronRight, TrendingUp, Gauge, Layers, Clock, DollarSign, Wrench, Mountain, ShieldCheck } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
@@ -40,7 +41,7 @@ export default function SoilStabilizationPage({ params }: { params: { locale: Lo
         locale={locale}
         title={t(locale, 'soilStabilization.pageTitle')}
         subtitle={t(locale, 'soilStabilization.pageSubtitle')}
-        image="https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/soil-stabilization/iran-hormuz-stabilization-01.webp"
         breadcrumbs={[
           { label: t(locale, 'capabilities.breadcrumb'), href: '/capabilities' },
           { label: t(locale, 'soilStabilization.breadcrumb') },
@@ -53,10 +54,12 @@ export default function SoilStabilizationPage({ params }: { params: { locale: Lo
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal relative order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt={t(locale, 'soilStabilization.soilStabilizationAlt')}
-                  className="w-full h-[400px] object-cover"
+                <Image
+                  src="/images/projects/soil-stabilization/iran-hormuz-stabilization-02.webp"
+                  alt="Soil stabilization work by Rah Gostar Valash"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="absolute -top-5 -right-5 bg-navy text-white p-5 rounded-lg shadow-xl hidden md:block">
@@ -154,11 +157,13 @@ export default function SoilStabilizationPage({ params }: { params: { locale: Lo
                 href={`/projects/${project.slug}`}
                 className={`reveal reveal-delay-${(i % 2) + 1} group flex bg-white/5 rounded-lg overflow-hidden border border-white/10 hover:bg-white/10 transition-all`}
               >
-                <div className="w-32 h-32 shrink-0 overflow-hidden">
-                  <img
+                <div className="relative w-32 h-32 shrink-0 overflow-hidden">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover img-hover"
+                    fill
+                    sizes="128px"
+                    className="object-cover img-hover"
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">

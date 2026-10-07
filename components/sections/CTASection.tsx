@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { t, type Locale } from '@/lib/i18n';
 
@@ -7,10 +8,12 @@ export default function CTASection({ locale }: { locale: Locale }) {
     <section className="relative py-20 md:py-28 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/11701517/pexels-photo-11701517.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        <Image
+          src="/images/projects/roads/gilan-sabz-siahkal-01.webp"
           alt=""
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-navy/85" />
       </div>

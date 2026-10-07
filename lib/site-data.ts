@@ -44,8 +44,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Road & Transportation Infrastructure',
     description:
       'Construction of intercity roads, transportation corridors and access roads, including earthworks, subgrade preparation, pavement and asphalt works.',
-    image:
-      'https://images.pexels.com/photos/5504658/pexels-photo-5504658.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/roads/gilan-sabz-siahkal-01.webp',
     href: '/expertise#road-infra',
   },
   {
@@ -66,8 +65,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Roller Compacted Concrete Pavement',
     description:
       'Execution of RCC pavement using zero-slump concrete, asphalt pavers and vibratory rollers.',
-    image:
-      'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/rcc/boroujerdi-rcc-01.webp',
     href: '/capabilities/rcc',
   },
   {
@@ -77,8 +75,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Cement Soil Stabilization',
     description:
       'In-situ soil stabilization using WR/WM equipment to increase strength, reduce swelling and improve plasticity characteristics.',
-    image:
-      'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/soil-stabilization/northeast-border-stabilization-02.webp',
     href: '/capabilities/soil-stabilization',
   },
   {
@@ -99,8 +96,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Residential Construction',
     description:
       'Development of residential complexes comprising approximately 1,000 housing units and more than 1.5 million m² of construction in Tehran and Qom.',
-    image:
-      'https://images.pexels.com/photos/34360408/pexels-photo-34360408.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/residential/qom-national-housing-03.webp',
     href: '/expertise#residential',
   },
   {
@@ -110,8 +106,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Precast Concrete Walls',
     description:
       'Production and installation of precast concrete walls for borders, sites, security and industrial projects.',
-    image:
-      'https://images.pexels.com/photos/39962550/pexels-photo-39962550.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/precast-walls/precast-completed-01.webp',
     href: '/expertise#precast',
   },
   {
@@ -132,8 +127,7 @@ export const capabilities: Capability[] = [
     titleEn: 'Urban Infrastructure & Site Development',
     description:
       'Construction of roads, urban infrastructure, site development and environmental improvement works for large-scale projects.',
-    image:
-      'https://images.pexels.com/photos/8860492/pexels-photo-8860492.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/roads/iran-hormuz-ferdow-kahak-01.webp',
     href: '/expertise#urban-infra',
   },
 ];

@@ -1,0 +1,18 @@
+Use the curated Rah Gostar Valash image library in `public/images/` to replace generic Pexels/stock imagery throughout the website.
+
+Read `asset-manifest.csv` or `asset-manifest.json` before changing image assignments. Treat that manifest as authoritative for which project/subject each photo belongs to.
+
+Rules:
+- Do not invent or guess project-to-photo associations.
+- If a manifest note says a PDF page contains multiple projects, use that image only in a general portfolio/roads context unless the exact project is manually confirmed.
+- Preserve all existing English/Russian localization, routes, project slugs, metadata, facts and responsive behavior.
+- Prefer Next.js `Image` for local images, with meaningful English alt text and appropriate responsive `sizes`.
+- Keep images local; remove Pexels URLs only when a supported local replacement exists.
+- Use real project photography as the visual priority.
+- Avoid stretching images. Use `object-cover` carefully and preserve important engineering context.
+- Do not add filters that make documentary project photography look artificial.
+- For the homepage hero, start with `/images/hero/rah-gostar-valash-infrastructure-hero.webp`, but preserve readability with a restrained overlay and verify desktop/mobile crops.
+- For RCC, soil stabilization, precast walls and residential sections, use assets from their matching folders.
+- Do not commit or push.
+
+Before editing, report which existing stock image references you plan to replace and the exact local asset for each. Wait for approval. After approval, implement, run typecheck/lint/build, and report every changed file.

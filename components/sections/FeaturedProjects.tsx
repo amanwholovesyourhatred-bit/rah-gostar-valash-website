@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight, MapPin, Calendar, Building2 } from 'lucide-react';
 import { getFeaturedProjects } from '@/lib/projects';
 import { localizeProject } from '@/lib/localized-projects';
@@ -45,10 +46,14 @@ export default function FeaturedProjects({ locale }: { locale: Locale }) {
               }`}
             >
               <div className={`relative overflow-hidden ${i === 0 ? 'h-64 lg:h-[440px]' : 'h-56'}`}>
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover img-hover"
+                  fill
+                  sizes={i === 0
+                    ? '(max-width: 1024px) 100vw, 66vw'
+                    : '(max-width: 1024px) 50vw, 33vw'}
+                  className="object-cover img-hover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
                 <div className="absolute bottom-0 right-0 left-0 p-5">

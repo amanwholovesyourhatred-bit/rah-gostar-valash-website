@@ -1,6 +1,7 @@
 'use client';
 
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import { companyStats, type Stat } from '@/lib/site-data';
 import { t, type Locale } from '@/lib/i18n';
@@ -50,9 +51,12 @@ export default function Hero({ locale }: { locale: Locale }) {
     <section className="relative isolate flex min-h-[820px] items-center overflow-hidden bg-navy text-white lg:min-h-[90vh]">
       {/* Background image */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/8860492/pexels-photo-8860492.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt={t(locale, 'home.heroAlt')}
+        <Image
+          src="/images/hero/rah-gostar-valash-infrastructure-hero.webp"
+          alt="Road infrastructure project by Rah Gostar Valash"
+          fill
+          priority
+          sizes="100vw"
           className="h-full w-full object-cover object-[62%_center]"
         />
         <div className="absolute inset-0 bg-hero-overlay" />

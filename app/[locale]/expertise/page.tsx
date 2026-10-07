@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ChevronRight } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
@@ -25,7 +26,7 @@ export default function ExpertisePage({ params }: { params: { locale: Locale } }
         locale={locale}
         title={t(locale, 'expertise.pageTitle')}
         subtitle={t(locale, 'expertise.pageSubtitle')}
-        image="https://images.pexels.com/photos/33125632/pexels-photo-33125632.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/iran-hormuz-ferdow-kahak-01.webp"
         breadcrumbs={[{ label: t(locale, 'expertise.breadcrumb') }]}
       />
 
@@ -44,10 +45,12 @@ export default function ExpertisePage({ params }: { params: { locale: Locale } }
               >
                 {/* Image */}
                 <div className="relative h-48 md:h-40 overflow-hidden rounded-lg md:col-span-1">
-                  <img
+                  <Image
                     src={cap.image}
                     alt={cap.title}
-                    className="w-full h-full object-cover img-hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover img-hover"
                   />
                   <span className="absolute top-3 right-3 text-2xl font-bold text-white/90 tabular-nums text-shadow">
                     {cap.number}

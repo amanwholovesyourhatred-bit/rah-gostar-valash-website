@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight, Truck, HardHat, Layers, Construction } from 'lucide-react';
 import { t, type Locale } from '@/lib/i18n';
 
@@ -56,10 +57,12 @@ export default function EquipmentSection({ locale }: { locale: Locale }) {
           {/* Image */}
           <div className="reveal relative order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-lg shadow-2xl">
-              <img
-                src="https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt={t(locale, 'equipment.pageSubtitle')}
-                className="w-full h-[420px] object-cover img-hover"
+              <Image
+                src="/images/projects/precast-walls/precast-installation-02.webp"
+                alt="Precast wall installation equipment by Rah Gostar Valash"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover img-hover"
               />
               <div className="absolute inset-0 bg-navy/20" />
             </div>

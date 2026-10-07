@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ChevronRight, ArrowRight, Layers, Gauge, Truck, ShieldCheck, HardHat } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
@@ -21,14 +22,14 @@ const technicalPages = [
     title: 'capabilities.rollerCompactedConcrete',
     desc: 'capabilities.rollerCompactedConcreteDescription',
     href: '/capabilities/rcc',
-    image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/rcc/hejij-daryan-rcc-01.webp',
     icon: Layers,
   },
   {
     title: 'capabilities.cementSoilStabilization',
     desc: 'capabilities.cementSoilStabilizationDescription',
     href: '/capabilities/soil-stabilization',
-    image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/soil-stabilization/qom-jafarieh-stabilization-01.webp',
     icon: Gauge,
   },
 ];
@@ -41,7 +42,7 @@ export default function CapabilitiesPage({ params }: { params: { locale: Locale 
         locale={locale}
         title={t(locale, 'capabilities.pageTitle')}
         subtitle={t(locale, 'capabilities.pageSubtitle')}
-        image="https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/malard-industrial-town-01.webp"
         breadcrumbs={[{ label: t(locale, 'capabilities.breadcrumb') }]}
       />
 
@@ -65,10 +66,12 @@ export default function CapabilitiesPage({ params }: { params: { locale: Locale 
                 className={`reveal reveal-delay-${i + 1} group block bg-white rounded-lg overflow-hidden border border-border hover:shadow-xl transition-all duration-300`}
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img
+                  <Image
                     src={page.image}
                     alt={t(locale, page.title)}
-                    className="w-full h-full object-cover img-hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover img-hover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
                   <div className="absolute bottom-4 right-5 left-5">

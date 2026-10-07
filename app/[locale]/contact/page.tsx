@@ -23,7 +23,7 @@ export default function ContactPage({ params }: { params: { locale: Locale } }) 
         locale={locale}
         title={t(locale, 'contact.pageTitle')}
         subtitle={t(locale, 'contact.pageSubtitle')}
-        image="https://images.pexels.com/photos/8913514/pexels-photo-8913514.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/qom-jafarieh-asphalt-01.webp"
         breadcrumbs={[{ label: t(locale, 'contact.breadcrumb') }]}
       />
 

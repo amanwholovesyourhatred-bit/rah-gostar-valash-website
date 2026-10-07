@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ChevronRight, Zap, DollarSign, ThermometerSnowflake, ThermometerSun, Layers, Truck, Gauge, Shield, Wrench, TrendingDown } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
@@ -48,7 +49,7 @@ export default function RCCPage({ params }: { params: { locale: Locale } }) {
         locale={locale}
         title={t(locale, 'rcc.pageTitle')}
         subtitle={t(locale, 'rcc.pageSubtitle')}
-        image="https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/rcc/boroujerdi-rcc-01.webp"
         breadcrumbs={[
           { label: t(locale, 'capabilities.breadcrumb'), href: '/capabilities' },
           { label: t(locale, 'rcc.breadcrumb') },
@@ -76,10 +77,12 @@ export default function RCCPage({ params }: { params: { locale: Locale } }) {
 
             <div className="reveal reveal-delay-1 relative">
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt={t(locale, 'rcc.pavementAlt')}
-                  className="w-full h-[400px] object-cover"
+                <Image
+                  src="/images/projects/rcc/zabol-cement-access-rcc-01.webp"
+                  alt="Roller-compacted concrete pavement work by Rah Gostar Valash"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="absolute -top-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">
@@ -174,11 +177,13 @@ export default function RCCPage({ params }: { params: { locale: Locale } }) {
                 href={`/projects/${project.slug}`}
                 className={`reveal reveal-delay-${(i % 2) + 1} group flex bg-white/5 rounded-lg overflow-hidden border border-white/10 hover:bg-white/10 transition-all`}
               >
-                <div className="w-32 h-32 shrink-0 overflow-hidden">
-                  <img
+                <div className="relative w-32 h-32 shrink-0 overflow-hidden">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover img-hover"
+                    fill
+                    sizes="128px"
+                    className="object-cover img-hover"
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-center">

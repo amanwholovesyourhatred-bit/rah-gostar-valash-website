@@ -22,7 +22,7 @@ export default function ProjectsPage({ params }: { params: { locale: Locale } })
         locale={locale}
         title={t(locale, 'projects.pageTitle')}
         subtitle={t(locale, 'projects.pageSubtitle')}
-        image="https://images.pexels.com/photos/11701517/pexels-photo-11701517.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/pardisan-parand-asphalt-02.webp"
         breadcrumbs={[{ label: t(locale, 'projects.breadcrumb') }]}
       />
 

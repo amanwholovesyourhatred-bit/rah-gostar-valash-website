@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from '@/components/LocalizedLink';
 import { ChevronRight, Target, History, Award, Users, Settings, ShieldCheck, Layers } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
@@ -44,7 +45,7 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
         locale={locale}
         title={t(locale, 'about.pageTitle')}
         subtitle={t(locale, 'about.pageSubtitle')}
-        image="https://images.pexels.com/photos/8961133/pexels-photo-8961133.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/gilan-sabz-siahkal-01.webp"
         breadcrumbs={[{ label: t(locale, 'about.breadcrumb') }]}
       />
 
@@ -74,10 +75,12 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="reveal relative">
               <div className="relative overflow-hidden rounded-lg shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/8961146/pexels-photo-8961146.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt={t(locale, 'about.engineersAlt')}
-                  className="w-full h-[440px] object-cover img-hover"
+                <Image
+                  src="/images/projects/roads/iran-hormuz-ferdow-kahak-02.webp"
+                  alt="Road infrastructure project by Rah Gostar Valash"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover img-hover"
                 />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-accent text-white p-5 rounded-lg shadow-xl hidden md:block">

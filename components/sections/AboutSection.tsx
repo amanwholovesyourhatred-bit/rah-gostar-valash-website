@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { t, type Locale } from '@/lib/i18n';
 
@@ -10,10 +11,12 @@ export default function AboutSection({ locale }: { locale: Locale }) {
           {/* Image */}
           <div className="reveal relative">
             <div className="relative overflow-hidden rounded-lg shadow-2xl">
-              <img
-                src="https://images.pexels.com/photos/8961133/pexels-photo-8961133.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt={t(locale, 'about.engineersAlt')}
-                className="w-full h-[480px] object-cover img-hover"
+              <Image
+                src="/images/projects/roads/malard-industrial-town-01.webp"
+                alt="Road infrastructure project by Rah Gostar Valash"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover img-hover"
               />
             </div>
             {/* Accent badge */}

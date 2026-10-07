@@ -1,6 +1,7 @@
 import Link from '@/components/LocalizedLink';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import {
   MapPin,
   Building2,
@@ -67,10 +68,12 @@ export default function ProjectPage({
       {/* Hero with project image */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-navy/75" />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/40 to-navy/90" />
@@ -210,12 +213,14 @@ export default function ProjectPage({
                         key={i}
                         className="relative overflow-hidden rounded-lg h-48 md:h-64"
                       >
-                        <img
+                        <Image
                           src={img}
                           alt={t(params.locale, 'projectDetail.imageAlt')
                             .replace('{title}', project.title)
                             .replace('{number}', (i + 1).toLocaleString('en-US'))}
-                          className="w-full h-full object-cover img-hover"
+                          fill
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                          className="object-cover img-hover"
                         />
                       </div>
                     ))}
@@ -283,10 +288,12 @@ export default function ProjectPage({
                     className="group block bg-white rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all"
                   >
                     <div className="relative h-44 overflow-hidden">
-                      <img
+                      <Image
                         src={rp.image}
                         alt={rp.title}
-                        className="w-full h-full object-cover img-hover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover img-hover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
                     </div>

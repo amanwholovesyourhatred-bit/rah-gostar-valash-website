@@ -46,7 +46,7 @@ export default function QualificationsPage({ params }: { params: { locale: Local
         locale={locale}
         title={t(locale, 'qualifications.pageTitle')}
         subtitle={t(locale, 'qualifications.pageSubtitle')}
-        image="https://images.pexels.com/photos/8961298/pexels-photo-8961298.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/roads/malard-industrial-town-02.webp"
         breadcrumbs={[{ label: t(locale, 'qualifications.breadcrumb') }]}
       />
 

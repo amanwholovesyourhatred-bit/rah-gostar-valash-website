@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { capabilities } from '@/lib/site-data';
 import { localizeCapability } from '@/lib/localized-site-data';
@@ -33,10 +34,12 @@ export default function CapabilitiesSection({ locale }: { locale: Locale }) {
             >
               {/* Image */}
               <div className="relative h-52 overflow-hidden">
-                <img
+                <Image
                   src={cap.image}
                   alt={cap.title}
-                  className="w-full h-full object-cover img-hover"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover img-hover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
                 <span className="absolute top-4 right-4 text-2xl font-bold text-white/90 tabular-nums">

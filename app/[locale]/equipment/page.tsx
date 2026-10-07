@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Construction, Layers, Truck, HardHat, Wrench, Gauge, Route, Building2 } from 'lucide-react';
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
@@ -19,25 +20,25 @@ const equipmentCategories = [
     icon: Gauge,
     title: 'soilStabilizationEquipment',
     items: ['inSituStabilizationEquipment', 'soilCementMixing'],
-    image: 'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/soil-stabilization/northeast-border-stabilization-01.webp',
   },
   {
     icon: Layers,
     title: 'rccEquipment',
     items: ['asphaltPaverForRcc', 'vibratoryRollersForRcc'],
-    image: 'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/rcc/boroujerdi-rcc-01.webp',
   },
   {
     icon: Construction,
     title: 'earthmovingMachinery',
     items: ['excavator', 'bulldozer', 'grader'],
-    image: 'https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/precast-walls/precast-installation-01.webp',
   },
   {
     icon: Route,
     title: 'roadAndAsphaltEquipment',
     items: ['subgradePreparation', 'compactionRollers', 'asphaltEquipment'],
-    image: 'https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/roads/pardisan-parand-asphalt-01.webp',
   },
   {
     icon: Building2,
@@ -49,7 +50,7 @@ const equipmentCategories = [
     icon: HardHat,
     title: 'auxiliaryEquipment',
     items: ['lightConstructionEquipment', 'projectSupportEquipment'],
-    image: 'https://images.pexels.com/photos/1145465/pexels-photo-1145465.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/projects/roads/malard-industrial-town-02.webp',
   },
 ];
 
@@ -61,7 +62,7 @@ export default function EquipmentPage({ params }: { params: { locale: Locale } }
         locale={locale}
         title={t(locale, 'equipment.pageTitle')}
         subtitle={t(locale, 'equipment.pageSubtitle')}
-        image="https://images.pexels.com/photos/34338597/pexels-photo-34338597.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="/images/projects/soil-stabilization/northeast-border-stabilization-02.webp"
         breadcrumbs={[{ label: t(locale, 'equipment.breadcrumb') }]}
       />
 
@@ -87,10 +88,12 @@ export default function EquipmentPage({ params }: { params: { locale: Locale } }
                 className={`reveal reveal-delay-${(i % 3) + 1} bg-white rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow`}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={cat.image}
                     alt={t(locale, `equipment.${cat.title}`)}
-                    className="w-full h-full object-cover img-hover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover img-hover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
                   <div className="absolute top-3 right-3 w-10 h-10 bg-white/90 rounded-md flex items-center justify-center">

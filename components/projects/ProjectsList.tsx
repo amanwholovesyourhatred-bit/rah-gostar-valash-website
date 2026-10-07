@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { MapPin, Building2, ChevronRight } from 'lucide-react';
 import { projects, type ProjectCategory } from '@/lib/projects';
 import { localizeProject, localizedCategoryLabel } from '@/lib/localized-projects';
@@ -70,10 +71,12 @@ export default function ProjectsList({ locale }: { locale: Locale }) {
               className={`reveal reveal-delay-${(i % 3) + 1} group block bg-white rounded-lg overflow-hidden border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
             >
               <div className="relative h-52 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover img-hover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover img-hover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
                 <span className="absolute top-3 right-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded">

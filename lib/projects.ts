@@ -55,8 +55,7 @@ export const projects: Project[] = [
     location: 'Hormozgan',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/5504658/pexels-photo-5504658.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/precast-walls/iran-hormuz-precast-01.webp',
     intro:
       'Construction of a patrol access road and perimeter wall for the Iran Hormoz site, including earthworks, subgrade preparation and pavement works.',
     scope: [
@@ -95,8 +94,7 @@ export const projects: Project[] = [
     location: 'Northeastern Border',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/12164798/pexels-photo-12164798.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/soil-stabilization/northeast-border-stabilization-01.webp',
     intro:
       'In-situ cement soil stabilization using Wirtgen equipment to improve road subgrade properties.',
     scope: [
@@ -115,8 +113,7 @@ export const projects: Project[] = [
     location: 'Qom — Jafariyeh',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/7910082/pexels-photo-7910082.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/soil-stabilization/qom-jafarieh-stabilization-01.webp',
     intro:
       'Soil stabilization and asphalt paving of the Qom–Jafariyeh return lane to improve the subgrade and extend pavement service life.',
     scope: [
@@ -135,8 +132,7 @@ export const projects: Project[] = [
     location: 'Qom',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/4390530/pexels-photo-4390530.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/rcc/boroujerdi-rcc-01.webp',
     intro:
       'Execution of RCC pavement on Ayatollah Boroujerdi Boulevard in Qom using zero-slump concrete, asphalt pavers and vibratory rollers.',
     scope: [
@@ -164,8 +160,7 @@ export const projects: Project[] = [
     location: 'Gilan — Siahkal',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/10960855/pexels-photo-10960855.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/roads/gilan-sabz-siahkal-01.webp',
     intro:
       'Construction of the access route from Gilan Sabz Cement Plant to Larikhani and Siahkal, including earthworks, subgrade preparation and pavement in mountainous terrain.',
     scope: [
@@ -184,8 +179,7 @@ export const projects: Project[] = [
     location: 'Qorveh — Kurdistan Province',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/12464314/pexels-photo-12464314.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/rcc/qorveh-pumice-access-01.webp',
     intro:
       'Construction of the access road to the Deir Kolu industrial pumice mines in Qorveh under challenging geological and mountainous conditions.',
     scope: [
@@ -204,8 +198,7 @@ export const projects: Project[] = [
     location: 'Hajij–Daryan Route',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/12230651/pexels-photo-12230651.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/rcc/hejij-daryan-rcc-01.webp',
     intro:
       'Subgrade preparation and RCC pavement on the Hajij–Daryan route, using RCC technology for high strength and long service life.',
     scope: [
@@ -224,8 +217,7 @@ export const projects: Project[] = [
     location: 'Zabol — Sistan and Baluchestan',
     status: 'completed',
     statusLabel: 'Completed',
-    image:
-      'https://images.pexels.com/photos/35581973/pexels-photo-35581973.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/rcc/zabol-cement-access-rcc-01.webp',
     intro:
       'Construction of the access road to Zabol Cement Plant under harsh climatic and high-temperature conditions.',
     scope: [
@@ -305,8 +297,7 @@ export const projects: Project[] = [
     location: 'Qom',
     status: 'ongoing',
     statusLabel: 'Ongoing',
-    image:
-      'https://images.pexels.com/photos/34360419/pexels-photo-34360419.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/images/projects/residential/qom-national-housing-02.webp',
     intro:
       'Construction of 440 residential units for the Qom National Housing project, with significant physical progress at the time the company profile was prepared.',
     scope: [

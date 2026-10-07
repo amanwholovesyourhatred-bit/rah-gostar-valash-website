@@ -1,4 +1,5 @@
 import Link from '@/components/LocalizedLink';
+import Image from 'next/image';
 import { ChevronRight, Home } from 'lucide-react';
 import { t, type Locale } from '@/lib/i18n';
 
@@ -28,10 +29,12 @@ export default function PageHeader({
       <div className="absolute inset-0">
         {image ? (
           <>
-            <img
+            <Image
               src={image}
               alt=""
-              className="w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-navy/80" />
           </>

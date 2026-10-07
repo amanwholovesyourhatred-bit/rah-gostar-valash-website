@@ -1,0 +1,342 @@
+[
+  {
+    "file": "/images/hero/rah-gostar-valash-infrastructure-hero.webp",
+    "project_or_subject": "Hero / Qods Township - Ayatollah Boroujerdi grade-separated intersection",
+    "category": "roads",
+    "recommended_use": "Hero candidate",
+    "source_page": "PDF p.52",
+    "width": 500,
+    "height": 375,
+    "notes": "Use as a hero candidate; documented on page with Qods Township grade-separated intersection and Qom-Jafarieh asphalt."
+  },
+  {
+    "file": "/images/projects/rcc/boroujerdi-rcc-01.webp",
+    "project_or_subject": "Ayatollah Boroujerdi Boulevard RCC, Qom",
+    "category": "rcc",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.46",
+    "width": 1091,
+    "height": 532,
+    "notes": "Documented: RCC, 10 km length, 40 m width."
+  },
+  {
+    "file": "/images/projects/rcc/hejij-daryan-rcc-01.webp",
+    "project_or_subject": "Hejij-Daryan route - subgrade and RCC",
+    "category": "rcc",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.49",
+    "width": 800,
+    "height": 600,
+    "notes": "Documented: 9 km length, 8 m width."
+  },
+  {
+    "file": "/images/projects/rcc/zabol-cement-access-rcc-01.webp",
+    "project_or_subject": "Zabol Cement Factory access road",
+    "category": "rcc",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.50",
+    "width": 639,
+    "height": 587,
+    "notes": "Documented: 16 km length, 9 m width."
+  },
+  {
+    "file": "/images/projects/rcc/qorveh-pumice-access-01.webp",
+    "project_or_subject": "Qorveh industrial pumice mine access road",
+    "category": "rcc",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.48",
+    "width": 592,
+    "height": 477,
+    "notes": "Documented: 11 km length, 7.6 m width."
+  },
+  {
+    "file": "/images/projects/soil-stabilization/northeast-border-stabilization-01.webp",
+    "project_or_subject": "Northeast border closure - Wirtgen stabilization",
+    "category": "soil-stabilization",
+    "recommended_use": "Project / equipment",
+    "source_page": "PDF p.43",
+    "width": 1280,
+    "height": 404,
+    "notes": "Documented stabilization length: 50 km."
+  },
+  {
+    "file": "/images/projects/soil-stabilization/northeast-border-stabilization-02.webp",
+    "project_or_subject": "Northeast border closure - Wirtgen stabilization",
+    "category": "soil-stabilization",
+    "recommended_use": "Project / equipment",
+    "source_page": "PDF p.43",
+    "width": 1280,
+    "height": 736,
+    "notes": "Documented stabilization length: 50 km."
+  },
+  {
+    "file": "/images/projects/soil-stabilization/iran-hormuz-stabilization-01.webp",
+    "project_or_subject": "Iran Hormuz patrol road - soil stabilization",
+    "category": "soil-stabilization",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.44",
+    "width": 1280,
+    "height": 576,
+    "notes": "Documented stabilization length: 11.5 km."
+  },
+  {
+    "file": "/images/projects/soil-stabilization/iran-hormuz-stabilization-02.webp",
+    "project_or_subject": "Iran Hormuz patrol road - soil stabilization",
+    "category": "soil-stabilization",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.44",
+    "width": 1280,
+    "height": 577,
+    "notes": "Documented stabilization length: 11.5 km."
+  },
+  {
+    "file": "/images/projects/soil-stabilization/qom-jafarieh-stabilization-01.webp",
+    "project_or_subject": "Qom-Jafarieh return lane stabilization and asphalt",
+    "category": "soil-stabilization",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.45",
+    "width": 800,
+    "height": 450,
+    "notes": "Documented: 6 km length, 11 m width."
+  },
+  {
+    "file": "/images/projects/roads/gilan-sabz-siahkal-01.webp",
+    "project_or_subject": "Gilan Sabz Cement Factory to Larikhani/Siahkal access route",
+    "category": "roads",
+    "recommended_use": "Project",
+    "source_page": "PDF p.47",
+    "width": 1173,
+    "height": 1317,
+    "notes": "Documented: 15 km length, 8 m width."
+  },
+  {
+    "file": "/images/projects/roads/pardisan-parand-asphalt-01.webp",
+    "project_or_subject": "Asphalt works - Pardisan / Parand project page",
+    "category": "roads",
+    "recommended_use": "Project / portfolio",
+    "source_page": "PDF p.51",
+    "width": 1280,
+    "height": 720,
+    "notes": "Page documents Pardisan 70-ha roads and Parand Industrial Town roads; do not assign this individual photo more specifically without manual confirmation."
+  },
+  {
+    "file": "/images/projects/roads/pardisan-parand-asphalt-02.webp",
+    "project_or_subject": "Asphalt works - Pardisan / Parand project page",
+    "category": "roads",
+    "recommended_use": "Project / portfolio",
+    "source_page": "PDF p.51",
+    "width": 1280,
+    "height": 691,
+    "notes": "Page documents Pardisan 70-ha roads and Parand Industrial Town roads; do not assign this individual photo more specifically without manual confirmation."
+  },
+  {
+    "file": "/images/projects/roads/qom-jafarieh-asphalt-01.webp",
+    "project_or_subject": "Qom-Jafarieh asphalt / Qods interchange project page",
+    "category": "roads",
+    "recommended_use": "Project / portfolio",
+    "source_page": "PDF p.52",
+    "width": 1274,
+    "height": 717,
+    "notes": "Page documents Qods Township interchange and Qom-Jafarieh asphalt; use only at page-level unless visually/manual confirmed."
+  },
+  {
+    "file": "/images/projects/roads/iran-hormuz-ferdow-kahak-01.webp",
+    "project_or_subject": "Iran Hormuz patrol road / Ferdow-Kahak access project page",
+    "category": "roads",
+    "recommended_use": "Project / portfolio",
+    "source_page": "PDF p.53",
+    "width": 1091,
+    "height": 787,
+    "notes": "Page documents both projects; individual-photo assignment should be manually confirmed."
+  },
+  {
+    "file": "/images/projects/roads/iran-hormuz-ferdow-kahak-02.webp",
+    "project_or_subject": "Iran Hormuz patrol road / Ferdow-Kahak access project page",
+    "category": "roads",
+    "recommended_use": "Project / portfolio",
+    "source_page": "PDF p.53",
+    "width": 1280,
+    "height": 720,
+    "notes": "Page documents both projects; individual-photo assignment should be manually confirmed."
+  },
+  {
+    "file": "/images/projects/roads/malard-industrial-town-01.webp",
+    "project_or_subject": "West Malard Industrial Town earthworks",
+    "category": "roads",
+    "recommended_use": "Project",
+    "source_page": "PDF p.54",
+    "width": 793,
+    "height": 793,
+    "notes": "Documented earthworks, grading, subbase and curbs."
+  },
+  {
+    "file": "/images/projects/roads/malard-industrial-town-02.webp",
+    "project_or_subject": "West Malard Industrial Town earthworks",
+    "category": "roads",
+    "recommended_use": "Project",
+    "source_page": "PDF p.54",
+    "width": 791,
+    "height": 791,
+    "notes": "Documented earthworks, grading, subbase and curbs."
+  },
+  {
+    "file": "/images/projects/precast-walls/iran-hormuz-precast-01.webp",
+    "project_or_subject": "Iran Hormuz patrol road and perimeter wall",
+    "category": "precast-walls",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.41",
+    "width": 1032,
+    "height": 581,
+    "notes": "Documented project length: 11.5 km."
+  },
+  {
+    "file": "/images/projects/precast-walls/iran-hormuz-precast-02.webp",
+    "project_or_subject": "Iran Hormuz patrol road and perimeter wall",
+    "category": "precast-walls",
+    "recommended_use": "Project / capability",
+    "source_page": "PDF p.41",
+    "width": 1280,
+    "height": 692,
+    "notes": "Documented project length: 11.5 km."
+  },
+  {
+    "file": "/images/projects/precast-walls/precast-production-01.webp",
+    "project_or_subject": "Precast wall works - Iran Hormuz section",
+    "category": "precast-walls",
+    "recommended_use": "Capability / gallery",
+    "source_page": "PDF p.62",
+    "width": 1280,
+    "height": 959,
+    "notes": "Within the precast-wall project section following Iran Hormuz project heading."
+  },
+  {
+    "file": "/images/projects/precast-walls/precast-production-02.webp",
+    "project_or_subject": "Precast wall works - Iran Hormuz section",
+    "category": "precast-walls",
+    "recommended_use": "Capability / gallery",
+    "source_page": "PDF p.62",
+    "width": 1280,
+    "height": 959,
+    "notes": "Within the precast-wall project section following Iran Hormuz project heading."
+  },
+  {
+    "file": "/images/projects/precast-walls/precast-installation-01.webp",
+    "project_or_subject": "Precast wall installation - Iran Hormuz section",
+    "category": "precast-walls",
+    "recommended_use": "Capability / gallery",
+    "source_page": "PDF p.64",
+    "width": 1032,
+    "height": 581,
+    "notes": "Within the precast-wall project section."
+  },
+  {
+    "file": "/images/projects/precast-walls/precast-installation-02.webp",
+    "project_or_subject": "Precast wall installation - Iran Hormuz section",
+    "category": "precast-walls",
+    "recommended_use": "Capability / gallery",
+    "source_page": "PDF p.66",
+    "width": 1280,
+    "height": 959,
+    "notes": "Within the precast-wall project section."
+  },
+  {
+    "file": "/images/projects/precast-walls/precast-completed-01.webp",
+    "project_or_subject": "Completed precast perimeter wall",
+    "category": "precast-walls",
+    "recommended_use": "Capability / gallery",
+    "source_page": "PDF p.67",
+    "width": 1280,
+    "height": 959,
+    "notes": "Within the precast-wall project section."
+  },
+  {
+    "file": "/images/projects/residential/qom-national-housing-01.webp",
+    "project_or_subject": "440-unit National Housing Movement project, Qom",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.86",
+    "width": 1280,
+    "height": 591,
+    "notes": "Photo page immediately following the documented 440-unit Qom project heading on p.85."
+  },
+  {
+    "file": "/images/projects/residential/qom-national-housing-02.webp",
+    "project_or_subject": "440-unit National Housing Movement project, Qom",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.86",
+    "width": 1280,
+    "height": 591,
+    "notes": "Photo page immediately following the documented 440-unit Qom project heading on p.85."
+  },
+  {
+    "file": "/images/projects/residential/qom-national-housing-03.webp",
+    "project_or_subject": "440-unit National Housing Movement project, Qom",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.87",
+    "width": 1280,
+    "height": 591,
+    "notes": "Within the photo sequence following the documented Qom project heading."
+  },
+  {
+    "file": "/images/projects/residential/qom-national-housing-04.webp",
+    "project_or_subject": "440-unit National Housing Movement project, Qom",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.88",
+    "width": 1280,
+    "height": 591,
+    "notes": "Within the photo sequence following the documented Qom project heading."
+  },
+  {
+    "file": "/images/projects/residential/qom-national-housing-05.webp",
+    "project_or_subject": "440-unit National Housing Movement project, Qom",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.88",
+    "width": 1280,
+    "height": 591,
+    "notes": "Within the photo sequence following the documented Qom project heading."
+  },
+  {
+    "file": "/images/projects/residential/pardis-mehr-housing-01.webp",
+    "project_or_subject": "Pardis Mehr Housing - completion/defect correction",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.92",
+    "width": 1280,
+    "height": 720,
+    "notes": "Photo sequence after p.90 heading: four 59-unit blocks, Phase 11 Pardis."
+  },
+  {
+    "file": "/images/projects/residential/pardis-mehr-housing-02.webp",
+    "project_or_subject": "Pardis Mehr Housing - completion/defect correction",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.92",
+    "width": 1280,
+    "height": 720,
+    "notes": "Photo sequence after p.90 heading: four 59-unit blocks, Phase 11 Pardis."
+  },
+  {
+    "file": "/images/projects/residential/pardis-mehr-housing-03.webp",
+    "project_or_subject": "Pardis Mehr Housing - completion/defect correction",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.93",
+    "width": 1280,
+    "height": 720,
+    "notes": "Photo sequence after p.90 heading: four 59-unit blocks, Phase 11 Pardis."
+  },
+  {
+    "file": "/images/projects/residential/pardis-mehr-housing-04.webp",
+    "project_or_subject": "Pardis Mehr Housing - completion/defect correction",
+    "category": "residential",
+    "recommended_use": "Project",
+    "source_page": "PDF p.93",
+    "width": 1280,
+    "height": 720,
+    "notes": "Photo sequence after p.90 heading: four 59-unit blocks, Phase 11 Pardis."
+  }
+]
