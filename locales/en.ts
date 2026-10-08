@@ -374,7 +374,7 @@ const en = {
     precast: 'Precast',
     urbanInfrastructure: 'Urban Infrastructure',
     water: 'Water',
-    noProjectsAvailable: 'No projects are available in this category.',
+    noProjectsAvailable: 'No projects in this category yet.',
     viewProject: 'View Project',
   },
   projectDetail: {

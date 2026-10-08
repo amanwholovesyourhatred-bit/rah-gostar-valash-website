@@ -4,7 +4,11 @@ import { useState, useMemo } from 'react';
 import Link from '@/components/LocalizedLink';
 import Image from 'next/image';
 import { MapPin, Building2, ChevronRight } from 'lucide-react';
-import { projects, type ProjectCategory } from '@/lib/projects';
+import {
+  getProjectsByCategory,
+  projects,
+  type ProjectCategory,
+} from '@/lib/projects';
 import { localizeProject, localizedCategoryLabel } from '@/lib/localized-projects';
 import { t, type Locale } from '@/lib/i18n';
 
@@ -21,13 +25,41 @@ const allCategories: (ProjectCategory | 'all')[] = [
   'water',
 ];
 
-export default function ProjectsList({ locale }: { locale: Locale }) {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>('all');
+export default function ProjectsList({
+  locale,
+  initialCategory,
+}: {
+  locale: Locale;
+  initialCategory?: string;
+}) {
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>(() =>
+    allCategories.find((category) => category === initialCategory) ?? 'all',
+  );
 
   const filtered = useMemo(() => {
-    if (activeCategory === 'all') return projects;
-    return projects.filter((p) => p.category === activeCategory);
+    return getProjectsByCategory(activeCategory);
   }, [activeCategory]);
+  const categoryCounts = useMemo(
+    () =>
+      projects.reduce<Record<ProjectCategory, number>>(
+        (counts, project) => {
+          counts[project.category] += 1;
+          return counts;
+        },
+        {
+          road: 0,
+          bridge: 0,
+          rcc: 0,
+          'soil-stab': 0,
+          building: 0,
+          residential: 0,
+          precast: 0,
+          'urban-infra': 0,
+          water: 0,
+        },
+      ),
+    [],
+  );
 
   return (
     <div>
@@ -36,8 +68,10 @@ export default function ProjectsList({ locale }: { locale: Locale }) {
         {allCategories.map((cat) => (
           <button
             key={cat}
+            type="button"
+            aria-pressed={activeCategory === cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
+            className={`inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-md transition-all ${
               activeCategory === cat
                 ? 'bg-navy text-white'
                 : 'bg-light-gray text-steel hover:bg-secondary hover:text-navy'
@@ -47,8 +81,8 @@ export default function ProjectsList({ locale }: { locale: Locale }) {
               ? t(locale, 'projects.all')
               : localizedCategoryLabel(locale, cat)}
             {cat !== 'all' && (
-              <span className="mr-1.5 text-xs opacity-60">
-                ({projects.filter((p) => p.category === cat).length.toLocaleString('en-US')})
+              <span className="text-xs opacity-70">
+                ({categoryCounts[cat].toLocaleString(locale === 'ru' ? 'ru-RU' : 'en-US')})
               </span>
             )}
           </button>

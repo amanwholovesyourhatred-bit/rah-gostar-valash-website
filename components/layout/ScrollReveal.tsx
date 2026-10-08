@@ -7,8 +7,6 @@ export default function ScrollReveal() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const revealElements = document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)');
-
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll<HTMLElement>('.reveal').forEach((element) => {
         element.classList.add('is-visible');
@@ -28,10 +26,30 @@ export default function ScrollReveal() {
       { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
     );
 
+    const observeRevealElements = (root: ParentNode) => {
+      if (root instanceof HTMLElement && root.matches('.reveal:not(.is-visible)')) {
+        observer.observe(root);
+      }
+
+      root.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)').forEach((element) => {
+        observer.observe(element);
+      });
+    };
+
     document.documentElement.classList.add('reveal-ready');
-    revealElements.forEach((element) => observer.observe(element));
+    observeRevealElements(document);
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) observeRevealElements(node);
+        });
+      });
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      mutationObserver.disconnect();
       observer.disconnect();
     };
   }, [pathname]);

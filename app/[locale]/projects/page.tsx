@@ -14,8 +14,17 @@ export function generateMetadata({ params }: { params: { locale: Locale } }): Me
   );
 }
 
-export default function ProjectsPage({ params }: { params: { locale: Locale } }) {
+export default function ProjectsPage({
+  params,
+  searchParams,
+}: {
+  params: { locale: Locale };
+  searchParams?: { category?: string | string[] };
+}) {
   const { locale } = params;
+  const categoryParam = searchParams?.category;
+  const initialCategory = Array.isArray(categoryParam) ? categoryParam[0] : categoryParam;
+
   return (
     <>
       <PageHeader
@@ -28,7 +37,7 @@ export default function ProjectsPage({ params }: { params: { locale: Locale } })
 
       <section className="section-padding bg-white">
         <div className="container-rgv">
-          <ProjectsList locale={locale} />
+          <ProjectsList locale={locale} initialCategory={initialCategory} />
         </div>
       </section>
 
