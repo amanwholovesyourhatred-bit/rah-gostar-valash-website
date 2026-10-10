@@ -82,15 +82,17 @@ export default function FeaturedProjects({ locale }: { locale: Locale }) {
                     </span>
                   )}
                 </div>
-                <span
-                  className={`shrink-0 text-xs font-semibold px-2.5 py-1 rounded ${
-                    project.status === 'completed'
-                      ? 'bg-green-50 text-green-700'
-                      : 'bg-amber-50 text-amber-700'
-                  }`}
-                >
-                  {project.statusLabel}
-                </span>
+                {project.status !== 'unknown' && project.statusLabel && (
+                  <span
+                    className={`shrink-0 text-xs font-semibold px-2.5 py-1 rounded ${
+                      project.status === 'completed'
+                        ? 'bg-green-50 text-green-700'
+                        : 'bg-amber-50 text-amber-700'
+                    }`}
+                  >
+                    {project.statusLabel}
+                  </span>
+                )}
               </div>
             </Link>
           ))}

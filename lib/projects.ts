@@ -11,6 +11,11 @@ export type ProjectCategory =
 
 export type ProjectStatus = 'completed' | 'ongoing' | 'unknown';
 
+export type ProjectFact = {
+  label: string;
+  value: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,14 +28,24 @@ export type Project = {
   duration?: string;
   contractValue?: string;
   status: ProjectStatus;
-  statusLabel: string;
+  statusLabel?: string;
   image: string;
   gallery?: string[];
   intro?: string;
   scope?: string[];
-  challenges?: string[];
-  solutions?: string[];
+  facts?: ProjectFact[];
   featured?: boolean;
+};
+
+export type ProjectTranslation = Pick<
+  Project,
+  'title' | 'categoryLabel' | 'statusLabel'
+> & {
+  employer?: string;
+  location?: string;
+  intro: string;
+  scope?: string[];
+  facts?: ProjectFact[];
 };
 
 export const categoryLabels: Record<ProjectCategory, string> = {
@@ -51,17 +66,32 @@ export const projects: Project[] = [
     title: 'Construction of Patrol Access Road and Perimeter Wall at Iran Hormoz Site',
     category: 'road',
     categoryLabel: 'Road Construction',
-    employer: 'Mining and Mineral Industries Organization',
-    location: 'Hormozgan',
+    employer: 'Iran Hormoz Nuclear Power Company',
+    location: 'Iran Hormoz site',
     status: 'completed',
-    statusLabel: 'Completed',
+    statusLabel: 'Temporary handover',
     image: '/images/projects/precast-walls/iran-hormuz-precast-01.webp',
+    gallery: [
+      '/images/projects/precast-walls/iran-hormuz-precast-02.webp',
+      '/images/projects/soil-stabilization/iran-hormuz-stabilization-01.webp',
+      '/images/projects/soil-stabilization/iran-hormuz-stabilization-02.webp',
+      '/images/projects/precast-walls/precast-production-01.webp',
+      '/images/projects/precast-walls/precast-production-02.webp',
+      '/images/projects/precast-walls/precast-installation-01.webp',
+      '/images/projects/precast-walls/precast-installation-02.webp',
+      '/images/projects/precast-walls/precast-completed-01.webp',
+    ],
     intro:
-      'Construction of a patrol access road and perimeter wall for the Iran Hormoz site, including earthworks, subgrade preparation and pavement works.',
+      'The project comprised an 11.5 km patrol access road and perimeter wall at the Iran Hormoz site. Soil stabilization covered 11.5 km of the route. Documented activities include wall formwork and precast-wall production and installation. This project is distinct from the other border-wall projects in the company portfolio.',
     scope: [
-      'Earthworks and subgrade preparation for the access road',
-      'Construction of the site perimeter wall',
-      'Pavement and asphalt works',
+      'Construction of the patrol access road and perimeter wall',
+      'Soil-stabilization works over 11.5 km',
+      'Precast-wall formwork, production and installation',
+    ],
+    facts: [
+      { label: 'Project length', value: '11.5 km' },
+      { label: 'Stabilization length', value: '11.5 km' },
+      { label: 'Wall type', value: 'Precast concrete perimeter wall' },
     ],
     featured: true,
   },
@@ -70,18 +100,18 @@ export const projects: Project[] = [
     title: 'Precast Concrete Wall on the Eastern Border, North of Dogharoun Terminal',
     category: 'precast',
     categoryLabel: 'Precast Walls',
-    employer: 'Road Maintenance & Transportation Organization',
-    location: 'Dogharoun — Eastern Border',
-    status: 'completed',
-    statusLabel: 'Completed',
+    location: 'North of Dogharoun Terminal — Eastern Border',
+    status: 'unknown',
     image:
       'https://images.pexels.com/photos/39962550/pexels-photo-39962550.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     intro:
-      'Production and installation of precast concrete walls north of the Dogharoun border terminal for perimeter security.',
+      'A 25 km precast concrete protective wall was built on the eastern border, north of Dogharoun Terminal. This is a separate border-wall project from the perimeter wall at the Iran Hormoz site.',
     scope: [
-      'Production of precast concrete panels',
-      'Installation of perimeter walls',
-      'Foundation and base works',
+      'Construction of the precast concrete border wall',
+    ],
+    facts: [
+      { label: 'Wall length', value: '25 km' },
+      { label: 'Wall type', value: 'Precast concrete protective wall' },
     ],
     featured: true,
   },
@@ -90,17 +120,22 @@ export const projects: Project[] = [
     title: 'Wirtgen Soil Stabilization for the Northeastern Border Closure Project',
     category: 'soil-stab',
     categoryLabel: 'Soil Stabilization',
-    employer: 'Road Maintenance & Transportation Organization',
+    employer: '411th Combat Engineering Group',
     location: 'Northeastern Border',
     status: 'completed',
-    statusLabel: 'Completed',
+    statusLabel: 'Temporary handover',
     image: '/images/projects/soil-stabilization/northeast-border-stabilization-01.webp',
+    gallery: [
+      '/images/projects/soil-stabilization/northeast-border-stabilization-02.webp',
+    ],
     intro:
-      'In-situ cement soil stabilization using Wirtgen equipment to improve road subgrade properties.',
+      'Wirtgen-machine soil stabilization was carried out over 50 km for the northeastern border closure project. The project was undertaken for the 411th Combat Engineering Group.',
     scope: [
-      'In-situ soil stabilization using Wirtgen equipment',
-      'Mixing cement with subgrade soil',
-      'Compaction and asphalt paving over the stabilized base',
+      'Soil-stabilization operations using Wirtgen equipment',
+    ],
+    facts: [
+      { label: 'Stabilization length', value: '50 km' },
+      { label: 'Equipment', value: 'Wirtgen stabilization machine' },
     ],
     featured: true,
   },
@@ -109,17 +144,18 @@ export const projects: Project[] = [
     title: 'Stabilization and Asphalt Works on the Qom–Jafariyeh Return Lane',
     category: 'soil-stab',
     categoryLabel: 'Soil Stabilization',
-    employer: 'Road Maintenance & Transportation Organization',
     location: 'Qom — Jafariyeh',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image: '/images/projects/soil-stabilization/qom-jafarieh-stabilization-01.webp',
     intro:
-      'Soil stabilization and asphalt paving of the Qom–Jafariyeh return lane to improve the subgrade and extend pavement service life.',
+      'Stabilization and asphalt works were carried out on the return carriageway of the Qom–Jafarieh route. The photographed section is 6 km long and 11 m wide.',
     scope: [
-      'Cement stabilization of subgrade soil',
-      'Asphalt layer construction',
-      'Improvement of route traffic flow',
+      'Stabilization of the return carriageway',
+      'Asphalt works on the return carriageway',
+    ],
+    facts: [
+      { label: 'Route length', value: '6 km' },
+      { label: 'Photographed section width', value: '11 m' },
     ],
     featured: false,
   },
@@ -130,24 +166,17 @@ export const projects: Project[] = [
     categoryLabel: 'RCC',
     employer: 'Qom Municipality',
     location: 'Qom',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image: '/images/projects/rcc/boroujerdi-rcc-01.webp',
     intro:
-      'Execution of RCC pavement on Ayatollah Boroujerdi Boulevard in Qom using zero-slump concrete, asphalt pavers and vibratory rollers.',
+      'Roller-compacted concrete (RCC) pavement works were carried out on Ayatollah Boroujerdi Boulevard in Qom for Qom Municipality. The documented dimensions are 10 km long and 40 m wide.',
     scope: [
-      'Production and placement of zero-slump concrete',
-      'Placement with an asphalt paver',
-      'Compaction with vibratory rollers',
-      'Final surface finishing',
+      'RCC pavement works on Ayatollah Boroujerdi Boulevard',
     ],
-    challenges: [
-      'Need for rapid pavement construction under urban traffic conditions',
-      'Concrete temperature control under ambient conditions',
-    ],
-    solutions: [
-      'Use of RCC technology to accelerate construction',
-      'Planning concrete production and transport for continuous placement',
+    facts: [
+      { label: 'Pavement type', value: 'Roller-compacted concrete (RCC)' },
+      { label: 'Length', value: '10 km' },
+      { label: 'Width', value: '40 m' },
     ],
     featured: true,
   },
@@ -156,17 +185,17 @@ export const projects: Project[] = [
     title: 'Access Road from Gilan Sabz Cement Plant to Larikhani and Siahkal',
     category: 'road',
     categoryLabel: 'Road Construction',
-    employer: 'Gilan Sabz Cement Plant',
-    location: 'Gilan — Siahkal',
-    status: 'completed',
-    statusLabel: 'Completed',
+    location: 'Gilan Province — Larikhani and Siahkal route',
+    status: 'unknown',
     image: '/images/projects/roads/gilan-sabz-siahkal-01.webp',
     intro:
-      'Construction of the access route from Gilan Sabz Cement Plant to Larikhani and Siahkal, including earthworks, subgrade preparation and pavement in mountainous terrain.',
+      'The access route from Gilan Sabz Cement Plant to Larikhani and Siahkal is approximately 15 km long and 8 m wide.',
     scope: [
-      'Earthworks and excavation in mountainous terrain',
-      'Subgrade preparation and stabilization',
-      'Pavement and asphalt works',
+      'Construction of the access route from Gilan Sabz Cement Plant to Larikhani and Siahkal',
+    ],
+    facts: [
+      { label: 'Route length', value: 'Approximately 15 km' },
+      { label: 'Width', value: '8 m' },
     ],
     featured: true,
   },
@@ -175,17 +204,17 @@ export const projects: Project[] = [
     title: 'Access Road to Deir Kolu Industrial Pumice Mines, Qorveh',
     category: 'road',
     categoryLabel: 'Road Construction',
-    employer: 'Mining and Mineral Industries Organization',
     location: 'Qorveh — Kurdistan Province',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image: '/images/projects/rcc/qorveh-pumice-access-01.webp',
     intro:
-      'Construction of the access road to the Deir Kolu industrial pumice mines in Qorveh under challenging geological and mountainous conditions.',
+      'The access road to the Deir Kolu industrial pumice mines in Qorveh is 11 km long and 7.6 m wide.',
     scope: [
-      'Rock earthworks',
-      'Subgrade preparation and road formation',
-      'Pavement and asphalt',
+      'Construction of the access road to the Deir Kolu industrial pumice mines',
+    ],
+    facts: [
+      { label: 'Route length', value: '11 km' },
+      { label: 'Width', value: '7.6 m' },
     ],
     featured: false,
   },
@@ -194,17 +223,19 @@ export const projects: Project[] = [
     title: 'Subgrade and RCC Works on the Hajij–Daryan Route',
     category: 'rcc',
     categoryLabel: 'RCC',
-    employer: 'Road Maintenance & Transportation Organization',
     location: 'Hajij–Daryan Route',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image: '/images/projects/rcc/hejij-daryan-rcc-01.webp',
     intro:
-      'Subgrade preparation and RCC pavement on the Hajij–Daryan route, using RCC technology for high strength and long service life.',
+      'Subgrade preparation and RCC works were carried out on the Hajij–Daryan route, approximately 9 km long and 8 m wide.',
     scope: [
       'Subgrade preparation',
-      'RCC pavement construction',
-      'Compaction and finishing works',
+      'RCC pavement works',
+    ],
+    facts: [
+      { label: 'Route length', value: 'Approximately 9 km' },
+      { label: 'Width', value: '8 m' },
+      { label: 'Pavement type', value: 'Roller-compacted concrete (RCC)' },
     ],
     featured: true,
   },
@@ -213,58 +244,58 @@ export const projects: Project[] = [
     title: 'Access Road to Zabol Cement Plant',
     category: 'road',
     categoryLabel: 'Road Construction',
-    employer: 'Zabol Cement Plant',
     location: 'Zabol — Sistan and Baluchestan',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image: '/images/projects/rcc/zabol-cement-access-rcc-01.webp',
     intro:
-      'Construction of the access road to Zabol Cement Plant under harsh climatic and high-temperature conditions.',
+      'The access road to Zabol Cement Plant is 16 km long and 9 m wide.',
     scope: [
-      'Earthworks',
-      'Subgrade preparation',
-      'Pavement and asphalt works',
+      'Construction of the access road to Zabol Cement Plant',
+    ],
+    facts: [
+      { label: 'Route length', value: '16 km' },
+      { label: 'Width', value: '9 m' },
     ],
     featured: false,
   },
   {
     slug: 'seismic-retrofit-urban-bridges',
-    title: 'Seismic Rehabilitation and Strengthening of Urban Bridges',
+    title: 'Seismic Upgrading of Bridge Interchanges on Shahid Hakim and Shahid Babaei Highways',
     category: 'bridge',
     categoryLabel: 'Bridges & Structures',
-    employer: 'Municipalities',
-    location: 'Urban Areas',
-    status: 'completed',
-    statusLabel: 'Completed',
+    location: 'Tehran',
+    status: 'ongoing',
+    statusLabel: 'In progress',
     image:
       'https://images.pexels.com/photos/17064158/pexels-photo-17064158.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     intro:
-      'Seismic rehabilitation and strengthening of urban bridges to improve earthquake safety and structural performance.',
+      'Seismic upgrading works were carried out on bridges at the Shahid Hakim and Shahid Babaei (Sadr)–Kaveh highway interchanges in Tehran. This project is distinct from the Hemmat–Sheikh Fazlollah bridge works.',
     scope: [
-      'Assessment of existing bridge conditions',
-      'Design and implementation of strengthening systems',
-      'Strengthening of bridge piers and decks',
+      'Seismic upgrading of bridges at the named Tehran highway interchanges',
+    ],
+    facts: [
+      {
+        label: 'Documented structures',
+        value: 'Shahid Hakim and Shahid Babaei (Sadr)–Kaveh highway interchanges',
+      },
     ],
     featured: false,
   },
   {
     slug: 'urban-roads-infrastructure',
-    title: 'Construction of Urban Roads and Infrastructure',
+    title: 'Qods Township–Ayatollah Boroujerdi Boulevard Grade-Separated Interchange',
     category: 'urban-infra',
     categoryLabel: 'Urban Infrastructure',
-    employer: 'Municipalities and Governorates',
-    location: 'Urban Areas',
-    status: 'completed',
-    statusLabel: 'Completed',
+    location: 'Qom',
+    status: 'unknown',
     image:
       'https://images.pexels.com/photos/33125632/pexels-photo-33125632.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     intro:
-      'Construction of urban roads, water infrastructure, wastewater systems and site development for urban development projects.',
+      'A grade-separated interchange was constructed at Qods Township and Ayatollah Boroujerdi Boulevard in Qom. The Qom–Jafarieh return-carriageway asphalt works are a separate project.',
     scope: [
-      'Construction of asphalt and concrete roads',
-      'Water and wastewater networks',
-      'Site development and urban infrastructure',
+      'Construction of the grade-separated interchange at Qods Township and Ayatollah Boroujerdi Boulevard',
     ],
+    facts: [{ label: 'Structure', value: 'Grade-separated interchange' }],
     featured: false,
   },
   {
@@ -272,19 +303,23 @@ export const projects: Project[] = [
     title: 'National Housing and Mehr Housing Projects',
     category: 'residential',
     categoryLabel: 'Residential',
-    employer: 'New Towns Development Company / Bank Maskan',
-    location: 'Qom, Parand and Pardis',
+    location: 'Tehran and Qom',
     status: 'ongoing',
-    statusLabel: 'Ongoing',
+    statusLabel: 'Under execution',
     image:
       'https://images.pexels.com/photos/8373204/pexels-photo-8373204.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     intro:
-      'Construction of residential units under the National Housing and Mehr Housing programs, including projects in Qom, Parand and Pardis.',
+      'The residential portfolio spans Tehran and Qom, with approximately 1,000 units and about 1.5 million m² of built-up area. Its recorded average physical progress is approximately 80%. The documented scope spans site mobilization, earthworks, structural works and framing, rough construction, mechanical and electrical installations, finishing and final completion. This portfolio-level summary is separate from the Qom National Housing and Pardis Mehr projects.',
     scope: [
-      'Construction of residential units',
-      'Construction from earthworks through finishing',
+      'Site mobilization and earthworks',
+      'Structural works, framing and rough construction',
       'Mechanical and electrical installations',
-      'Site development and infrastructure',
+      'Finishing and final completion',
+    ],
+    facts: [
+      { label: 'Residential units', value: 'Approximately 1,000' },
+      { label: 'Built-up area', value: 'Approximately 1,500,000 m²' },
+      { label: 'Average physical progress', value: 'Approximately 80%' },
     ],
     featured: true,
   },
@@ -293,17 +328,24 @@ export const projects: Project[] = [
     title: '440-Unit National Housing Project in Qom',
     category: 'residential',
     categoryLabel: 'Residential',
-    employer: 'New Towns Development Company',
+    employer: 'Qom Province General Directorate of Roads and Urban Development',
     location: 'Qom',
-    status: 'ongoing',
-    statusLabel: 'Ongoing',
+    status: 'unknown',
     image: '/images/projects/residential/qom-national-housing-02.webp',
+    gallery: [
+      '/images/projects/residential/qom-national-housing-01.webp',
+      '/images/projects/residential/qom-national-housing-03.webp',
+      '/images/projects/residential/qom-national-housing-04.webp',
+      '/images/projects/residential/qom-national-housing-05.webp',
+    ],
     intro:
-      'Construction of 440 residential units for the Qom National Housing project, with significant physical progress at the time the company profile was prepared.',
+      'The 440-unit National Housing Movement project in Qom was undertaken for the Qom Province General Directorate of Roads and Urban Development. Project progress is listed at 70%.',
     scope: [
       'Construction of 440 residential units',
-      'Concrete structure and frame',
-      'Finishing and MEP works',
+    ],
+    facts: [
+      { label: 'Residential units', value: '440' },
+      { label: 'Progress', value: '70%' },
     ],
     featured: false,
   },
@@ -312,17 +354,21 @@ export const projects: Project[] = [
     title: 'Construction of Parand School No. 10',
     category: 'building',
     categoryLabel: 'Building Construction',
-    employer: 'School Renovation Organization',
-    location: 'Parand — Tehran',
+    employer: 'Parand New Town Development Company',
+    location: 'Parand',
     status: 'completed',
     statusLabel: 'Completed',
     image:
       'https://images.pexels.com/photos/18082446/pexels-photo-18082446.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    intro: 'Construction of School No. 10 in Parand, including complete building works from earthworks through completion.',
+    intro:
+      'Construction of School No. 10 in Parand for Parand New Town Development Company included the main building, guardhouse, buffet, sanitary facilities, water cooler, caretaker room, site development and a perimeter wall.',
     scope: [
-      'Complete building works',
-      'Mechanical and electrical installations',
-      'Site development',
+      'Construction of the main school building and guardhouse',
+      'Buffet, sanitary facilities, water cooler and caretaker room',
+      'Site development and perimeter wall',
+    ],
+    facts: [
+      { label: 'School', value: 'No. 10' },
     ],
     featured: false,
   },
@@ -331,18 +377,14 @@ export const projects: Project[] = [
     title: 'Pol-e Dokhtar Friday Mosque (Mosalla) Project',
     category: 'building',
     categoryLabel: 'Building Construction',
-    employer: 'Endowments and Charity Affairs Organization',
     location: 'Pol-e Dokhtar',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'unknown',
     image:
       'https://images.pexels.com/photos/19099247/pexels-photo-19099247.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    intro: 'Construction of the Pol-e Dokhtar Friday Mosque (Mosalla), including the main building and site development.',
-    scope: [
-      'Mosalla building works',
-      'Concrete structure and frame',
-      'Finishing and MEP works',
-    ],
+    intro:
+      'Completion works were carried out for the Pol-e Dokhtar Mosalla.',
+    scope: ['Completion works for the Pol-e Dokhtar Mosalla'],
+    facts: [{ label: 'Documented work', value: 'Mosalla completion works' }],
     featured: false,
   },
   {
@@ -350,55 +392,77 @@ export const projects: Project[] = [
     title: '106-Unit Residential Complex and Site Development',
     category: 'residential',
     categoryLabel: 'Residential',
-    employer: 'Bank Maskan — Civil Works Support Company',
-    location: '—',
-    status: 'completed',
-    statusLabel: 'Completed',
+    status: 'ongoing',
+    statusLabel: '10% progress',
     image:
       'https://images.pexels.com/photos/38449886/pexels-photo-38449886.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    intro: 'Construction of a 106-unit residential complex together with site development and infrastructure works.',
+    intro:
+      'The project included construction of 106 residential units and site development over 15,000 m². Project progress is listed at 10%.',
     scope: [
       'Construction of 106 residential units',
-      'Site development and infrastructure',
-      'Mechanical and electrical installations',
+      'Site development over 15,000 m²',
+    ],
+    facts: [
+      { label: 'Residential units', value: '106' },
+      { label: 'Site development area', value: '15,000 m²' },
+      { label: 'Progress', value: '10%' },
     ],
     featured: false,
   },
   {
     slug: 'pardis-residential-projects',
-    title: 'Residential Projects in Pardis',
+    title: 'Pardis Mehr Housing Completion and Defect-Correction Works — Phase 11',
     category: 'residential',
     categoryLabel: 'Residential',
-    employer: 'New Towns Development Company',
-    location: 'Pardis — Tehran',
-    status: 'ongoing',
-    statusLabel: 'Ongoing',
-    image:
-      'https://images.pexels.com/photos/16453466/pexels-photo-16453466.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    intro: 'Residential projects in Pardis, forming part of the company’s track record of approximately 1,000 housing units.',
+    employer: 'Pardis New Town Development Company',
+    location: 'Pardis — Phase 11',
+    status: 'unknown',
+    image: '/images/projects/residential/pardis-mehr-housing-01.webp',
+    gallery: [
+      '/images/projects/residential/pardis-mehr-housing-02.webp',
+      '/images/projects/residential/pardis-mehr-housing-03.webp',
+      '/images/projects/residential/pardis-mehr-housing-04.webp',
+    ],
+    intro:
+      'Completion and defect-correction works covered the remaining work in four 59-unit Mehr Housing blocks in Phase 11 of Pardis. Project progress is listed at 90%.',
     scope: [
-      'Construction of residential units',
-      'Complete construction works',
-      'Infrastructure and site development',
+      'Completion of remaining works in four 59-unit blocks',
+      'Defect-correction works',
+    ],
+    facts: [
+      { label: 'Blocks', value: '4' },
+      { label: 'Units per block', value: '59' },
+      { label: 'Phase', value: '11' },
+      { label: 'Progress', value: '90%' },
     ],
     featured: false,
   },
   {
     slug: 'parand-residential-projects',
-    title: 'Residential Projects in Parand',
+    title: 'Residential Project Entry',
     category: 'residential',
     categoryLabel: 'Residential',
-    employer: 'New Towns Development Company',
-    location: 'Parand — Tehran',
-    status: 'ongoing',
-    statusLabel: 'Ongoing',
+    status: 'unknown',
     image:
       'https://images.pexels.com/photos/5335018/pexels-photo-5335018.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-    intro: 'Residential projects in Parand with average physical progress of approximately 80% at the time the company profile was prepared.',
+    featured: false,
+  },
+  {
+    slug: 'west-malard-industrial-town',
+    title: 'West Malard Industrial Town Earthworks and Subgrade Works',
+    category: 'urban-infra',
+    categoryLabel: 'Urban Infrastructure',
+    location: 'West Malard Industrial Town',
+    status: 'unknown',
+    image: '/images/projects/roads/malard-industrial-town-01.webp',
+    gallery: ['/images/projects/roads/malard-industrial-town-02.webp'],
+    intro:
+      'Earthworks to subgrade level and curbing were carried out in the western part of Malard Industrial Town. Activities included excavation and fill, grading, subbase works and curbing.',
     scope: [
-      'Construction of residential units',
-      'Complete construction works',
-      'Infrastructure and site development',
+      'Excavation and fill to subgrade level',
+      'Grading',
+      'Subbase works',
+      'Curbing',
     ],
     featured: false,
   },

@@ -3,21 +3,14 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import {
-  MapPin,
-  Building2,
-  Calendar,
-  Clock,
-  DollarSign,
   CheckCircle2,
   AlertCircle,
   ChevronRight,
-  Wrench,
 } from 'lucide-react';
 import { projects, getProjectBySlug, getRelatedProjects } from '@/lib/projects';
 import { localizeProject } from '@/lib/localized-projects';
 import { t, type Locale } from '@/lib/i18n';
 import { localizedMetadata } from '@/lib/metadata';
-import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/sections/CTASection';
 
 export function generateStaticParams() {
@@ -54,14 +47,15 @@ export default function ProjectPage({
     localizeProject(relatedProject, params.locale)
   );
 
-  const infoItems = [
-    { icon: Building2, label: 'employer', value: project.employer },
-    { icon: Wrench, label: 'consultant', value: project.consultant },
-    { icon: MapPin, label: 'location', value: project.location },
-    { icon: Calendar, label: 'startDate', value: project.startDate },
-    { icon: Clock, label: 'contractDuration', value: project.duration },
-    { icon: DollarSign, label: 'contractValue', value: project.contractValue },
-  ].filter((item) => item.value);
+  const projectFacts = [
+    ...(project.location
+      ? [{ label: t(params.locale, 'projectDetail.location'), value: project.location }]
+      : []),
+    ...(project.employer
+      ? [{ label: t(params.locale, 'projectDetail.employer'), value: project.employer }]
+      : []),
+    ...(project.facts ?? []),
+  ];
 
   return (
     <>
@@ -88,24 +82,26 @@ export default function ProjectPage({
             <span className="text-white/80">{project.categoryLabel}</span>
           </nav>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="bg-accent text-white text-sm font-semibold px-3 py-1 rounded">
               {project.categoryLabel}
             </span>
-            <span
-              className={`inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded ${
-                project.status === 'completed'
-                  ? 'bg-green-500/20 text-green-300'
-                  : 'bg-amber-500/20 text-amber-300'
-              }`}
-            >
-              {project.status === 'completed' ? (
-                <CheckCircle2 className="w-4 h-4" />
-              ) : (
-                <AlertCircle className="w-4 h-4" />
-              )}
-              {project.statusLabel}
-            </span>
+            {project.status !== 'unknown' && project.statusLabel && (
+              <span
+                className={`inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1 rounded ${
+                  project.status === 'completed'
+                    ? 'bg-green-500/20 text-green-300'
+                    : 'bg-amber-500/20 text-amber-300'
+                }`}
+              >
+                {project.status === 'completed' ? (
+                  <CheckCircle2 className="w-4 h-4" />
+                ) : (
+                  <AlertCircle className="w-4 h-4" />
+                )}
+                {project.statusLabel}
+              </span>
+            )}
           </div>
 
           <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight max-w-4xl text-balance text-shadow-lg">
@@ -114,25 +110,23 @@ export default function ProjectPage({
         </div>
       </section>
 
-      {/* Project info grid */}
-      <section className="py-12 bg-light-gray border-b border-border">
-        <div className="container-rgv">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {infoItems.map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-4 rounded-lg border border-border"
-              >
-                <div className="flex items-center gap-2 text-accent mb-2">
-                  <item.icon className="w-4 h-4" />
-                  <span className="text-xs font-medium text-steel">{t(params.locale, `projectDetail.${item.label}`)}</span>
+      {projectFacts.length > 0 && (
+        <section className="py-12 bg-light-gray border-b border-border">
+          <div className="container-rgv">
+            <h2 className="text-2xl font-bold text-navy mb-6 pb-2 border-b-2 border-accent inline-block">
+              {t(params.locale, 'projectDetail.facts')}
+            </h2>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {projectFacts.map((fact, i) => (
+                <div key={i} className="bg-white p-4 rounded-lg border border-border">
+                  <dt className="text-xs font-medium text-steel mb-2">{fact.label}</dt>
+                  <dd className="text-sm font-semibold text-navy leading-snug">{fact.value}</dd>
                 </div>
-                <p className="text-sm font-semibold text-navy leading-snug">{item.value}</p>
-              </div>
-            ))}
+              ))}
+            </dl>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Project details */}
       <section className="section-padding bg-white">
@@ -160,40 +154,6 @@ export default function ProjectPage({
                     {project.scope.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <span className="mt-1 w-1.5 h-1.5 bg-accent rounded-full shrink-0" />
-                        <span className="text-base text-steel leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Challenges */}
-              {project.challenges && project.challenges.length > 0 && (
-                <div className="reveal reveal-delay-2">
-                  <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    {t(params.locale, 'projectDetail.executionChallenges')}
-                  </h2>
-                  <ul className="space-y-3">
-                    {project.challenges.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                        <span className="text-base text-steel leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Solutions */}
-              {project.solutions && project.solutions.length > 0 && (
-                <div className="reveal reveal-delay-3">
-                  <h2 className="text-2xl font-bold text-navy mb-4 pb-2 border-b-2 border-accent inline-block">
-                    {t(params.locale, 'projectDetail.technicalSolutions')}
-                  </h2>
-                  <ul className="space-y-3">
-                    {project.solutions.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                         <span className="text-base text-steel leading-relaxed">{item}</span>
                       </li>
                     ))}
@@ -241,26 +201,10 @@ export default function ProjectPage({
                     <dt className="text-steel">{t(params.locale, 'projectDetail.category')}</dt>
                     <dd className="font-semibold text-navy">{project.categoryLabel}</dd>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <dt className="text-steel">{t(params.locale, 'projectDetail.status')}</dt>
-                    <dd className="font-semibold text-navy">{project.statusLabel}</dd>
-                  </div>
-                  {project.employer && (
+                  {project.status !== 'unknown' && project.statusLabel && (
                     <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">{t(params.locale, 'projectDetail.employer')}</dt>
-                      <dd className="font-semibold text-navy text-left">{project.employer}</dd>
-                    </div>
-                  )}
-                  {project.location && (
-                    <div className="flex justify-between text-sm gap-4">
-                      <dt className="text-steel shrink-0">{t(params.locale, 'projectDetail.location')}</dt>
-                      <dd className="font-semibold text-navy text-left">{project.location}</dd>
-                    </div>
-                  )}
-                  {project.duration && (
-                    <div className="flex justify-between text-sm">
-                      <dt className="text-steel">{t(params.locale, 'projectDetail.contractDuration')}</dt>
-                      <dd className="font-semibold text-navy">{project.duration}</dd>
+                      <dt className="text-steel shrink-0">{t(params.locale, 'projectDetail.status')}</dt>
+                      <dd className="font-semibold text-navy text-left">{project.statusLabel}</dd>
                     </div>
                   )}
                 </dl>

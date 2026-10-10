@@ -6,8 +6,24 @@ import {
 import {
   categoryLabels,
   type Project,
+  type ProjectTranslation,
 } from '@/lib/projects';
 import type { Locale } from '@/lib/i18n';
+
+function assertTranslationCompleteness(
+  project: Project,
+  translation: ProjectTranslation,
+): void {
+  if (
+    (project.scope?.length ?? 0) !== (translation.scope?.length ?? 0) ||
+    (project.facts?.length ?? 0) !== (translation.facts?.length ?? 0) ||
+    Boolean(project.employer) !== Boolean(translation.employer) ||
+    Boolean(project.location) !== Boolean(translation.location) ||
+    Boolean(project.statusLabel) !== Boolean(translation.statusLabel)
+  ) {
+    throw new Error(`Incomplete Russian project translation for "${project.slug}"`);
+  }
+}
 
 export function localizeProject(project: Project, locale: Locale): Project {
   if (locale === 'en') return project;
@@ -17,13 +33,7 @@ export function localizeProject(project: Project, locale: Locale): Project {
     throw new Error(`Missing Russian project translation for "${project.slug}"`);
   }
 
-  if (
-    (project.scope?.length ?? 0) !== translation.scope.length ||
-    (project.challenges?.length ?? 0) !== (translation.challenges?.length ?? 0) ||
-    (project.solutions?.length ?? 0) !== (translation.solutions?.length ?? 0)
-  ) {
-    throw new Error(`Incomplete Russian project translation for "${project.slug}"`);
-  }
+  assertTranslationCompleteness(project, translation);
 
   return {
     ...project,
@@ -48,8 +58,8 @@ export function localizedStatusLabel(
   if (locale === 'en') {
     return {
       completed: 'Completed',
-      ongoing: 'Ongoing',
-      unknown: 'Unknown',
+      ongoing: 'In progress',
+      unknown: '',
     }[status];
   }
   const label = statusLabelsRu[status];

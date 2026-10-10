@@ -7,7 +7,7 @@ These images were extracted from the supplied company profile PDF and converted 
 - Replace generic stock photography with these real company/project images where the mapping is supported.
 - Do not alter factual project associations.
 - For entries whose notes say the PDF page contains multiple projects, use the image only for a general road/portfolio gallery unless a human confirms the exact project.
-- Keep project slugs and factual data unchanged.
+- Keep existing project slugs and categories unchanged. Add or correct project facts only when verified in the company résumé; do not infer an image-to-project association from a page that documents multiple projects.
 - Prefer `next/image` with descriptive alt text and responsive `sizes`.
 - These are extracted from a résumé PDF, so some originals are modest resolution; avoid extreme full-screen cropping on low-resolution portrait images.
 

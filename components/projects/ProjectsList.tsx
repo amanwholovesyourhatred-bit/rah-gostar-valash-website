@@ -116,15 +116,17 @@ export default function ProjectsList({
                 <span className="absolute top-3 right-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded">
                   {project.categoryLabel}
                 </span>
-                <span
-                  className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded ${
-                    project.status === 'completed'
-                      ? 'bg-green-500/90 text-white'
-                      : 'bg-amber-500/90 text-white'
-                  }`}
-                >
-                  {project.statusLabel}
-                </span>
+                {project.status !== 'unknown' && project.statusLabel && (
+                  <span
+                    className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded ${
+                      project.status === 'completed'
+                        ? 'bg-green-500/90 text-white'
+                        : 'bg-amber-500/90 text-white'
+                    }`}
+                  >
+                    {project.statusLabel}
+                  </span>
+                )}
               </div>
 
               <div className="p-5">
